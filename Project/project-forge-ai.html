@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C14">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <title>FORGE AI — Hikmet Bisen</title>
   <meta name="description" content="FORGE AI — AI-powered mechanical engineering platform. Multi-modal workspace combining sketch/CAD upload, guided onboarding, RAG knowledge base, and structural analysis.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="night">
 
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
@@ -24,25 +26,23 @@
     </div>
   </nav>
 
-  <!-- ── Hero ── -->
-  <section class="project-detail-hero">
-    <img
-      src="../assets/images/everest.jpg"
-      alt="Mount Everest — Nepal"
-      class="project-detail-hero-img"
-    >
-    <div class="project-detail-overlay"></div>
-    <div class="project-mountain-credit">Mount Everest — Nepal/Tibet, 8,849m</div>
+  <!-- ── Camp hero: arrive at this project's marker on the mountain ── -->
+  <section class="camp-hero" data-mtn-world>
+    <div class="hero-bg"></div>
+    <div class="hero-stars"></div>
+    <div class="camp-fallback" style="background-image:url('../assets/images/everest.jpg')"></div>
+    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
 
-    <div class="project-detail-hero-content">
-      <a href="projects.html" class="project-detail-back">← All Projects</a>
-      <div class="project-detail-meta">
-        <span class="project-detail-num">07 / 09</span>
-        <span class="project-detail-cat">AI / Software Engineering</span>
-        <span class="project-detail-date">2026</span>
+    <div class="camp-content">
+      <a href="projects.html" class="camp-back">← All Projects</a>
+      <p class="camp-eyebrow">Camp 07 / 09 <span class="dot">·</span> Everest <span class="dot">·</span> 8,849 m</p>
+      <h1 class="camp-title">FORGE AI —<br>Engineering Intelligence Platform</h1>
+      <p class="camp-sub">Multi-Modal AI Workspace · React · FastAPI · RAG · LiteLLM</p>
+      <div class="camp-meta">
+        <span><b>AI / Software Engineering</b></span>
+        <span>2026</span>
+        <span>In Development</span>
       </div>
-      <h1 class="project-detail-title">FORGE AI —<br>Engineering Intelligence Platform</h1>
-      <p class="project-detail-subtitle">Multi-Modal AI Workspace · React · FastAPI · RAG · LiteLLM</p>
     </div>
   </section>
 
@@ -186,5 +186,10 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>window.MTN_PAGE = { mode: 'camp', focus: 'forge', base: '../' };</script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="../js/mountain.js"></script>
 </body>
 </html>

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C14">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <title>Claude Usage Dashboard — Hikmet Bisen</title>
   <meta name="description" content="Local analytics dashboard for Claude Code — token usage, cost estimates, session history. Customized to Alpine Dawn theme with true-live auto-rescan.">
   <link rel="stylesheet" href="../css/style.css">
@@ -103,7 +105,7 @@
     }
   </style>
 </head>
-<body>
+<body class="night">
 
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
@@ -121,24 +123,21 @@
   </nav>
 
   <!-- ── Hero ── -->
-  <section class="project-detail-hero">
-    <img
-      src="../assets/images/denali.jpg"
-      alt="Denali — Alaska"
-      class="project-detail-hero-img"
-    >
-    <div class="project-detail-overlay"></div>
-    <div class="project-mountain-credit">Denali — Alaska, 6,190m</div>
-
-    <div class="project-detail-hero-content">
-      <a href="projects.html" class="project-detail-back">← All Projects</a>
-      <div class="project-detail-meta">
-        <span class="project-detail-num">09 / 09</span>
-        <span class="project-detail-cat">Tools / Observability</span>
-        <span class="project-detail-date">2026</span>
+  <section class="camp-hero" data-mtn-world>
+    <div class="hero-bg"></div>
+    <div class="hero-stars"></div>
+    <div class="camp-fallback" style="background-image:url('../assets/images/denali.jpg')"></div>
+    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
+    <div class="camp-content">
+      <a href="projects.html" class="camp-back">&larr; All Projects</a>
+      <p class="camp-eyebrow">Camp 09 / 09 <span class="dot">&middot;</span> Denali <span class="dot">&middot;</span> 6,190 m</p>
+      <h1 class="camp-title">FORGE / Claude Usage —<br>Personal AI Observability</h1>
+      <p class="camp-sub">Local Analytics Dashboard · Python · SQLite · Chart.js · Alpine Dawn Theme</p>
+      <div class="camp-meta">
+        <span><b>Tools / Observability</b></span>
+        <span>2026</span>
+        <span>Active</span>
       </div>
-      <h1 class="project-detail-title">FORGE / Claude Usage —<br>Personal AI Observability</h1>
-      <p class="project-detail-subtitle">Local Analytics Dashboard · Python · SQLite · Chart.js · Alpine Dawn Theme</p>
     </div>
   </section>
 
@@ -338,5 +337,10 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>window.MTN_PAGE = { mode: 'camp', focus: 'dashboard', base: '../' };</script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="../js/mountain.js"></script>
 </body>
 </html>

@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C14">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <title>Obsidian Memory Graph — Hikmet Bisen</title>
   <meta name="description" content="Personal AI memory graph built in Obsidian — a structured knowledge vault that persists context across Claude conversations using wiki-linked markdown notes.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="night">
 
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
@@ -24,25 +26,23 @@
     </div>
   </nav>
 
-  <!-- ── Hero ── -->
-  <section class="project-detail-hero">
-    <img
-      src="../assets/images/lhotse.jpg"
-      alt="Lhotse — Nepal"
-      class="project-detail-hero-img"
-    >
-    <div class="project-detail-overlay"></div>
-    <div class="project-mountain-credit">Lhotse — Nepal, 8,516m</div>
+  <!-- ── Camp hero: arrive at this project's marker on the mountain ── -->
+  <section class="camp-hero" data-mtn-world>
+    <div class="hero-bg"></div>
+    <div class="hero-stars"></div>
+    <div class="camp-fallback" style="background-image:url('../assets/images/lhotse.jpg')"></div>
+    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
 
-    <div class="project-detail-hero-content">
-      <a href="projects.html" class="project-detail-back">← All Projects</a>
-      <div class="project-detail-meta">
-        <span class="project-detail-num">08 / 09</span>
-        <span class="project-detail-cat">Tools / Personal Systems</span>
-        <span class="project-detail-date">2026</span>
+    <div class="camp-content">
+      <a href="projects.html" class="camp-back">&larr; All Projects</a>
+      <p class="camp-eyebrow">Camp 08 / 09 <span class="dot">&middot;</span> Lhotse <span class="dot">&middot;</span> 8,516 m</p>
+      <h1 class="camp-title">Obsidian —<br>AI Memory Graph</h1>
+      <p class="camp-sub">Personal Knowledge Graph · Obsidian · Claude AI · Wiki-Links</p>
+      <div class="camp-meta">
+        <span><b>Tools / Personal Systems</b></span>
+        <span>2026</span>
+        <span>Active — Updated Continuously</span>
       </div>
-      <h1 class="project-detail-title">Obsidian —<br>AI Memory Graph</h1>
-      <p class="project-detail-subtitle">Personal Knowledge Graph · Obsidian · Claude AI · Wiki-Links</p>
     </div>
   </section>
 
@@ -200,5 +200,10 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>window.MTN_PAGE = { mode: 'camp', focus: 'obsidian', base: '../' };</script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="../js/mountain.js"></script>
 </body>
 </html>

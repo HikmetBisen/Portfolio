@@ -1,16 +1,21 @@
 /* ================================================================
    HIKMET BISEN — PORTFOLIO
-   The Mountain: interactive wireframe-topo K2 hero world.
-   Three.js (ES module via importmap). Progressive enhancement:
-   if WebGL/modules are unavailable the original SVG hero stays.
+   The Mountain: one 3D world for the whole site.
+   Modes:
+     index — full orbit, all markers hot, hover tooltip + click panel
+     camp  — camera parked at ONE project's marker (set per page via
+             window.MTN_PAGE = { mode:'camp', focus:'forge', base:'../' })
+   Progressive enhancement: no WebGL/modules -> static fallback stays.
    ================================================================ */
 import * as THREE from 'three';
 
 (function () {
   'use strict';
 
+  var cfg = window.MTN_PAGE || { mode: 'index', focus: null, base: '' };
+  var BASE = cfg.base || '';
   var canvas = document.getElementById('mtn-canvas');
-  var hero = document.querySelector('.hero');
+  var hero = document.querySelector('[data-mtn-world]');
   if (!canvas || !hero) return;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -52,17 +57,17 @@ import * as THREE from 'three';
   var renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-  } catch (e) { return; /* fallback SVG hero stays */ }
+  } catch (e) { return; /* static fallback stays */ }
   renderer.setClearColor(0x000000, 0);
-  hero.classList.add('mtn-live'); /* hides the static SVG fallback */
+  hero.classList.add('mtn-live');
 
   var scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x070c14, 150, 320);
   var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 600);
 
   /* ── Terrain: K2-shaped ridged peak ── */
-  var H = 46;                 /* summit height */
-  var R = 72;                 /* mountain radius */
+  var H = 46;
+  var R = 72;
   function ridgeNoise(x, z) {
     return (
       Math.sin(x * 0.16 + Math.sin(z * 0.11) * 2.0) * 1.6 +
@@ -73,12 +78,10 @@ import * as THREE from 'three';
   }
   function heightAt(x, z) {
     var theta = Math.atan2(z, x);
-    /* angular ridge modulation gives K2 its faceted pyramid faces */
     var ridge = 1.0 + 0.16 * Math.sin(theta * 3.0 + 0.7) + 0.09 * Math.sin(theta * 7.0 - 1.2);
     var r = Math.sqrt(x * x + z * z) * ridge;
     var t = Math.max(0, 1 - r / R);
     var peak = H * Math.pow(t, 1.45);
-    /* secondary shoulder (the SE ridge) */
     var sx = x - 34, sz = z + 18;
     var r2 = Math.sqrt(sx * sx + sz * sz);
     var shoulder = 14 * Math.pow(Math.max(0, 1 - r2 / 38), 1.6);
@@ -95,12 +98,9 @@ import * as THREE from 'three';
     var x = pos.getX(i), z = pos.getZ(i);
     pos.setY(i, heightAt(x, z));
   }
-  /* non-indexed -> per-face normals -> crisp faceted alpenglow shading */
   geo = geo.toNonIndexed();
   geo.computeVertexNormals();
 
-  /* faceted night-mountain shader: warm alpenglow key light, cool steel
-     fill, snowcap above the snowline, faint topo lines as an accent */
   var mat = new THREE.ShaderMaterial({
     transparent: true,
     uniforms: {
@@ -134,25 +134,20 @@ import * as THREE from 'three';
       'void main() {',
       '  float hn = clamp(vH / uMaxH, 0.0, 1.0);',
       '  vec3 n = normalize(vN);',
-      '  /* alpenglow key (warm, low, from the east) + steel fill (cool, opposite) */',
       '  vec3 Lg = normalize(vec3(0.62, 0.30, -0.45));',
       '  vec3 Ls = normalize(vec3(-0.55, 0.42, 0.55));',
       '  float dg = pow(max(dot(n, Lg), 0.0), 1.25);',
       '  float ds = max(dot(n, Ls), 0.0);',
-      '  /* base mass lifts slightly with altitude */',
       '  vec3 col = mix(uBase, uBase * 1.8, hn * 0.45);',
       '  col += uGold * dg * (0.30 + 0.34 * hn);',
       '  col += uSteel * ds * 0.26;',
-      '  /* snowcap: noisy snowline so it never reads as a flat band */',
       '  float wob = (sin(vW.x * 0.55) + sin(vW.z * 0.62) + sin((vW.x + vW.z) * 0.21)) * 0.022;',
       '  float snowMask = smoothstep(0.55, 0.70, hn + wob);',
       '  vec3 snowCol = uSnow * (0.30 + 0.62 * dg + 0.30 * ds);',
       '  col = mix(col, snowCol, snowMask * 0.92);',
-      '  /* rim glow against the night sky */',
       '  vec3 V = normalize(cameraPosition - vW);',
       '  float rim = pow(1.0 - max(dot(n, V), 0.0), 3.2);',
       '  col += uSteel * rim * 0.22 + uGold * rim * 0.10 * hn;',
-      '  /* faint topo accent lines keep the engineering identity */',
       '  float bands = vH / uMaxH * 22.0;',
       '  float d = fwidth(bands);',
       '  float line = 1.0 - smoothstep(0.0, d * 1.8, abs(fract(bands) - 0.5) - (0.5 - d * 1.8));',
@@ -195,33 +190,51 @@ import * as THREE from 'three';
     return new THREE.CanvasTexture(c);
   })();
 
-  /* invert the peak profile to find the radius for a target altitude */
   function radiusForAlt(altN) {
-    return R * (1 - Math.pow(altN, 1 / 1.45)) / 1.0;
+    return R * (1 - Math.pow(altN, 1 / 1.45));
   }
   var markers = new THREE.Group();
+  var focusMarker = null;
   PROJECTS.forEach(function (p) {
     var r = radiusForAlt(p.alt);
     var x = Math.cos(p.ang) * r;
     var z = Math.sin(p.ang) * r;
     var y = heightAt(x, z) + 2.2;
-    var core = new THREE.Sprite(new THREE.SpriteMaterial({ map: coreTex, depthTest: false, transparent: true }));
+    var isFocus = cfg.mode === 'camp' && cfg.focus === p.id;
+    var dimmed = cfg.mode === 'camp' && !isFocus;
+    var core = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: coreTex, depthTest: false, transparent: true,
+      opacity: dimmed ? 0.3 : 1,
+    }));
     core.scale.set(3.0, 3.0, 1);
     core.position.set(x, y, z);
     core.userData.project = p;
     core.renderOrder = 3;
-    var ring = new THREE.Sprite(new THREE.SpriteMaterial({ map: ringTex, depthTest: false, transparent: true, opacity: 0.8 }));
-    ring.scale.set(3.0, 3.0, 1);
-    ring.position.set(x, y, z);
-    ring.renderOrder = 2;
-    core.userData.ring = ring;
     markers.add(core);
-    markers.add(ring);
+    if (!dimmed) {
+      var ring = new THREE.Sprite(new THREE.SpriteMaterial({ map: ringTex, depthTest: false, transparent: true, opacity: 0.8 }));
+      ring.scale.set(3.0, 3.0, 1);
+      ring.position.set(x, y, z);
+      ring.renderOrder = 2;
+      core.userData.ring = ring;
+      markers.add(ring);
+    }
+    if (isFocus) {
+      focusMarker = core;
+      core.scale.set(4.4, 4.4, 1);
+      /* beacon: a thin gold light rising from the camp */
+      var beam = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.12, 0.28, 16, 6, 1, true),
+        new THREE.MeshBasicMaterial({ color: 0xd9a843, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending, depthWrite: false })
+      );
+      beam.position.set(x, y + 8.5, z);
+      world.add(beam);
+    }
   });
   world.add(markers);
   var hitTargets = markers.children.filter(function (m) { return m.userData.project; });
 
-  /* ── Atmosphere: a few drifting particles ── */
+  /* ── Atmosphere ── */
   var pGeo = new THREE.BufferGeometry();
   var pCount = 140;
   var pArr = new Float32Array(pCount * 3);
@@ -236,18 +249,31 @@ import * as THREE from 'three';
   }));
   world.add(snow);
 
-  /* ── Camera rig: auto-orbit + mouse drift; view offset pins peak right ── */
+  /* ── Camera rig ── */
   var baseAngle = 0.9;
   var mouse = { x: 0, y: 0 }, sm = { x: 0, y: 0 };
   var orbitSpeed = reduced ? 0 : (coarse ? 0.025 : 0.04);
   var panelOpen = false;
 
   function placeCamera(t) {
-    var a = baseAngle + (reduced ? 0 : t * orbitSpeed) + sm.x * 0.35;
-    var rad = small ? 165 : 155;
-    var elev = 50 + sm.y * 8;
-    camera.position.set(Math.cos(a) * rad, elev, Math.sin(a) * rad);
-    camera.lookAt(0, 15, 0);
+    if (cfg.mode === 'camp' && focusMarker) {
+      var M = focusMarker.position;
+      var a0 = Math.atan2(M.z, M.x); /* approach the camp from outside its face */
+      var a = a0 + (reduced ? 0 : Math.sin(t * 0.12) * 0.07) + sm.x * 0.10;
+      var rad = small ? 86 : 72;
+      camera.position.set(
+        M.x + Math.cos(a) * rad,
+        M.y + 26 + sm.y * 4,
+        M.z + Math.sin(a) * rad
+      );
+      camera.lookAt(M.x, M.y + 2, M.z);
+    } else {
+      var ai = baseAngle + (reduced ? 0 : t * orbitSpeed) + sm.x * 0.35;
+      var radi = small ? 165 : 155;
+      var elev = 50 + sm.y * 8;
+      camera.position.set(Math.cos(ai) * radi, elev, Math.sin(ai) * radi);
+      camera.lookAt(0, 15, 0);
+    }
   }
 
   document.addEventListener('pointermove', function (e) {
@@ -262,7 +288,6 @@ import * as THREE from 'three';
     renderer.setSize(w, h, false);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, (small || coarse) ? 1.5 : 2));
     camera.aspect = w / h;
-    /* negative x offset shifts the rendered scene to the right of the frame */
     if (small) camera.setViewOffset(w, h, 0, -h * 0.08, w, h);
     else camera.setViewOffset(w, h, -w * 0.18, -h * 0.03, w, h);
     camera.updateProjectionMatrix();
@@ -270,9 +295,10 @@ import * as THREE from 'three';
   window.addEventListener('resize', resize);
   resize();
 
-  /* ── Tooltip + preview panel ── */
+  /* ── Index-only interactions ── */
   var tooltip = document.getElementById('mtn-tooltip');
   var panel = document.getElementById('mtn-panel');
+  var interactive = cfg.mode !== 'camp' && tooltip && panel;
   var raycaster = new THREE.Raycaster();
   var pointer = new THREE.Vector2();
   var hovered = null;
@@ -308,20 +334,33 @@ import * as THREE from 'three';
     return hits.length ? hits[0].object : null;
   }
 
-  canvas.addEventListener('pointermove', function (e) {
-    if (coarse) return;
-    setHover(pick(e.clientX, e.clientY));
-  }, { passive: true });
+  if (interactive) {
+    canvas.addEventListener('pointermove', function (e) {
+      if (coarse) return;
+      setHover(pick(e.clientX, e.clientY));
+    }, { passive: true });
+
+    canvas.addEventListener('click', function (e) {
+      var hit = pick(e.clientX, e.clientY);
+      if (hit) openPanel(hit.userData.project);
+      else if (panelOpen) closePanel();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panelOpen) closePanel();
+    });
+  } else {
+    canvas.style.cursor = 'default';
+  }
 
   function openPanel(p) {
     panelOpen = true;
     panel.innerHTML =
       '<button class="mtn-panel-close" aria-label="Close">&times;</button>' +
-      '<div class="mtn-panel-img"><img src="' + p.img + '" alt="' + p.peak + '"></div>' +
+      '<div class="mtn-panel-img"><img src="' + BASE + p.img + '" alt="' + p.peak + '"></div>' +
       '<span class="mtn-panel-peak">' + p.peak + ' &middot; ' + p.n + ' / 09 &middot; ' + p.tag + '</span>' +
       '<h3>' + p.name + '</h3>' +
       '<p>' + p.blurb + '</p>' +
-      '<a class="btn btn-primary" href="' + p.href + '">Open Project <span>&rarr;</span></a>';
+      '<a class="btn btn-primary" href="' + BASE + p.href + '">Open Project <span>&rarr;</span></a>';
     panel.classList.add('open');
     panel.querySelector('.mtn-panel-close').addEventListener('click', closePanel);
   }
@@ -329,16 +368,8 @@ import * as THREE from 'three';
     panelOpen = false;
     panel.classList.remove('open');
   }
-  canvas.addEventListener('click', function (e) {
-    var hit = pick(e.clientX, e.clientY);
-    if (hit) openPanel(hit.userData.project);
-    else if (panelOpen) closePanel();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && panelOpen) closePanel();
-  });
 
-  /* test/debug hook: screen positions of all markers */
+  /* test/debug hook */
   window.__mtnMarkers = function () {
     return hitTargets.map(function (m) {
       var s = screenPos(m);
@@ -346,7 +377,7 @@ import * as THREE from 'three';
     });
   };
 
-  /* ── Render loop: pause offscreen / hidden tab ── */
+  /* ── Render loop ── */
   var visible = true, clockT = 0, last = performance.now(), rafId = null;
   var io = new IntersectionObserver(function (entries) {
     visible = entries[0].isIntersecting;
@@ -365,16 +396,19 @@ import * as THREE from 'three';
     sm.y += (mouse.y - sm.y) * 0.04;
     placeCamera(clockT);
 
-    /* marker pulse */
     hitTargets.forEach(function (m, idx) {
       var ring = m.userData.ring;
-      var ph = 1 + Math.sin(clockT * 2.4 + idx * 0.7) * 0.45;
-      ring.scale.set(3.0 * ph, 3.0 * ph, 1);
-      ring.material.opacity = Math.max(0, 0.9 - (ph - 1) * 1.4);
-      if (m === hovered) m.scale.set(4.2, 4.2, 1); else m.scale.set(3.0, 3.0, 1);
+      if (ring) {
+        var ph = 1 + Math.sin(clockT * 2.4 + idx * 0.7) * 0.45;
+        var bs = (m === focusMarker) ? 4.4 : 3.0;
+        ring.scale.set(bs * ph, bs * ph, 1);
+        ring.material.opacity = Math.max(0, 0.9 - (ph - 1) * 1.4);
+      }
+      if (cfg.mode !== 'camp') {
+        if (m === hovered) m.scale.set(4.2, 4.2, 1); else m.scale.set(3.0, 3.0, 1);
+      }
     });
 
-    /* snow drift */
     var sp = snow.geometry.attributes.position;
     for (var k = 0; k < pCount; k++) {
       var yy = sp.getY(k) - dt * 1.6;
@@ -383,8 +417,7 @@ import * as THREE from 'three';
     }
     sp.needsUpdate = true;
 
-    /* keep tooltip glued to hovered marker */
-    if (hovered) {
+    if (hovered && interactive) {
       var spos = screenPos(hovered);
       tooltip.style.left = spos.x + 'px';
       tooltip.style.top = (spos.y - 18) + 'px';

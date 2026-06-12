@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C14">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <title>Python Banking System — Hikmet Bisen</title>
   <meta name="description" content="Elite 102 — Python Banking System. A terminal-based banking app with SQLite, overdraft protection, wire transfers, and 40 unit tests.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="night">
 
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
@@ -25,24 +27,21 @@
   </nav>
 
   <!-- ── Hero ── -->
-  <section class="project-detail-hero">
-    <img
-      src="../assets/images/annapurna.jpg"
-      alt="Annapurna — Nepal"
-      class="project-detail-hero-img"
-    >
-    <div class="project-detail-overlay"></div>
-    <div class="project-mountain-credit">Annapurna — Nepal, 8,091m</div>
-
-    <div class="project-detail-hero-content">
-      <a href="projects.html" class="project-detail-back">← All Projects</a>
-      <div class="project-detail-meta">
-        <span class="project-detail-num">06 / 09</span>
-        <span class="project-detail-cat">Software Engineering</span>
-        <span class="project-detail-date">2025</span>
+  <section class="camp-hero" data-mtn-world>
+    <div class="hero-bg"></div>
+    <div class="hero-stars"></div>
+    <div class="camp-fallback" style="background-image:url('../assets/images/annapurna.jpg')"></div>
+    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
+    <div class="camp-content">
+      <a href="projects.html" class="camp-back">&larr; All Projects</a>
+      <p class="camp-eyebrow">Camp 06 / 09 <span class="dot">&middot;</span> Annapurna <span class="dot">&middot;</span> 8,091 m</p>
+      <h1 class="camp-title">Elite 102 —<br>Python Banking System</h1>
+      <p class="camp-sub">Terminal Banking Application · Python &amp; SQLite</p>
+      <div class="camp-meta">
+        <span><b>Software Engineering</b></span>
+        <span>2025</span>
+        <span>Completed — Elite 102 Final Project</span>
       </div>
-      <h1 class="project-detail-title">Elite 102 —<br>Python Banking System</h1>
-      <p class="project-detail-subtitle">Terminal Banking Application · Python &amp; SQLite</p>
     </div>
   </section>
 
@@ -174,5 +173,10 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>window.MTN_PAGE = { mode: 'camp', focus: 'banking', base: '../' };</script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="../js/mountain.js"></script>
 </body>
 </html>

@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C14">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <title>1983 BMW E30 Restoration — Hikmet Bisen</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="night">
 
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
@@ -24,24 +26,22 @@
   </nav>
 
   <!-- ── Hero ── -->
-  <section class="project-detail-hero">
-    <img
-      src="../assets/images/mount-whitney.jpg"
-      alt="Mount Whitney — Eastern Sierra, California"
-      class="project-detail-hero-img"
-    >
-    <div class="project-detail-overlay"></div>
-    <div class="project-mountain-credit">Mount Whitney — Sierra Nevada, USA</div>
+  <section class="camp-hero" data-mtn-world>
+    <div class="hero-bg"></div>
+    <div class="hero-stars"></div>
+    <div class="camp-fallback" style="background-image:url('../assets/images/mount-whitney.jpg')"></div>
+    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
 
-    <div class="project-detail-hero-content">
-      <a href="projects.html" class="project-detail-back">← All Projects</a>
-      <div class="project-detail-meta">
-        <span class="project-detail-num">01 / 09</span>
-        <span class="project-detail-cat">Mechanical Engineering</span>
-        <span class="project-detail-date">June 2024 — Present</span>
+    <div class="camp-content">
+      <a href="projects.html" class="camp-back">&larr; All Projects</a>
+      <p class="camp-eyebrow">Camp 01 / 09 <span class="dot">&middot;</span> Mount Whitney <span class="dot">&middot;</span> 4,421 m</p>
+      <h1 class="camp-title">1983 BMW 3 Series<br>E30 Restoration</h1>
+      <p class="camp-sub">Automotive Engineering &amp; Restoration Project</p>
+      <div class="camp-meta">
+        <span><b>Mechanical Engineering</b></span>
+        <span>June 2024 — Present</span>
+        <span>In Progress — Active Restoration</span>
       </div>
-      <h1 class="project-detail-title">1983 BMW 3 Series<br>E30 Restoration</h1>
-      <p class="project-detail-subtitle">Automotive Engineering &amp; Restoration Project</p>
     </div>
   </section>
 
@@ -164,5 +164,10 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>window.MTN_PAGE = { mode: 'camp', focus: 'bmw', base: '../' };</script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="../js/mountain.js"></script>
 </body>
 </html>

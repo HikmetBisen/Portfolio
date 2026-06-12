@@ -1930,3 +1930,147 @@ body.night .project-card:hover {
 /* ── Seam polish: skills strip + contact blend into the gradient ── */
 body.night .skills-strip { border-top: 1px solid rgba(255,255,255,0.06); }
 body.night .work-together { border-top: 1px solid rgba(255,255,255,0.06); }
+
+/* ================================================================
+   CAMP PAGES — each project page opens at its marker on the mountain
+   ================================================================ */
+.camp-hero {
+  position: relative;
+  height: 86svh;
+  min-height: 560px;
+  background: var(--dark);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.camp-hero .hero-bg, .camp-hero .hero-stars { position: absolute; inset: 0; }
+.camp-fallback {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  filter: saturate(0.8) brightness(0.7);
+}
+.camp-hero.mtn-live .camp-fallback { display: none; }
+.camp-hero .mtn-canvas { z-index: 1; }
+.camp-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 32px) 40px 72px;
+  pointer-events: none;
+}
+.camp-content a { pointer-events: auto; }
+.camp-back {
+  display: inline-block;
+  font-family: var(--font-brand);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 36px;
+  transition: color 0.2s;
+}
+.camp-back:hover { color: var(--gold-light); }
+.camp-eyebrow {
+  font-family: var(--font-brand);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.camp-eyebrow .dot { color: rgba(255,255,255,0.3); margin: 0 10px; }
+.camp-title {
+  font-family: var(--font-brand);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  color: var(--white);
+  max-width: 13em;
+  margin-bottom: 18px;
+}
+.camp-sub {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  max-width: 36em;
+}
+.camp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 26px;
+  font-family: var(--font-brand);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.camp-meta b { color: rgba(255,255,255,0.75); font-weight: 600; }
+
+/* ── Night case study below the camp ── */
+body.night .project-detail-content {
+  background: linear-gradient(180deg, #070C14 0%, #0B1422 55%, #0D1726 100%);
+}
+body.night .project-detail-grid { border-color: rgba(255,255,255,0.08); }
+body.night .project-sidebar-section { border-color: rgba(255,255,255,0.1); }
+body.night .project-sidebar-label { color: var(--gold); }
+body.night .project-sidebar-value { color: rgba(255,255,255,0.78); }
+body.night .project-sidebar-value a { color: var(--gold-light); }
+body.night .tool-tag {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.7);
+}
+body.night .project-detail-body h2 { color: var(--white); }
+body.night .project-detail-body h2 strong { color: var(--gold-light); }
+body.night .project-detail-body p { color: rgba(255,255,255,0.62); }
+body.night .project-contributions {
+  background: rgba(255,255,255,0.035);
+  border-left: 3px solid var(--gold);
+}
+body.night .project-contributions h3 { color: var(--white); }
+body.night .project-contributions li { color: rgba(255,255,255,0.62); }
+body.night .project-status-badge {
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold-light);
+  background: rgba(201,168,76,0.06);
+}
+body.night .project-nav-bar {
+  background: #070C14;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+body.night .project-nav-bar a { color: rgba(255,255,255,0.55); }
+body.night .project-nav-bar a:hover { color: var(--gold-light); }
+body.night .project-nav-name { color: var(--white); }
+
+/* ── Projects index page, night ── */
+body.night .page-hero { background: transparent; }
+body.night .projects-page-wrap {
+  background: linear-gradient(180deg, #070C14 0%, #0B1422 100%);
+}
+body.night .project-card-full {
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+}
+body.night .project-card-full:hover { border-color: rgba(201,168,76,0.45); }
+
+@media (max-width: 900px) {
+  .camp-hero { height: 78svh; min-height: 520px; }
+  .camp-content { padding: calc(var(--nav-h) + 24px) 24px 48px; }
+}
+
+/* projects index page, night */
+body.night .projects-page-grid {
+  background: linear-gradient(180deg, #070C14 0%, #0B1422 100%);
+}
