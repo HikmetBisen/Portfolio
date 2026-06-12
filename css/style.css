@@ -2074,3 +2074,62 @@ body.night .project-card-full:hover { border-color: rgba(201,168,76,0.45); }
 body.night .projects-page-grid {
   background: linear-gradient(180deg, #070C14 0%, #0B1422 100%);
 }
+
+/* ================================================================
+   VISTA BACKDROP — the mountain lives behind the resume
+   ================================================================ */
+.vista-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--dark);
+}
+.vista-bg .mtn-canvas { opacity: 0.55; }
+.vista-bg .hero-bg, .vista-bg .hero-stars { position: absolute; inset: 0; }
+/* everything above the backdrop */
+body.night .navbar, body.night .page-hero, body.night .resume-page, body.night footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Resume, night ── */
+body.night .resume-page { background: transparent; }
+body.night .resume-container {
+  background: rgba(9, 15, 26, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.55);
+  padding-left: 56px;
+  padding-right: 56px;
+}
+body.night .resume-download-bar {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.night .resume-download-bar p { color: rgba(255, 255, 255, 0.6); }
+body.night .resume-name { color: var(--white); }
+body.night .resume-contact-line { color: rgba(255, 255, 255, 0.55); }
+body.night .resume-contact-line a { color: var(--gold-light); }
+body.night .resume-section-title {
+  color: var(--gold-light);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+body.night .resume-entry-title { color: var(--white); }
+body.night .resume-entry-date { color: rgba(255, 255, 255, 0.4); }
+body.night .resume-entry-org { color: var(--steel-light); }
+body.night .resume-entry ul li, body.night .resume-entry p { color: rgba(255, 255, 255, 0.62); }
+body.night .resume-entry ul li::before { color: var(--gold); }
+body.night .skill-item-label { color: var(--gold); }
+body.night .skill-item-value { color: rgba(255, 255, 255, 0.7); }
+body.night .award-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.night .award-name { color: var(--white); }
+body.night .award-year { color: rgba(255, 255, 255, 0.42); }
+body.night .page-hero::before { opacity: 0.02; }
+
+@media (max-width: 700px) {
+  body.night .resume-container { padding-left: 24px; padding-right: 24px; }
+}

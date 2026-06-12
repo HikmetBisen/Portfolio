@@ -3,11 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070C14">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <title>Resume — Hikmet Bisen</title>
   <meta name="description" content="Resume of Hikmet Bisen — Mechanical Engineer & AI Builder, Austin Texas. Education, experience, skills, and awards.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="night">
+
+  <!-- ── The mountain as a living backdrop (vista mode) ── -->
+  <div class="vista-bg" data-mtn-world aria-hidden="true">
+    <div class="hero-bg"></div>
+    <div class="hero-stars"></div>
+    <canvas id="mtn-canvas" class="mtn-canvas"></canvas>
+  </div>
 
   <!-- ── Navbar ── -->
   <nav class="navbar scrolled" id="navbar">
@@ -48,7 +57,7 @@
       </div>
 
       <!-- Header -->
-      <div class="resume-section" style="border-bottom: 2px solid var(--cream-dark); padding-bottom: 40px; margin-bottom: 48px;">
+      <div class="resume-section" style="border-bottom: 2px solid rgba(201,168,76,0.25); padding-bottom: 40px; margin-bottom: 48px;">
         <div class="resume-name">Hikmet Bisen</div>
         <div class="resume-contact-line">
           <span>Austin, TX</span>
@@ -224,7 +233,7 @@
       </div>
 
       <!-- Bottom download -->
-      <div style="text-align:center; padding-top: 40px; border-top: 1px solid var(--cream-dark);">
+      <div style="text-align:center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
         <p style="font-family: var(--font-brand); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px;">
           Want a copy?
         </p>
@@ -253,5 +262,10 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>window.MTN_PAGE = { mode: 'vista', base: '../' };</script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="../js/mountain.js"></script>
 </body>
 </html>

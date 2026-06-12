@@ -201,7 +201,7 @@ import * as THREE from 'three';
     var z = Math.sin(p.ang) * r;
     var y = heightAt(x, z) + 2.2;
     var isFocus = cfg.mode === 'camp' && cfg.focus === p.id;
-    var dimmed = cfg.mode === 'camp' && !isFocus;
+    var dimmed = (cfg.mode === 'camp' && !isFocus) || cfg.mode === 'vista';
     var core = new THREE.Sprite(new THREE.SpriteMaterial({
       map: coreTex, depthTest: false, transparent: true,
       opacity: dimmed ? 0.3 : 1,
@@ -268,9 +268,10 @@ import * as THREE from 'three';
       );
       camera.lookAt(M.x, M.y + 2, M.z);
     } else {
-      var ai = baseAngle + (reduced ? 0 : t * orbitSpeed) + sm.x * 0.35;
-      var radi = small ? 165 : 155;
-      var elev = 50 + sm.y * 8;
+      var spd = cfg.mode === 'vista' ? orbitSpeed * 0.45 : orbitSpeed;
+      var ai = baseAngle + (reduced ? 0 : t * spd) + sm.x * (cfg.mode === 'vista' ? 0.12 : 0.35);
+      var radi = cfg.mode === 'vista' ? 185 : (small ? 165 : 155);
+      var elev = (cfg.mode === 'vista' ? 58 : 50) + sm.y * 8;
       camera.position.set(Math.cos(ai) * radi, elev, Math.sin(ai) * radi);
       camera.lookAt(0, 15, 0);
     }
@@ -298,7 +299,7 @@ import * as THREE from 'three';
   /* ── Index-only interactions ── */
   var tooltip = document.getElementById('mtn-tooltip');
   var panel = document.getElementById('mtn-panel');
-  var interactive = cfg.mode !== 'camp' && tooltip && panel;
+  var interactive = cfg.mode === 'index' && tooltip && panel;
   var raycaster = new THREE.Raycaster();
   var pointer = new THREE.Vector2();
   var hovered = null;
