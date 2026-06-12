@@ -36,7 +36,7 @@
 <body class="night">
 
   <!-- ── Navbar ── -->
-  <nav class="navbar scrolled" id="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">
         Hikmet Bisen
@@ -51,13 +51,26 @@
     </div>
   </nav>
 
-  <!-- ── Page Hero ── -->
-  <section class="page-hero">
-    <div class="page-hero-bg"></div>
-    <div class="container">
-      <span class="section-label">Portfolio</span>
-      <h1><strong>Projects</strong></h1>
-      <p>Engineering work spanning automotive restoration, medical device R&amp;D, software development, and structural design. Hover to preview — click to explore.</p>
+  <!-- ── The Expedition: the full interactive mountain ── -->
+  <section class="hero" data-mtn-world>
+    <div class="hero-bg"></div>
+    <div class="hero-stars"></div>
+
+    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
+    <div id="mtn-tooltip" class="mtn-tooltip" aria-hidden="true"></div>
+    <aside id="mtn-panel" class="mtn-panel" aria-live="polite"></aside>
+    <div class="mtn-hint">Each light is a build — hover to preview, click to enter its camp</div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Portfolio &nbsp;·&nbsp; Nine Builds on the Mountain</div>
+      <h1 class="hero-name">The<br><em>Expedition</em></h1>
+      <p class="hero-title">Every project is a camp. The summit is FORGE.</p>
+      <p class="hero-tagline">Automotive · Medical Devices · AI &amp; Software · Structural</p>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Or browse the list</span>
     </div>
   </section>
 
@@ -236,5 +249,10 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>window.MTN_PAGE = { mode: 'index', base: '../' };</script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="../js/mountain.js"></script>
 </body>
 </html>
