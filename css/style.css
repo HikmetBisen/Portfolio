@@ -1866,3 +1866,67 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .mtn-tooltip, .mtn-panel { transition: none; }
 }
+
+/* ================================================================
+   NIGHT INDEX — the world continues below the hero (index only)
+   Hero (#070C14) flows into every section; no cream jump.
+   ================================================================ */
+body.night { background: #070C14; }
+
+/* ── About: night variant ── */
+body.night .about {
+  background: linear-gradient(180deg, #070C14 0%, #0B1422 60%, #0D1726 100%);
+  position: relative;
+}
+body.night .about::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 72px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  opacity: 0.55;
+}
+body.night .about h2 { color: var(--white); }
+body.night .about h2 strong { color: var(--gold-light); }
+body.night .about-peak { color: rgba(255,255,255,0.45); }
+body.night .about-peak .peak-icon { fill: var(--gold); }
+body.night .about-right p { color: rgba(255,255,255,0.62); }
+body.night .about-photo-wrap { box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+body.night .about-stats { border-color: rgba(255,255,255,0.1); }
+body.night .stat-num { color: var(--gold-light); }
+body.night .stat-label { color: rgba(255,255,255,0.4); }
+body.night .btn-dark {
+  background: var(--gold);
+  color: var(--dark);
+  border: 1px solid var(--gold);
+}
+body.night .btn-dark:hover { background: var(--gold-light); border-color: var(--gold-light); }
+body.night .btn-dark-outline {
+  background: transparent;
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+body.night .btn-dark-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+/* ── Featured projects: night variant ── */
+body.night .featured-projects {
+  background: linear-gradient(180deg, #0D1726 0%, #0B1422 50%, #070C14 100%);
+}
+body.night .featured-projects .section-header h2 { color: var(--white); }
+body.night .featured-projects .section-header h2 strong { color: var(--gold-light); }
+body.night .section-header-link { color: rgba(255,255,255,0.5); }
+body.night .section-header-link:hover { color: var(--gold-light); }
+body.night .project-card {
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+body.night .project-card:hover {
+  border-color: rgba(201,168,76,0.45);
+  transform: translateY(-4px);
+}
+
+/* ── Seam polish: skills strip + contact blend into the gradient ── */
+body.night .skills-strip { border-top: 1px solid rgba(255,255,255,0.06); }
+body.night .work-together { border-top: 1px solid rgba(255,255,255,0.06); }
