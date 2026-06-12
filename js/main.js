@@ -112,7 +112,7 @@ function handleSubmit(e) {
   const body = encodeURIComponent(
     `From: ${fname} ${lname} (${email})\n\n${message}`
   );
-  window.location.href = `mailto:hbisen2009@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  window.location.href = `mailto:hikmetbisen@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
   setTimeout(() => {
     btn.innerHTML = original;

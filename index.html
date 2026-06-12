@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hikmet Bisen — Mechanical Engineer</title>
   <meta name="description" content="Hikmet Bisen — Mechanical Engineer based in Austin, Texas. Specializing in automotive engineering, medical device R&D, and embedded systems.">
+  <meta name="theme-color" content="#070C14">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta property="og:title" content="Hikmet Bisen — Mechanical Engineer">
+  <meta property="og:description" content="Automotive · Medical Devices · AI & Software — Austin, TX · Class of 2027">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hikmetbisen.github.io/Portfolio/">
+  <meta property="og:image" content="https://hikmetbisen.github.io/Portfolio/assets/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -30,7 +38,13 @@
     <div class="hero-bg"></div>
     <div class="hero-stars"></div>
 
-    <!-- K2 Mountain Silhouette -->
+    <!-- The Mountain: interactive 3D world (replaces the SVG when WebGL boots) -->
+    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
+    <div id="mtn-tooltip" class="mtn-tooltip" aria-hidden="true"></div>
+    <aside id="mtn-panel" class="mtn-panel" aria-live="polite"></aside>
+    <div class="mtn-hint">Each light on the mountain is a build — hover, then click</div>
+
+    <!-- K2 Mountain Silhouette (static fallback) -->
     <div class="hero-mountain">
       <svg viewBox="0 0 1440 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -310,10 +324,10 @@
           </p>
           <br>
           <p style="color: rgba(255,255,255,0.35); font-size: 0.82rem;">
-            📧 <a href="mailto:hbisen2009@gmail.com" style="color: var(--gold-light);">hbisen2009@gmail.com</a><br><br>
+            📧 <a href="mailto:hikmetbisen@gmail.com" style="color: var(--gold-light);">hikmetbisen@gmail.com</a><br><br>
             <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.35);">LinkedIn</a>
             &nbsp;·&nbsp;
-            <a href="https://github.com/Hikmet4416" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.35);">GitHub</a>
+            <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.35);">GitHub</a>
           </p>
         </div>
 
@@ -359,12 +373,16 @@
           <a href="Project/projects.html">Projects</a>
           <a href="Resume/resume.html">Resume</a>
           <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/Hikmet4416" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="js/mountain.js"></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 ## Owner
 - **Name:** Hikmet Bisen
 - **Location:** Austin, Texas
-- **Email:** hbisen2009@gmail.com
+- **Email:** hikmetbisen@gmail.com
 - **LinkedIn:** https://www.linkedin.com/in/hikmetbisen/
-- **GitHub:** https://github.com/Hikmet4416
+- **GitHub:** https://github.com/HikmetBisen
 - **Phone:** 737-351-8670
 
 ## Project Overview

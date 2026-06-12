@@ -1702,3 +1702,167 @@ footer {
   .project-mountain-credit { right: 24px; }
   .stat-num { font-size: 2.2rem; }
 }
+
+/* ================================================================
+   THE MOUNTAIN — interactive 3D hero world (2026)
+   Layers: hero-bg/stars (0) < canvas (1) < content (2) < panel (3)
+   ================================================================ */
+.mtn-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+/* when WebGL boots, the flat SVG retires */
+.hero.mtn-live .hero-mountain { display: none; }
+.hero.mtn-live .hero-content { pointer-events: none; }
+.hero.mtn-live .hero-content a,
+.hero.mtn-live .hero-content .btn { pointer-events: auto; }
+.hero.mtn-live .hero-scroll { pointer-events: none; }
+
+/* keep the name block owning the left side on desktop */
+@media (min-width: 901px) {
+  .hero.mtn-live .hero-content { max-width: var(--max-w); }
+  .hero.mtn-live .hero-name { font-size: clamp(4rem, 9vw, 8rem); }
+  .hero.mtn-live .hero-title,
+  .hero.mtn-live .hero-tagline { max-width: 520px; }
+}
+
+/* ── Hover tooltip ── */
+.mtn-tooltip {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -100%);
+  background: rgba(7, 12, 20, 0.92);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-brand);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+.mtn-tooltip b { color: var(--gold-light); margin-right: 6px; }
+.mtn-tooltip.show { opacity: 1; }
+
+/* ── Click preview panel ── */
+.mtn-panel {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: 48px;
+  transform: translateY(-50%) translateX(24px);
+  width: min(380px, calc(100vw - 48px));
+  background: rgba(11, 20, 34, 0.96);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  padding: 0 0 28px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0.35s;
+}
+.mtn-panel.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+.mtn-panel-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.mtn-panel-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.08) brightness(0.9);
+}
+.mtn-panel-peak {
+  display: block;
+  font-family: var(--font-brand);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0 24px;
+  margin-bottom: 10px;
+}
+.mtn-panel h3 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--white);
+  padding: 0 24px;
+  margin-bottom: 12px;
+}
+.mtn-panel p {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 24px;
+  margin-bottom: 20px;
+}
+.mtn-panel .btn { margin-left: 24px; }
+.mtn-panel-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(7, 12, 20, 0.8);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.mtn-panel-close:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+/* ── Hint caption ── */
+.mtn-hint {
+  position: absolute;
+  z-index: 2;
+  right: 40px;
+  bottom: 32px;
+  font-family: var(--font-brand);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  pointer-events: none;
+  display: none;
+}
+.hero.mtn-live .mtn-hint { display: block; }
+
+/* ── Mobile: bottom-sheet panel, centered peak ── */
+@media (max-width: 900px) {
+  .mtn-panel {
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(24px);
+  }
+  .mtn-panel.open { transform: translateY(0); }
+  .mtn-panel-img { aspect-ratio: 21 / 9; }
+  .mtn-hint { right: 20px; bottom: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mtn-tooltip, .mtn-panel { transition: none; }
+}
