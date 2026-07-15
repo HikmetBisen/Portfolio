@@ -32,6 +32,14 @@
 
 <main>
 <section class="project-hero">
+  <div class="survey" data-survey="../assets/topo/kilimanjaro.json" role="img"
+    aria-label="Topographic contour map of Kilimanjaro, generated from ASTER GDEM elevation data. Contour interval 150 meters.">
+    <canvas aria-hidden="true"></canvas>
+    <span class="summitlbl mono" aria-hidden="true"></span>
+  </div>
+  <div class="placardwrap" aria-hidden="true">
+    <p class="placard mono" id="placard">Kilimanjaro · 3.0674° S, 37.3556° E · contours 150 m · ASTER GDEM</p>
+  </div>
   <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
   <p class="project-eyebrow rise" style="--d:1">Software development essentials program</p>
   <h1 class="project-title rise" style="--d:2">Code2College — Python development</h1>
@@ -142,5 +150,6 @@
 </footer>
 
 <script src="../js/studio.js"></script>
+<script src="../js/survey.js"></script>
 </body>
 </html>

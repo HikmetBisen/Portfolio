@@ -32,6 +32,14 @@
 
 <main>
 <section class="project-hero">
+  <div class="survey" data-survey="../assets/topo/sinai.json" role="img"
+    aria-label="Topographic contour map of Mount Sinai, generated from ASTER GDEM elevation data. Contour interval 75 meters.">
+    <canvas aria-hidden="true"></canvas>
+    <span class="summitlbl mono" aria-hidden="true"></span>
+  </div>
+  <div class="placardwrap" aria-hidden="true">
+    <p class="placard mono" id="placard">Mount Sinai · 28.5394° N, 33.9750° E · contours 75 m · ASTER GDEM</p>
+  </div>
   <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
   <p class="project-eyebrow rise" style="--d:1">WPI — BASHLab research</p>
   <h1 class="project-title rise" style="--d:2">In-ear multimodal sensing device</h1>
@@ -144,5 +152,6 @@
 </footer>
 
 <script src="../js/studio.js"></script>
+<script src="../js/survey.js"></script>
 </body>
 </html>

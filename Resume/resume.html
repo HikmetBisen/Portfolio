@@ -31,7 +31,15 @@
 </header>
 
 <main>
-<section class="resume-page">
+<section class="resume-page project-hero">
+  <div class="survey" data-survey="../assets/topo/amadablam.json" role="img"
+    aria-label="Topographic contour map of Ama Dablam, generated from ASTER GDEM elevation data. Contour interval 150 meters.">
+    <canvas aria-hidden="true"></canvas>
+    <span class="summitlbl mono" aria-hidden="true"></span>
+  </div>
+  <div class="placardwrap" aria-hidden="true">
+    <p class="placard mono" id="placard">Ama Dablam · 27.8617° N, 86.8614° E · contours 150 m · ASTER GDEM</p>
+  </div>
 
   <div class="resume-head">
     <h1 class="rise" style="--d:0">Resume</h1>
@@ -207,5 +215,6 @@
 </footer>
 
 <script src="../js/studio.js"></script>
+<script src="../js/survey.js"></script>
 </body>
 </html>

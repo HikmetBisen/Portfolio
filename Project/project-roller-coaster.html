@@ -32,6 +32,14 @@
 
 <main>
 <section class="project-hero">
+  <div class="survey" data-survey="../assets/topo/matterhorn.json" role="img"
+    aria-label="Topographic contour map of Matterhorn, generated from ASTER GDEM elevation data. Contour interval 100 meters.">
+    <canvas aria-hidden="true"></canvas>
+    <span class="summitlbl mono" aria-hidden="true"></span>
+  </div>
+  <div class="placardwrap" aria-hidden="true">
+    <p class="placard mono" id="placard">Matterhorn · 45.9763° N, 7.6586° E · contours 100 m · ASTER GDEM</p>
+  </div>
   <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
   <p class="project-eyebrow rise" style="--d:1">UT Austin — Longhorn Engineering Summer Camp</p>
   <h1 class="project-title rise" style="--d:2">Roller coaster design (LESC)</h1>
@@ -134,5 +142,6 @@
 </footer>
 
 <script src="../js/studio.js"></script>
+<script src="../js/survey.js"></script>
 </body>
 </html>

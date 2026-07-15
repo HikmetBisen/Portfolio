@@ -32,6 +32,14 @@
 
 <main>
 <section class="project-hero">
+  <div class="survey" data-survey="../assets/topo/nangaparbat.json" role="img"
+    aria-label="Topographic contour map of Nanga Parbat, generated from ASTER GDEM elevation data. Contour interval 200 meters.">
+    <canvas aria-hidden="true"></canvas>
+    <span class="summitlbl mono" aria-hidden="true"></span>
+  </div>
+  <div class="placardwrap" aria-hidden="true">
+    <p class="placard mono" id="placard">Nanga Parbat · 35.2375° N, 74.5892° E · contours 200 m · ASTER GDEM</p>
+  </div>
   <a class="project-back rise" style="--d:0" href="../index.html">&larr; Home</a>
   <p class="project-eyebrow rise" style="--d:1">Portfolio</p>
   <h1 class="project-title rise" style="--d:2">All work</h1>
@@ -138,5 +146,6 @@
 </footer>
 
 <script src="../js/studio.js"></script>
+<script src="../js/survey.js"></script>
 </body>
 </html>
