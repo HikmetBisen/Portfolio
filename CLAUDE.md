@@ -1,78 +1,39 @@
 # Hikmet Bisen — Personal Portfolio
 
 ## Owner
-- **Name:** Hikmet Bisen
-- **Location:** Austin, Texas
-- **Email:** hikmetbisen@gmail.com
-- **LinkedIn:** https://www.linkedin.com/in/hikmetbisen/
-- **GitHub:** https://github.com/HikmetBisen
-- **Phone:** 737-351-8670
+- **Name:** Hikmet Bisen · Austin, TX
+- **Email:** hikmetbisen@gmail.com · **Phone:** 737-351-8670
+- **GitHub:** https://github.com/HikmetBisen · **LinkedIn:** https://www.linkedin.com/in/hikmetbisen/
+- Live: https://hikmetbisen.github.io/Portfolio/ (GitHub Pages, deploys on push to main)
 
-## Project Overview
-Personal portfolio website for Hikmet Bisen, a Mechanical Engineer in training (graduating 2027).
-
-## Tech Stack
-- Pure HTML / CSS / JavaScript (no frameworks)
-- Hosted on: GitHub Pages / Netlify (TBD)
-- Branch: `claude/portfolio-hover-tooltips-ZR0qN`
-
-## Site Structure
-| File | Purpose |
+## Design system — "Porcelain Studio"
+Light minimal gallery + cursor-reactive 3D. Chosen 2026-07-15 over two competing mocks; replaces the Mountain World theme.
+| Token | Value |
 |---|---|
-| `index.html` | Home — hero, about, featured projects, contact form |
-| `projects.html` | All 5 projects grid with hover tooltips |
-| `resume.html` | Integrated resume + downloadable PDF |
-| `css/style.css` | All styles — Alpine Dawn theme |
-| `js/main.js` | Scroll effects, animations, form handler |
-| `assets/Hikmet_Bisen_Resume.pdf` | Downloadable resume (to be added) |
+| bg | #F6F7F5 (alt #FAFAF9) |
+| ink | #101214 · secondary #6B7076 |
+| hairline | rgba(16,18,20,0.10) |
+| accent (gold) | #B8905F — links hover, indexes, ruler fill ONLY |
+| display/body | Schibsted Grotesk 400/500/600 |
+| mono | JetBrains Mono 400/500, tabular-nums |
+Signature: top measurement-ruler strip whose gold fill grows with scroll; chrome 3D object on index leans toward cursor (Three.js 0.165 via CDN importmap, index.html ONLY); ink cursor dot; magnetic links; 2–3% grain. Motion: expo-out, ≤630ms, prefers-reduced-motion honored. Vanilla HTML/CSS/JS, no frameworks, no build step.
 
-## Design System — Alpine Dawn Theme
-| Token | Value | Usage |
-|---|---|---|
-| `--gold` | `#C8922A` | Primary accent, CTAs, labels |
-| `--gold-light` | `#E8B84A` | Hover states |
-| `--steel` | `#2B5F8E` | Cool accent, links |
-| `--cream` | `#FAF8F3` | Light background |
-| `--dark` | `#0F1923` | Hero, footer, dark sections |
-| `--font-display` | Cormorant Garamond | Section headings |
-| `--font-brand` | Montserrat | Nav, labels, UI |
-| `--font-sans` | Inter | Body copy |
+## Structure
+- `index.html` — hero (3D) + selected work (3 flagships + 6-row ledger) + footer
+- `Project/projects.html` — All work index (09 rows)
+- `Project/project-*.html` — 9 case studies; shared skeleton: ruler, topbar, project-hero, sidebar (timeline/role/category/tools/status), body + contributions, prevnext, footer
+- `Resume/resume.html` + `Resume/assets/Hikmet_Bisen_Resume.pdf`
+- `css/style.css` (whole system) · `js/studio.js` (ruler, cursor, magnetic, reveal — classic script, every page)
 
-## Mountain Inspiration
-- Favorite peak: **K2 (8,611m)** — referenced in hero SVG silhouette and footer
-- Theme: Alpine Dawn — warm gold sunrise + cool steel blue sky
+## Content rules (enforced — do not regress)
+- Deliverable-first titles. NO mountain/peak/K2/camp references anywhere.
+- Sensing device: heart rate, respiration, voice, motion. NEVER "blood pressure".
+- Patent phrasing exactly: "patent filing in progress".
+- No slogans, no adjectives-as-copy. Nouns and numbers. Sentence case. Underclaim.
+- Keep URLs stable (GitHub Pages can't redirect).
 
-## Education
-- Harmony School of Endeavor — GPA 4.56, graduating 2027
-- Austin Community College — GPA 4.56, graduating 2027
-
-## Projects (5 total)
-1. **1983 BMW E30 Restoration** — Automotive engineering, June 2024–Present
-2. **Medical Earbud @ WPI** — Medical device R&D intern, June 2025–Present (patent pending)
-3. **Roller Coaster Design — LESC** — Civil/structural, June–July 2024
-4. **Code2College** — Python/software dev, 2025–Present
-5. **DV3x2 | AIA Architecture Research** — Architecture & engineering, June 2024
-
-## Technical Skills
-- **CAD:** Fusion 360, AutoCAD, TinkerCAD
-- **Programming:** C++, Python, JavaScript, Java, MATLAB, HTML
-- **Tools:** Arduino IDE, VS Code, Claude Code
-- **Languages:** Turkish (native), English (fluent)
-
-## Awards & Certifications
-- Introduction to Engineering Mechanics — Georgia Tech (2024)
-- Sensors and Sensor Circuit Design — University of Colorado Boulder (2025)
-- Turkish Calligraphy (2023)
-
-## TODO / Pending
-- [ ] Add `assets/Hikmet_Bisen_Resume.pdf` for download button
-- [ ] Replace gradient placeholders with real project images
-- [ ] Deploy to GitHub Pages or Netlify
-- [ ] Add real project images when provided by Hikmet
-
-## Preferences
-- Minimalist and professional aesthetic
-- No emojis in UI (except contact section email icon)
-- Warm + cool color balance — never use one without the other
-- Mountain/K2 motifs should be subtle, not literal
-- Keep all pages consistent in nav, footer, and typography
+## TODO
+- [ ] Real artifact photos (E30, climbing, PCB render) — the evidence gap; stock/none currently
+- [ ] New OG card (assets/og-card.jpg is still K2-themed)
+- [ ] WPI sign-off on what earbud material is publishable
+- [ ] hikmetbisen.com domain

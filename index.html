@@ -1,388 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hikmet Bisen — Mechanical Engineer</title>
-  <meta name="description" content="Hikmet Bisen — Mechanical Engineer based in Austin, Texas. Specializing in automotive engineering, medical device R&D, and embedded systems.">
-  <meta name="theme-color" content="#070C14">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
+  <title>Hikmet Bisen — Mechanical Engineering Portfolio</title>
+  <meta name="description" content="Portfolio of Hikmet Bisen — mechanical engineering and software, Austin, TX. In-ear multimodal sensing research at WPI with a patent filing in progress, FORGE — an AI engineering analysis platform, and a 1983 BMW E30 restoration.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <meta property="og:title" content="Hikmet Bisen — Mechanical Engineer">
-  <meta property="og:description" content="Automotive · Medical Devices · AI & Software — Austin, TX · Class of 2027">
+  <meta property="og:title" content="Hikmet Bisen — Mechanical Engineering Portfolio">
+  <meta property="og:description" content="Mechanical engineering + software — WPI sensing research (patent filing in progress), FORGE AI engineering analysis platform, 1983 BMW E30 restoration.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hikmetbisen.github.io/Portfolio/">
   <meta property="og:image" content="https://hikmetbisen.github.io/Portfolio/assets/og-card.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hikmet Bisen",
+    "url": "https://hikmetbisen.github.io/Portfolio/",
+    "sameAs": [
+      "https://github.com/HikmetBisen",
+      "https://www.linkedin.com/in/hikmetbisen/"
+    ]
+  }
+  </script>
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <!-- ── Navbar ── -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="Project/projects.html">Projects</a></li>
-        <li><a href="Resume/resume.html">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<header class="topbar">
+  <a class="ul mag" href="#work">Work</a>
+  <a class="ul mag" href="Project/projects.html">All work</a>
+  <a class="ul mag" href="Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
 
-  <!-- ── Hero ── -->
-  <section class="hero" id="home" data-mtn-world>
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
-
-    <!-- The Mountain: interactive 3D world (replaces the SVG when WebGL boots) -->
-    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
-    <div id="mtn-tooltip" class="mtn-tooltip" aria-hidden="true"></div>
-    <aside id="mtn-panel" class="mtn-panel" aria-live="polite"></aside>
-    <div class="mtn-hint">Each light on the mountain is a build — hover, then click</div>
-
-    <!-- K2 Mountain Silhouette (static fallback) -->
-    <div class="hero-mountain">
-      <svg viewBox="0 0 1440 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<main>
+<section class="hero">
+  <div id="stage" aria-hidden="true">
+    <div class="fallback" aria-hidden="true">
+      <svg viewBox="0 0 420 480" role="presentation" focusable="false">
         <defs>
-          <linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:#1A2F4A;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#0F1923;stop-opacity:1" />
+          <linearGradient id="mtl" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E3E6E8"/>
+            <stop offset="0.45" stop-color="#B9BEC3"/>
+            <stop offset="0.75" stop-color="#989EA4"/>
+            <stop offset="1" stop-color="#CDD1D4"/>
           </linearGradient>
-          <linearGradient id="snowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:#D8E8F5;stop-opacity:0.18" />
-            <stop offset="100%" style="stop-color:#D8E8F5;stop-opacity:0" />
-          </linearGradient>
+          <radialGradient id="shd">
+            <stop offset="0" stop-color="rgba(16,18,20,0.20)"/>
+            <stop offset="1" stop-color="rgba(16,18,20,0)"/>
+          </radialGradient>
         </defs>
-        <!-- Background range -->
-        <path d="M0,400 L0,300 L80,260 L150,230 L220,200 L280,185 L340,170 L400,155 L430,130 L460,100
-                 L490,80 L510,60 L525,40 L540,25 L555,15 L565,8 L575,3 L585,0 L595,3 L605,10
-                 L618,20 L630,32 L645,50 L660,70 L680,92 L700,115 L720,140 L750,165
-                 L800,185 L860,200 L930,215 L1000,225 L1070,235 L1140,240 L1200,245
-                 L1260,248 L1320,250 L1380,252 L1440,255 L1440,400 Z"
-              fill="url(#mtnGrad)" />
-        <!-- Snow on K2 peak -->
-        <path d="M555,15 L565,8 L575,3 L585,0 L595,3 L605,10 L618,20 L630,32 L620,38
-                 L607,28 L595,18 L583,8 L572,6 L562,12 Z"
-              fill="url(#snowGrad)" />
-        <!-- Foreground ridge -->
-        <path d="M0,400 L0,350 L100,330 L200,310 L270,290 L320,275 L370,260 L410,245
-                 L440,230 L460,215 L475,200 L488,188 L500,178 L510,172 L518,168 L525,168
-                 L532,172 L540,180 L550,192 L562,205 L578,220 L600,235 L630,250
-                 L680,265 L750,278 L830,288 L920,295 L1020,300 L1120,305 L1220,308
-                 L1320,310 L1440,312 L1440,400 Z"
-              fill="#0F1923" />
+        <ellipse cx="210" cy="446" rx="150" ry="22" fill="url(#shd)"/>
+        <path d="M158 368 C144 316 140 196 152 148 C161 112 192 88 226 92 C262 96 296 126 304 166 C312 208 310 268 300 312 C290 358 248 398 202 402 C176 404 166 396 158 368 Z"
+          fill="none" stroke="url(#mtl)" stroke-width="30" stroke-linejoin="round"/>
       </svg>
     </div>
-
-    <div class="hero-content">
-      <div class="hero-eyebrow">Austin, Texas &nbsp;·&nbsp; Mechanical Engineer</div>
-      <h1 class="hero-name">
-        Hikmet<br>
-        <em>Bisen</em>
-      </h1>
-      <p class="hero-title">Engineering Precision. Mountain Spirit.</p>
-      <p class="hero-tagline">Automotive · Medical Devices · AI & Software</p>
-      <div class="hero-ctas">
-        <a href="Project/projects.html" class="btn btn-primary">
-          View Projects
-          <span>→</span>
-        </a>
-        <a href="Resume/resume.html" class="btn btn-outline">
-          Resume
-          <span>↗</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- ── About ── -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <span class="section-label">About</span>
-          <h2>About<br><strong>Hikmet</strong></h2>
-          <div class="about-peak">
-            <svg class="peak-icon" viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 0 L20 16 H0 Z"/>
-            </svg>
-            Austin, Texas
-          </div>
-          <div class="about-ctas">
-            <a href="Project/projects.html" class="btn btn-dark">
-              <span>View Projects</span>
-              <span class="btn-arrow">→</span>
-            </a>
-            <a href="Resume/resume.html" class="btn btn-dark-outline">
-              <span>My Resume</span>
-              <span class="btn-arrow">↗</span>
-            </a>
-            <a href="#contact" class="btn btn-dark-outline">
-              <span>Let's Work Together</span>
-              <span class="btn-arrow">↓</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="about-right">
-          <div class="about-photo-wrap">
-            <img src="assets/images/hikmet-bisen.jpg" alt="Hikmet Bisen" class="about-photo">
-          </div>
-          <p>
-            I'm a mechanical engineer-in-training driven by a passion for building things that matter —
-            from restoring a 1983 BMW chassis to designing a wearable medical device at Worcester Polytechnic Institute.
-          </p>
-          <p>
-            Based in Austin, Texas, I'm currently pursuing dual studies at Harmony School of Endeavor and
-            Austin Community College (GPA 4.56), while leading real-world engineering projects across
-            automotive restoration, medical R&amp;D, and software development.
-          </p>
-          <p>
-            My work spans mechanical design in Fusion 360 &amp; AutoCAD, embedded systems programming in C++,
-            Python, and JavaScript, and hands-on fabrication. Whether I'm disassembling a decades-old engine
-            or writing firmware for a biosensor, I bring the same mindset: understand the system deeply,
-            then build something better.
-          </p>
-          <p>
-            Outside of engineering, I climb. One month in, I hold my lead climbing certification and am
-            already projecting 5.10d sport routes, 5.11c on top rope, and V7 boulder problems. The mountains
-            aren't just a theme here — K2 is my favorite for a reason. The same discipline that separates
-            a summit attempt from the summit is what I bring to every build. I'm fluent in Turkish and
-            English, grounded in both cultures, and always chasing the next route worth sending.
-          </p>
-
-          <div class="about-stats">
-            <div>
-              <span class="stat-num">4.56</span>
-              <span class="stat-label">GPA</span>
-            </div>
-            <div>
-              <span class="stat-num">9</span>
-              <span class="stat-label">Projects</span>
-            </div>
-            <div>
-              <span class="stat-num">2027</span>
-              <span class="stat-label">Graduating</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Skills Strip ── -->
-  <div class="skills-strip">
-    <div class="skills-strip-inner">
-      <span class="skills-strip-label">Technical Toolkit</span>
-      <div class="skills-grid">
-        <span class="skill-tag highlight">Fusion 360</span>
-        <span class="skill-tag highlight">AutoCAD</span>
-        <span class="skill-tag">TinkerCAD</span>
-        <span class="skill-tag highlight">C++</span>
-        <span class="skill-tag highlight">Python</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">MATLAB</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">Arduino IDE</span>
-        <span class="skill-tag">HTML</span>
-        <span class="skill-tag">Visual Studio Code</span>
-        <span class="skill-tag highlight">React</span>
-        <span class="skill-tag highlight">FastAPI</span>
-        <span class="skill-tag">SQLite</span>
-        <span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">Git &amp; GitHub</span>
-        <span class="skill-tag highlight">RAG</span>
-        <span class="skill-tag highlight">LiteLLM</span>
-        <span class="skill-tag">Voyage AI</span>
-        <span class="skill-tag">Supabase pgvector</span>
-        <span class="skill-tag">Prompt Engineering</span>
-        <span class="skill-tag">Obsidian</span>
-        <span class="skill-tag">Chart.js</span>
-        <span class="skill-tag">Markdown</span>
-        <span class="skill-tag highlight">Automotive Engineering</span>
-        <span class="skill-tag">Medical Device Design</span>
-        <span class="skill-tag">Embedded Systems</span>
-        <span class="skill-tag">Turkish</span>
-        <span class="skill-tag">English</span>
-      </div>
-    </div>
+    <div id="objshadow"></div>
   </div>
 
-  <!-- ── Featured Projects ── -->
-  <section class="featured-projects">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <span class="section-label">Selected Work</span>
-          <h2>Featured <strong>Projects</strong></h2>
-        </div>
-        <a href="Project/projects.html" class="section-header-link">All Projects →</a>
+  <div class="intro">
+    <h1 class="rise" style="--d:0">Hikmet Bisen</h1>
+    <div class="namebar rise" style="--d:1"></div>
+    <p class="sub rise" style="--d:2">Mechanical engineering + software — Austin, TX, class of 2027</p>
+  </div>
+
+  <div class="placardwrap" aria-hidden="true">
+    <p class="placard mono rise" id="placard" style="--d:3">AISI 304 · pointer +0.00, +0.00</p>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <h2 class="mono">Selected work</h2>
+  <div class="rows">
+    <a class="row" href="Project/project-medical-earbud.html">
+      <span class="idx mono" aria-hidden="true">01</span>
+      <div>
+        <h3 class="rowtitle"><span>In-ear multimodal sensing device</span></h3>
+        <p class="rowmeta">WPI BASHLab — co-authored paper, patent filing in progress. PCB follow-on: nRF52840, dual I2S mics, IMU.</p>
+        <span class="rowfact mono">heart rate · respiration · voice · motion</span>
       </div>
-
-      <style>
-        .project-card { position: relative; overflow: hidden; }
-        .project-card .project-bg img {
-          position: absolute; inset: 0; width: 100%; height: 100%;
-          object-fit: cover; object-position: center;
-          transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
-        }
-        .project-card:hover .project-bg img { transform: scale(1.05); }
-        .project-card .card-link {
-          position: absolute; inset: 0; z-index: 3;
-        }
-      </style>
-
-      <div class="projects-grid">
-
-        <!-- Project 1: BMW E30 -->
-        <div class="project-card wide">
-          <div class="project-bg">
-            <img src="assets/images/mount-whitney.jpg" alt="Mount Whitney — 1983 BMW E30 Restoration">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Mechanical</div>
-          <div class="project-tooltip">
-            <span class="project-number">01 / 09</span>
-            <div class="project-name">1983 BMW E30 Restoration</div>
-            <p class="project-desc">Full mechanical restoration of a 1983 BMW 3 Series E30 — chassis reinforcement, rust removal, and precision reassembly of key automotive systems.</p>
-          </div>
-          <a href="Project/project-bmw-e30.html" class="card-link" aria-label="View BMW E30 project"></a>
-        </div>
-
-        <!-- Project 2: Medical Earbud -->
-        <div class="project-card">
-          <div class="project-bg">
-            <img src="assets/images/mount-sinai.jpg" alt="Mount Sinai — Medical Earbud @ WPI">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">R&D</div>
-          <div class="project-tooltip">
-            <span class="project-number">02 / 09</span>
-            <div class="project-name">Medical Earbud @ WPI</div>
-            <p class="project-desc">Wearable vital-sign tracker designed at Worcester Polytechnic Institute — patent-pending medical device targeting heart rate, blood pressure &amp; respiratory data.</p>
-          </div>
-          <a href="Project/project-medical-earbud.html" class="card-link" aria-label="View Medical Earbud project"></a>
-        </div>
-
-        <!-- Project 3: FORGE AI -->
-        <div class="project-card">
-          <div class="project-bg">
-            <img src="assets/images/everest.jpg" alt="Everest — FORGE AI Engineering Platform">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">AI / Software</div>
-          <div class="project-tooltip">
-            <span class="project-number">07 / 09</span>
-            <div class="project-name">FORGE AI — Engineering Intelligence Platform</div>
-            <p class="project-desc">Multi-modal AI workspace for mechanical engineers — upload sketches, CAD, or PDFs and get structured analysis with shown calculations. Built with React, FastAPI, RAG, and LiteLLM.</p>
-          </div>
-          <a href="Project/project-forge-ai.html" class="card-link" aria-label="View FORGE AI project"></a>
-        </div>
-
-        <!-- Project 4: Obsidian Memory Graph -->
-        <div class="project-card">
-          <div class="project-bg">
-            <img src="assets/images/lhotse.jpg" alt="Lhotse — Obsidian AI Memory Graph">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Tools / Systems</div>
-          <div class="project-tooltip">
-            <span class="project-number">08 / 09</span>
-            <div class="project-name">Obsidian — AI Memory Graph</div>
-            <p class="project-desc">Personal knowledge graph that gives Claude persistent memory across every conversation — wiki-linked markdown vault with visual graph view of projects, tools, and references.</p>
-          </div>
-          <a href="Project/project-obsidian-graph.html" class="card-link" aria-label="View Obsidian Memory Graph project"></a>
-        </div>
-
+    </a>
+    <a class="row" href="Project/project-forge-ai.html">
+      <span class="idx mono" aria-hidden="true">02</span>
+      <div>
+        <h3 class="rowtitle"><span>FORGE — AI engineering analysis platform</span></h3>
+        <p class="rowmeta">Built solo: RAG pipeline, multi-model routing (LiteLLM), FastAPI, Supabase pgvector.</p>
+        <span class="rowfact mono">cited, structured reports</span>
       </div>
-      <div style="text-align:center; margin-top: 40px;">
-        <a href="Project/projects.html" class="btn btn-primary">View All Projects →</a>
+    </a>
+    <a class="row" href="Project/project-bmw-e30.html">
+      <span class="idx mono" aria-hidden="true">03</span>
+      <div>
+        <h3 class="rowtitle"><span>1983 BMW E30 restoration</span></h3>
+        <p class="rowmeta">Bought rusted. Patch panels cut and welded by hand.</p>
+        <span class="rowfact mono">chassis gone over seam by seam</span>
       </div>
-    </div>
-  </section>
+    </a>
+  </div>
 
-  <!-- ── Work Together ── -->
-  <section class="work-together" id="contact">
-    <div class="work-together-bg"></div>
-    <div class="container">
-      <div class="work-together-grid">
-        <div class="work-left">
-          <span class="section-label">Get In Touch</span>
-          <h2>Let's Work<br><strong>Together</strong></h2>
-          <p>
-            Whether you're looking to collaborate on an engineering project, explore research opportunities,
-            or just want to connect — I'd love to hear from you.
-          </p>
-          <br>
-          <p style="color: rgba(255,255,255,0.35); font-size: 0.82rem;">
-            📧 <a href="mailto:hikmetbisen@gmail.com" style="color: var(--gold-light);">hikmetbisen@gmail.com</a><br><br>
-            <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.35);">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.35);">GitHub</a>
-          </p>
-        </div>
+  <ul class="minor">
+    <li><a class="ul" href="Project/project-banking-system.html">Python banking system</a> — 40/40 unit tests</li>
+    <li><a class="ul" href="Project/project-claude-dashboard.html">Claude usage dashboard</a> — single-file Python, SSE live metrics</li>
+    <li><a class="ul" href="Project/project-obsidian-graph.html">Obsidian AI memory graph</a> — personal knowledge architecture</li>
+    <li><a class="ul" href="Project/project-roller-coaster.html">Roller coaster design (LESC)</a></li>
+    <li><a class="ul" href="Project/project-code2college.html">Code2College</a></li>
+    <li><a class="ul" href="Project/project-dv3x2-aia.html">Architecture research (AIA)</a></li>
+  </ul>
 
-        <form class="contact-form" onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="fname" placeholder="John" required>
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lname" placeholder="Doe" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="john@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Project collaboration, internship, research...">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell me about your project or idea..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-submit btn-primary">
-            Send Message
-            <span>→</span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
+  <p class="climb mono"><span class="climbk">Climbing</span>lead 5.10d · top rope 5.11c · boulder V7 — lead-certified one month after first touching a wall (2026)</p>
+</section>
+</main>
 
-  <!-- ── Footer ── -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="Project/projects.html">Projects</a>
-          <a href="Resume/resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+<footer id="contact">
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
 
-  <script src="js/main.js"></script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="js/mountain.js"></script>
+<script src="js/studio.js"></script>
+
+<script>
+/* index-only: shared pointer state for the 3D object + live placard readout */
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coarse=matchMedia('(pointer: coarse)').matches;
+  var P={tx:0,ty:0,cx:0,cy:0,rm:rm,coarse:coarse};
+  window.__P=P;
+
+  addEventListener('pointermove',function(e){
+    P.tx=(e.clientX/innerWidth)*2-1;
+    P.ty=-((e.clientY/innerHeight)*2-1);
+  },{passive:true});
+
+  var pl=document.getElementById('placard');
+  function fmt(v){return (v<0?'−':'+')+Math.abs(v).toFixed(2);}
+  var last=0,t0=performance.now();
+  function loop(ts){
+    requestAnimationFrame(loop);
+    if(document.hidden){last=0;return;}
+    if(!last){last=ts;return;}
+    var dt=Math.min((ts-last)/1000,0.05);last=ts;
+    var t=(ts-t0)/1000;
+    var tx=P.tx,ty=P.ty;
+    if(coarse){
+      if(rm){tx=0.2;ty=0.12;}
+      else{tx=Math.sin(t*0.35)*0.45;ty=Math.sin(t*0.21)*0.3;}
+    }
+    var k=1-Math.exp(-dt*5);
+    P.cx+=(tx-P.cx)*k;P.cy+=(ty-P.cy)*k;
+    if(pl)pl.textContent='AISI 304 · pointer '+fmt(P.cx)+', '+fmt(P.cy);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+
+const P=window.__P||{cx:0,cy:0,rm:false,coarse:false};
+const stage=document.getElementById('stage');
+const shadowEl=document.getElementById('objshadow');
+
+let renderer=null;
+try{
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+}catch(e){
+  renderer=null;
+}
+
+if(renderer){
+  renderer.setClearColor(0x000000,0);
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.05;
+
+  const scene=new THREE.Scene();
+  const pmrem=new THREE.PMREMGenerator(renderer);
+  scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+
+  const camera=new THREE.PerspectiveCamera(35,1,0.1,50);
+  camera.position.set(0,0,7.4);
+
+  // carabiner: closed asymmetric-D sweep
+  const pts=[
+    [-0.62,-0.72],[-0.70,-0.15],[-0.62,0.52],   // spine
+    [-0.30,0.94],[0.22,1.02],[0.60,0.68],       // top curve
+    [0.74,0.18],[0.66,-0.34],                   // gate side
+    [0.34,-0.86],[-0.18,-1.02]                  // basket
+  ].map(p=>new THREE.Vector3(p[0],p[1],0));
+  const curve=new THREE.CatmullRomCurve3(pts,true,'catmullrom',0.5);
+  const geo=new THREE.TubeGeometry(curve,220,0.19,28,true); // ~12k tris
+  const mat=new THREE.MeshStandardMaterial({color:0xd9dcde,metalness:0.9,roughness:0.25,envMapIntensity:0.9});
+  const mesh=new THREE.Mesh(geo,mat);
+  mesh.rotation.x=0.16;mesh.rotation.z=-0.06;
+
+  const spin=new THREE.Group();spin.add(mesh);
+  const lean=new THREE.Group();lean.add(spin);
+  lean.position.y=-0.08;
+  scene.add(lean);
+
+  // 3-point studio rig
+  const key=new THREE.DirectionalLight(0xffffff,2.0);key.position.set(3,4,4);scene.add(key);
+  const fill=new THREE.DirectionalLight(0xffffff,0.7);fill.position.set(-4,1,2.5);scene.add(fill);
+  const rim=new THREE.DirectionalLight(0xffffff,1.1);rim.position.set(-1,3,-4);scene.add(rim);
+
+  renderer.domElement.setAttribute('aria-hidden','true');
+  stage.appendChild(renderer.domElement);
+  document.documentElement.classList.add('webgl');
+
+  function resize(){
+    const w=stage.clientWidth,h=stage.clientHeight;
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+    renderer.setSize(w,h);
+    camera.aspect=w/h;
+    camera.position.z=(w/h<0.85)?8.8:7.4;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  addEventListener('resize',resize);
+
+  const amp=P.rm?0.10:0.25;
+  let spinY=-0.6,last=0;
+  const t0=performance.now();
+
+  function frame(ts){
+    requestAnimationFrame(frame);
+    if(document.hidden){last=0;return;}
+    if(!last){last=ts;return;}
+    const dt=Math.min((ts-last)/1000,0.05);last=ts;
+    const t=(ts-t0)/1000;
+
+    if(!P.rm)spinY+=dt*0.05;          // slow self-rotation
+    spin.rotation.y=spinY;
+    lean.rotation.x=P.cy*amp;          // lean toward cursor (damped in classic loop)
+    lean.rotation.z=-P.cx*amp;
+
+    const e=P.rm?1:Math.min(1,t/0.6);  // settle from 4% scale-up, 600ms
+    lean.scale.setScalar(1+0.04*Math.pow(1-e,3));
+
+    key.position.set(3*(1+P.cx*0.1),4*(1+P.cy*0.1),4);   // lights track pointer ±10%
+    fill.position.x=-4*(1-P.cx*0.1);
+
+    shadowEl.style.transform='translate(calc(-50% + '+(-P.cx*26).toFixed(1)+'px), '
+      +(-P.cy*10).toFixed(1)+'px) scaleX('+(1-Math.abs(P.cx)*0.07).toFixed(3)+')';
+
+    renderer.render(scene,camera);
+  }
+  requestAnimationFrame(frame);
+}
+</script>
 </body>
 </html>

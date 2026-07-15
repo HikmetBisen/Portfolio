@@ -1,209 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070C14">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <title>Obsidian Memory Graph — Hikmet Bisen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
+  <title>Obsidian AI memory graph — Hikmet Bisen</title>
   <meta name="description" content="Personal AI memory graph built in Obsidian — a structured knowledge vault that persists context across Claude conversations using wiki-linked markdown notes.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="../Resume/resume.html">Resume</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="projects.html">All work</a>
+  <a class="ul mag" href="../Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
+
+<main>
+<section class="project-hero">
+  <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
+  <p class="project-eyebrow rise" style="--d:1">Personal knowledge system</p>
+  <h1 class="project-title rise" style="--d:2">Obsidian AI memory graph</h1>
+  <div class="namebar rise" style="--d:3"></div>
+  <p class="project-metaline mono rise" style="--d:4"><b>Tools / personal systems</b> · 2026 — Ongoing · Active, updated continuously</p>
+</section>
+
+<section class="project-layout">
+
+  <aside class="project-sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Timeline</span>
+      <div class="sidebar-value">
+        <strong>2026 — Ongoing</strong>
+        Built and maintained actively
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Role</span>
+      <div class="sidebar-value">
+        <strong>Designer &amp; architect</strong>
+        Vault structure, schema design, Claude integration
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Category</span>
+      <div class="sidebar-value">
+        <strong>Tools / personal systems</strong>
+        AI memory infrastructure &amp; knowledge management
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Tools &amp; skills</span>
+      <div class="tool-tags">
+        <span class="tool-tag">Obsidian</span>
+        <span class="tool-tag">Markdown</span>
+        <span class="tool-tag">Claude AI</span>
+        <span class="tool-tag">Wiki-links</span>
+        <span class="tool-tag">Graph view</span>
+        <span class="tool-tag">Knowledge management</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Status</span>
+      <div class="sidebar-value">
+        <strong>Active</strong>
+        Updated continuously
+      </div>
+    </div>
+  </aside>
+
+  <div class="project-body">
+    <h2>Building a memory system for AI collaboration</h2>
+
+    <p>
+      Most people treat AI conversations as disposable — start fresh every session, re-explain everything, lose all context. I built a different system. The Obsidian memory graph is a structured knowledge vault that gives Claude persistent, organized memory across every conversation — so it already knows who I am, what I'm building, how I like to work, and what we've done together.
+    </p>
+
+    <p>
+      The vault is structured like a graph database in plain text. Every note is a node. Every <code>[[wiki-link]]</code> is an edge. Obsidian renders the whole thing as an interactive knowledge graph — I can see how my projects, tools, preferences, and references are all connected at a glance.
+    </p>
+
+    <p>
+      The schema was designed so Claude can read and write to it mid-conversation — updating project notes as work progresses, adding new memories after key decisions, and always navigating from <code>Home.md</code> as the central map of content. Instead of dumping everything into a flat file, each piece of information lives in the right place and links outward to related context.
+    </p>
+
+    <div class="contributions">
+      <h3>Vault structure</h3>
+      <ul>
+        <li><strong>Home.md</strong> — central map of content; every session starts here for navigation context.</li>
+        <li><strong>User/Hikmet Bisen.md</strong> — personal profile: education, goals, skills, climbing background, contact info.</li>
+        <li><strong>Projects/</strong> — one dedicated note per project, each with tech stack, status, links, and context.</li>
+        <li><strong>Feedback/Interaction Preferences.md</strong> — how I like Claude to communicate. Gets updated as I discover what works.</li>
+        <li><strong>Tools/</strong> — notes on the tools Claude uses to interact with my environment.</li>
+        <li><strong>References/External Links.md</strong> — GitHub, LinkedIn, live URLs — one place, always current.</li>
       </ul>
     </div>
-  </nav>
 
-  <!-- ── Camp hero: arrive at this project's marker on the mountain ── -->
-  <section class="camp-hero" data-mtn-world>
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
-    <div class="camp-fallback" style="background-image:url('../assets/images/lhotse.jpg')"></div>
-    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
+    <p>
+      The graph view in Obsidian turns this into something visual — every node clusters by connection density. My portfolio sits at the center surrounded by all 8 projects. FORGE AI connects to the tech stack notes. My profile connects to everything. It's a map of how I think and what I'm building, not just a list of facts.
+    </p>
 
-    <div class="camp-content">
-      <a href="projects.html" class="camp-back">&larr; All Projects</a>
-      <p class="camp-eyebrow">Camp 08 / 09 <span class="dot">&middot;</span> Lhotse <span class="dot">&middot;</span> 8,516 m</p>
-      <h1 class="camp-title">Obsidian —<br>AI Memory Graph</h1>
-      <p class="camp-sub">Personal Knowledge Graph · Obsidian · Claude AI · Wiki-Links</p>
-      <div class="camp-meta">
-        <span><b>Tools / Personal Systems</b></span>
-        <span>2026</span>
-        <span>Active — Updated Continuously</span>
-      </div>
-    </div>
-  </section>
+    <p>
+      This project taught me that the interface between a human and an AI tool is a design problem. Structure the information well and the collaboration compounds over time. Leave it unstructured and every session starts from zero. Good knowledge architecture is the difference between an AI that knows you and one that doesn't.
+    </p>
 
-  <!-- ── Content ── -->
-  <section class="project-detail-content">
-    <div class="container">
-      <div class="project-detail-grid">
+    <h3>Graph snapshots</h3>
+    <p>Live captures of the vault taken on 2026-05-25 — the day the core system was fully structured.</p>
 
-        <!-- Sidebar -->
-        <aside class="project-detail-sidebar">
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Timeline</span>
-            <div class="project-sidebar-value">
-              <strong>2026 — Ongoing</strong>
-              Built and maintained actively
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Role</span>
-            <div class="project-sidebar-value">
-              <strong>Designer &amp; Architect</strong>
-              Vault structure, schema design, Claude integration
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Category</span>
-            <div class="project-sidebar-value">
-              <strong>Tools / Personal Systems</strong>
-              AI memory infrastructure &amp; knowledge management
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Tools &amp; Stack</span>
-            <div class="project-tools-list">
-              <span class="project-tool-tag">Obsidian</span>
-              <span class="project-tool-tag">Markdown</span>
-              <span class="project-tool-tag">Claude AI</span>
-              <span class="project-tool-tag">Wiki-Links</span>
-              <span class="project-tool-tag">Graph View</span>
-              <span class="project-tool-tag">Knowledge Management</span>
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Mountain</span>
-            <div class="project-sidebar-value">
-              <strong>Lhotse</strong>
-              8,516m — Shares a base camp with Everest. Lhotse is inseparable from the broader massif — just as this memory graph is the foundation layer that connects every other project. You don't see it from the outside, but nothing works as well without it.
-            </div>
-          </div>
-        </aside>
+    <figure style="margin:24px 0 0">
+      <img
+        src="../assets/images/obsidian/graph-full.png"
+        alt="Full Obsidian knowledge graph — all nodes and cross-links visible"
+        style="display:block;width:100%;max-width:100%;border:1px solid var(--hair)"
+      >
+      <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+        Full graph — every note and wiki-link rendered as nodes and edges
+      </figcaption>
+    </figure>
 
-        <!-- Body -->
-        <div class="project-detail-body">
-          <h2>Building a <strong>Memory System for AI Collaboration</strong></h2>
+    <figure style="margin:24px 0 0">
+      <img
+        src="../assets/images/obsidian/graph-sparse.png"
+        alt="Early Obsidian graph — core hub with spoke clusters"
+        style="display:block;width:100%;max-width:100%;border:1px solid var(--hair)"
+      >
+      <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+        Core 0 — main hub with its five core spokes (the radial architecture of the vault)
+      </figcaption>
+    </figure>
 
-          <p>
-            Most people treat AI conversations as disposable — start fresh every session, re-explain everything, lose all context. I built a different system. The Obsidian Memory Graph is a structured knowledge vault that gives Claude persistent, organized memory across every conversation — so it already knows who I am, what I'm building, how I like to work, and what we've done together.
-          </p>
+    <span class="status-badge">Active — updated continuously</span>
+  </div>
 
-          <p>
-            The vault is structured like a graph database in plain text. Every note is a node. Every <code>[[wiki-link]]</code> is an edge. Obsidian renders the whole thing as an interactive knowledge graph — I can see how my projects, tools, preferences, and references are all connected at a glance.
-          </p>
+</section>
+</main>
 
-          <p>
-            The schema was designed so Claude can read and write to it mid-conversation — updating project notes as work progresses, adding new memories after key decisions, and always navigating from <code>Home.md</code> as the central map of content. Instead of dumping everything into a flat file, each piece of information lives in the right place and links outward to related context.
-          </p>
+<nav class="prevnext" aria-label="Project navigation">
+  <div class="prevnext-inner">
+    <a href="project-forge-ai.html" class="prevnext-item">
+      <span class="prevnext-label">&larr; Previous</span>
+      <span class="prevnext-name">FORGE — AI engineering analysis platform</span>
+    </a>
+    <a href="projects.html" class="prevnext-center">All projects</a>
+    <a href="project-claude-dashboard.html" class="prevnext-item next">
+      <span class="prevnext-label">Next &rarr;</span>
+      <span class="prevnext-name">Claude usage dashboard</span>
+    </a>
+  </div>
+</nav>
 
-          <div class="project-contributions">
-            <h3>Vault Structure</h3>
-            <ul>
-              <li><strong>Home.md</strong> — central map of content; every session starts here for navigation context.</li>
-              <li><strong>User/Hikmet Bisen.md</strong> — personal profile: education, goals, skills, climbing background, contact info.</li>
-              <li><strong>Projects/</strong> — one dedicated note per project, each with tech stack, status, links, and context.</li>
-              <li><strong>Feedback/Interaction Preferences.md</strong> — how I like Claude to communicate. Gets updated as I discover what works.</li>
-              <li><strong>Tools/</strong> — notes on the tools Claude uses to interact with my environment.</li>
-              <li><strong>References/External Links.md</strong> — GitHub, LinkedIn, live URLs — one place, always current.</li>
-            </ul>
-          </div>
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
 
-          <p>
-            The graph view in Obsidian turns this into something visual — every node clusters by connection density. My portfolio sits at the center surrounded by all 8 projects. FORGE AI connects to the tech stack notes. My profile connects to everything. It's a map of how I think and what I'm building, not just a list of facts.
-          </p>
-
-          <p>
-            This project taught me that the interface between a human and an AI tool is a design problem. Structure the information well and the collaboration compounds over time. Leave it unstructured and every session starts from zero. Good knowledge architecture is the difference between an AI that knows you and one that doesn't.
-          </p>
-
-          <!-- ── Graph Snapshots ── -->
-          <h3 style="margin-top: 48px;">Graph Snapshots</h3>
-          <p>Live captures of the vault taken on 2026-05-25 — the day the Core system was fully structured.</p>
-
-          <div class="project-gallery" style="display:flex; flex-direction:column; gap:24px; margin-top:24px;">
-
-            <figure style="margin:0;">
-              <img
-                src="../assets/images/obsidian/graph-full.png"
-                alt="Full Obsidian knowledge graph — all nodes and cross-links visible"
-                style="width:100%; border-radius:8px; border:1px solid var(--cream-dark);"
-              >
-              <figcaption style="font-family:var(--font-brand); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-light); margin-top:8px;">
-                Full graph — every note and wiki-link rendered as nodes and edges
-              </figcaption>
-            </figure>
-
-            <figure style="margin:0;">
-              <img
-                src="../assets/images/obsidian/graph-sparse.png"
-                alt="Early Obsidian graph — Core 0 hub with spoke clusters"
-                style="width:100%; border-radius:8px; border:1px solid var(--cream-dark);"
-              >
-              <figcaption style="font-family:var(--font-brand); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-light); margin-top:8px;">
-                Core 0 — Main hub with its five core spokes (the radial architecture of the vault)
-              </figcaption>
-            </figure>
-
-          </div>
-
-          <span class="project-status-badge" style="margin-top:40px; display:inline-block;">Active — Updated Continuously</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Project Navigation ── -->
-  <nav class="project-nav-bar">
-    <div class="container">
-      <div class="project-nav-inner">
-        <a href="project-forge-ai.html" class="project-nav-item">
-          <span class="project-nav-label">← Previous</span>
-          <span class="project-nav-name">FORGE AI — Engineering Intelligence Platform</span>
-        </a>
-        <a href="projects.html" class="project-nav-center">All Projects</a>
-        <a href="project-claude-dashboard.html" class="project-nav-item next">
-          <span class="project-nav-label">Next →</span>
-          <span class="project-nav-name">FORGE / Claude Usage Dashboard</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="projects.html">Projects</a>
-          <a href="../Resume/resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="../js/main.js"></script>
-  <script>window.MTN_PAGE = { mode: 'camp', focus: 'obsidian', base: '../' };</script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="../js/mountain.js"></script>
+<script src="../js/studio.js"></script>
 </body>
 </html>

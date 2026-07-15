@@ -1,168 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070C14">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
+  <title>Architecture research (AIA) — Hikmet Bisen</title>
+  <meta name="description" content="Architecture research with the American Institute of Architects by Hikmet Bisen. Independent financial research on UT Austin and hands-on exposure to architecture and engineering firms.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <title>DV3x2 | AIA Architecture Research — Hikmet Bisen</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="../Resume/resume.html">Resume</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="projects.html">All work</a>
+  <a class="ul mag" href="../Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
+
+<main>
+<section class="project-hero">
+  <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
+  <p class="project-eyebrow rise" style="--d:1">American Institute of Architects</p>
+  <h1 class="project-title rise" style="--d:2">Architecture research (AIA)</h1>
+  <div class="namebar rise" style="--d:3"></div>
+  <p class="project-metaline mono rise" style="--d:4"><b>Architecture &amp; engineering</b> · June 24–29, 2024 · Research intern</p>
+</section>
+
+<section class="project-layout">
+
+  <aside class="project-sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Timeline</span>
+      <div class="sidebar-value">
+        <strong>June 24–29, 2024</strong>
+        One-week intensive
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Role</span>
+      <div class="sidebar-value">
+        <strong>Architecture &amp; engineering research intern</strong>
+        American Institute of Architects (AIA)
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Category</span>
+      <div class="sidebar-value">
+        <strong>Architecture &amp; engineering</strong>
+        Financial research &amp; industry exposure
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Tools &amp; skills</span>
+      <div class="tool-tags">
+        <span class="tool-tag">Financial analysis</span>
+        <span class="tool-tag">Data interpretation</span>
+        <span class="tool-tag">Research methods</span>
+        <span class="tool-tag">Architecture</span>
+        <span class="tool-tag">Mechanical engineering</span>
+        <span class="tool-tag">Career exploration</span>
+      </div>
+    </div>
+  </aside>
+
+  <div class="project-body">
+    <h2>Where architecture meets engineering</h2>
+
+    <p>
+      The DV3x2 program through the American Institute of Architects gave me a rare glimpse into the intersection of architecture, engineering, and real-world business — an intersection I hadn't previously explored as a mechanical engineer in training.
+    </p>
+
+    <p>
+      My independent research project focused on UT Austin's financial structure: mapping revenue streams, analyzing budget allocation, and identifying the financial drivers behind one of the nation's largest public universities. This wasn't engineering in the traditional sense — but it demanded the same analytical rigor: gather data, identify patterns, draw defensible conclusions.
+    </p>
+
+    <p>
+      Working alongside startup architecture and engineering firms showed me how mechanical engineering principles manifest in construction — from the load-bearing logic of structural systems to the material science behind facade choices. The week compressed months of industry exposure into a single, high-intensity immersion.
+    </p>
+
+    <div class="contributions">
+      <h3>Key contributions</h3>
+      <ul>
+        <li>Conducted an independent research project analyzing UT Austin's financial structure, including revenue sources, profitability, and budget allocation — strengthening financial analysis and data interpretation skills.</li>
+        <li>Gained hands-on exposure to the architecture and engineering industries by working directly with startup firms and exploring mechanical engineering principles in real-world design and construction settings.</li>
+        <li>Engaged in guided career exploration and self-reflection, ultimately reaffirming my primary interest in mechanical engineering through professional mentorship and applied learning experiences.</li>
+        <li>Observed how architectural decisions are governed by engineering constraints — and vice versa — deepening my understanding of multidisciplinary design.</li>
       </ul>
     </div>
-  </nav>
 
-  <!-- ── Hero ── -->
-  <section class="camp-hero" data-mtn-world>
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
-    <div class="camp-fallback" style="background-image:url('../assets/images/mont-blanc.jpg')"></div>
-    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
-    <div class="camp-content">
-      <a href="projects.html" class="camp-back">&larr; All Projects</a>
-      <p class="camp-eyebrow">Camp 05 / 09 <span class="dot">&middot;</span> Mont Blanc <span class="dot">&middot;</span> 4,806 m</p>
-      <h1 class="camp-title">DV3x2 | AIA<br>Architecture Research</h1>
-      <p class="camp-sub">American Institute of Architects — Research Intern</p>
-      <div class="camp-meta">
-        <span><b>Architecture &amp; Research</b></span>
-        <span>June 24–29, 2024</span>
-      </div>
-    </div>
-  </section>
+    <p>
+      This experience confirmed something important: mechanical engineers who understand architecture, finance, and systems-level thinking are far more effective than those who operate only within their specialty. The week pushed me to think broader — and I left more certain than ever that mechanical engineering is where I belong.
+    </p>
+  </div>
 
-  <!-- ── Content ── -->
-  <section class="project-detail-content">
-    <div class="container">
-      <div class="project-detail-grid">
+</section>
+</main>
 
-        <!-- Sidebar -->
-        <aside class="project-detail-sidebar">
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Timeline</span>
-            <div class="project-sidebar-value">
-              <strong>June 24–29, 2024</strong>
-              One-week intensive
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Role</span>
-            <div class="project-sidebar-value">
-              <strong>Architecture &amp; Engineering Research Intern</strong>
-              DV3x2 / AIA Program
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Category</span>
-            <div class="project-sidebar-value">
-              <strong>Architecture &amp; Engineering</strong>
-              Financial research &amp; industry exposure
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Tools &amp; Skills</span>
-            <div class="project-tools-list">
-              <span class="project-tool-tag">Financial Analysis</span>
-              <span class="project-tool-tag">Data Interpretation</span>
-              <span class="project-tool-tag">Research Methods</span>
-              <span class="project-tool-tag">Architecture</span>
-              <span class="project-tool-tag">Mechanical Engineering</span>
-              <span class="project-tool-tag">Career Exploration</span>
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Mountain</span>
-            <div class="project-sidebar-value">
-              <strong>Mont Blanc</strong>
-              4,808m — Western Europe's highest peak. Like architecture, it blends beauty with engineering, demanding both artistic vision and structural understanding to stand at such heights.
-            </div>
-          </div>
-        </aside>
+<nav class="prevnext" aria-label="Project navigation">
+  <div class="prevnext-inner">
+    <a href="project-code2college.html" class="prevnext-item">
+      <span class="prevnext-label">&larr; Previous</span>
+      <span class="prevnext-name">Code2College — Python development</span>
+    </a>
+    <a href="projects.html" class="prevnext-center">All projects</a>
+    <a href="project-banking-system.html" class="prevnext-item next">
+      <span class="prevnext-label">Next &rarr;</span>
+      <span class="prevnext-name">Elite 102 — Python banking system</span>
+    </a>
+  </div>
+</nav>
 
-        <!-- Body -->
-        <div class="project-detail-body">
-          <h2>Where Architecture <strong>Meets Engineering</strong></h2>
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
 
-          <p>
-            The DV3x2 program through the American Institute of Architects gave me a rare glimpse into the intersection of architecture, engineering, and real-world business — an intersection I hadn't previously explored as a mechanical engineer in training.
-          </p>
-
-          <p>
-            My independent research project focused on UT Austin's financial structure: mapping revenue streams, analyzing budget allocation, and identifying the financial drivers behind one of the nation's largest public universities. This wasn't engineering in the traditional sense — but it demanded the same analytical rigor: gather data, identify patterns, draw defensible conclusions.
-          </p>
-
-          <p>
-            Working alongside startup architecture and engineering firms showed me how mechanical engineering principles manifest in construction — from the load-bearing logic of structural systems to the material science behind facade choices. The week compressed months of industry exposure into a single, high-intensity immersion.
-          </p>
-
-          <div class="project-contributions">
-            <h3>Key Contributions</h3>
-            <ul>
-              <li>Conducted an independent research project analyzing UT Austin's financial structure, including revenue sources, profitability, and budget allocation — strengthening financial analysis and data interpretation skills.</li>
-              <li>Gained hands-on exposure to the architecture and engineering industries by working directly with startup firms and exploring mechanical engineering principles in real-world design and construction settings.</li>
-              <li>Engaged in guided career exploration and self-reflection, ultimately reaffirming my primary interest in mechanical engineering through professional mentorship and applied learning experiences.</li>
-              <li>Observed how architectural decisions are governed by engineering constraints — and vice versa — deepening my understanding of multidisciplinary design.</li>
-            </ul>
-          </div>
-
-          <p>
-            This experience confirmed something important: mechanical engineers who understand architecture, finance, and systems-level thinking are far more effective than those who operate only within their specialty. The week pushed me to think broader — and I left more certain than ever that mechanical engineering is where I belong.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Project Navigation ── -->
-  <nav class="project-nav-bar">
-    <div class="container">
-      <div class="project-nav-inner">
-        <a href="project-code2college.html" class="project-nav-item">
-          <span class="project-nav-label">← Previous</span>
-          <span class="project-nav-name">Code2College — Python Development</span>
-        </a>
-        <a href="projects.html" class="project-nav-center">All Projects</a>
-        <a href="project-banking-system.html" class="project-nav-item next">
-          <span class="project-nav-label">Next →</span>
-          <span class="project-nav-name">Elite 102 — Python Banking System</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="projects.html">Projects</a>
-          <a href="../Resume/resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="../js/main.js"></script>
-  <script>window.MTN_PAGE = { mode: 'camp', focus: 'dv3x2', base: '../' };</script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="../js/mountain.js"></script>
+<script src="../js/studio.js"></script>
 </body>
 </html>

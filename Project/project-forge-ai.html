@@ -1,195 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070C14">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
+  <title>FORGE — AI engineering analysis platform — Hikmet Bisen</title>
+  <meta name="description" content="FORGE — AI engineering analysis platform by Hikmet Bisen. Multi-modal workspace combining sketch/CAD upload, guided onboarding, a RAG knowledge base, and structural analysis.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <title>FORGE AI — Hikmet Bisen</title>
-  <meta name="description" content="FORGE AI — AI-powered mechanical engineering platform. Multi-modal workspace combining sketch/CAD upload, guided onboarding, RAG knowledge base, and structural analysis.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="../Resume/resume.html">Resume</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="projects.html">All work</a>
+  <a class="ul mag" href="../Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
+
+<main>
+<section class="project-hero">
+  <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
+  <p class="project-eyebrow rise" style="--d:1">Solo build — founder &amp; lead engineer</p>
+  <h1 class="project-title rise" style="--d:2">FORGE — AI engineering analysis platform</h1>
+  <div class="namebar rise" style="--d:3"></div>
+  <p class="project-metaline mono rise" style="--d:4"><b>AI / software engineering</b> · 2026 — Ongoing · In development</p>
+</section>
+
+<section class="project-layout">
+
+  <aside class="project-sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Timeline</span>
+      <div class="sidebar-value">
+        <strong>2026 — Ongoing</strong>
+        Full product architecture &amp; build
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Role</span>
+      <div class="sidebar-value">
+        <strong>Founder &amp; lead engineer</strong>
+        Product design, architecture, full-stack development
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Category</span>
+      <div class="sidebar-value">
+        <strong>AI / software engineering</strong>
+        Multi-modal AI platform for mechanical engineers
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Tools &amp; stack</span>
+      <div class="tool-tags">
+        <span class="tool-tag">React</span>
+        <span class="tool-tag">FastAPI</span>
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">LiteLLM</span>
+        <span class="tool-tag">RAG</span>
+        <span class="tool-tag">Supabase pgvector</span>
+        <span class="tool-tag">Three.js</span>
+        <span class="tool-tag">PyMuPDF</span>
+        <span class="tool-tag">NumPy / SciPy</span>
+        <span class="tool-tag">Claude API</span>
+        <span class="tool-tag">GPT-4o</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">GitHub</span>
+      <div class="sidebar-value">
+        <a class="ul" href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">HikmetBisen/FORGE</a>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Status</span>
+      <div class="sidebar-value">
+        <strong>In development</strong>
+        2026 — Ongoing
+      </div>
+    </div>
+  </aside>
+
+  <div class="project-body">
+    <h2>Building the AI layer for engineering</h2>
+
+    <p>
+      Mechanical engineers today lose hours to fragmented toolchains — switching between CAD software, FEA tools that cost thousands per license, reference manuals, generic AI chatbots that don't understand engineering, and spreadsheets for manual calculations. FORGE AI collapses that entire workflow into one intelligent workspace.
+    </p>
+
+    <p>
+      The platform is organized around a split-screen workspace: the engineer's file (sketch, CAD, or PDF drawing) lives permanently in the left panel, always visible. The AI chat interface, guided questions, and structured output live in the right panel. Annotations from the AI — highlighted stress concentrations, traced load paths, flagged weak points — appear directly overlaid on the file in the left panel. Engineers see exactly where issues are, not just a description of them.
+    </p>
+
+    <p>
+      The core intelligence is a proprietary RAG (Retrieval Augmented Generation) knowledge base built from FEA literature, material standards, and engineering handbooks. Every query is answered using retrieved engineering knowledge — not general AI training data. This is FORGE AI's primary competitive moat: a purpose-built engineering knowledge base that gets more accurate as more domain data is ingested.
+    </p>
+
+    <div class="contributions">
+      <h3>Three product layers</h3>
+      <ul>
+        <li><strong>Layer 1 — Build from scratch:</strong> Describe an idea in plain language. The AI generates a full concept: design parameters, material suggestions, initial dimensions, and a bill of materials. Fast ideation with engineering intelligence baked in.</li>
+        <li><strong>Layer 2 — Upload and collaborate:</strong> Upload an existing sketch, CAD file, PDF drawing, or image. The AI analyzes it, asks targeted guided questions about intent and constraints, then collaborates to refine and improve. Like having a senior engineer review your work in real time.</li>
+        <li><strong>Layer 3 — Structural analysis:</strong> Once a design exists, run it through physics-based analysis — stress concentrations, load paths, weak points, failure prediction, safety factors. Outputs show all work so engineers and their managers can verify every calculation.</li>
       </ul>
     </div>
-  </nav>
 
-  <!-- ── Camp hero: arrive at this project's marker on the mountain ── -->
-  <section class="camp-hero" data-mtn-world>
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
-    <div class="camp-fallback" style="background-image:url('../assets/images/everest.jpg')"></div>
-    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
-
-    <div class="camp-content">
-      <a href="projects.html" class="camp-back">← All Projects</a>
-      <p class="camp-eyebrow">Camp 07 / 09 <span class="dot">·</span> Everest <span class="dot">·</span> 8,849 m</p>
-      <h1 class="camp-title">FORGE AI —<br>Engineering Intelligence Platform</h1>
-      <p class="camp-sub">Multi-Modal AI Workspace · React · FastAPI · RAG · LiteLLM</p>
-      <div class="camp-meta">
-        <span><b>AI / Software Engineering</b></span>
-        <span>2026</span>
-        <span>In Development</span>
-      </div>
+    <div class="contributions">
+      <h3>Technical architecture</h3>
+      <ul>
+        <li><strong>RAG knowledge base (Supabase pgvector):</strong> Engineering PDFs are chunked, embedded as vectors, and stored in Supabase pgvector. Queries are vectorized and matched to the most semantically relevant engineering knowledge before the AI responds.</li>
+        <li><strong>Multi-model routing (LiteLLM):</strong> Smart routing assigns tasks to the best model — Claude for multimodal sketch interpretation, GPT-4o for analytical reasoning, Gemini Flash for fast Q&amp;A. Engineers can override in settings.</li>
+        <li><strong>Multimodal input processing:</strong> Images and sketches are base64-encoded for vision models. PDFs are processed with PyMuPDF. CAD files are parsed with ifcopenshell. Text context is combined with file data for complete understanding.</li>
+        <li><strong>Structured output layer:</strong> Cited reports include summary, methodology, shown calculations, findings, and recommendations. CAD-ready parameters are exportable. Full iteration history is saved in Supabase so engineers can compare every version of their design.</li>
+        <li><strong>Guided onboarding per upload:</strong> The moment a file is dropped, the AI analyzes it and generates targeted questions — load conditions, material, safety factor, operating environment. This ensures rich engineering context before any output is produced.</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- ── Content ── -->
-  <section class="project-detail-content">
-    <div class="container">
-      <div class="project-detail-grid">
+    <p>
+      Building FORGE AI from scratch required me to think like both an engineer and a product architect. The domain knowledge I've accumulated — from restoring an E30 to designing a medical device at WPI — is embedded in every product decision. I'm not building a general chatbot and pointing it at engineering problems. I'm building a tool that thinks the way engineers think, because I am one.
+    </p>
 
-        <!-- Sidebar -->
-        <aside class="project-detail-sidebar">
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Timeline</span>
-            <div class="project-sidebar-value">
-              <strong>2026 — Ongoing</strong>
-              Full product architecture &amp; build
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Role</span>
-            <div class="project-sidebar-value">
-              <strong>Founder &amp; Lead Engineer</strong>
-              Product design, architecture, full-stack development
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Category</span>
-            <div class="project-sidebar-value">
-              <strong>AI / Software Engineering</strong>
-              Multi-modal AI platform for mechanical engineers
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Tools &amp; Stack</span>
-            <div class="project-tools-list">
-              <span class="project-tool-tag">React</span>
-              <span class="project-tool-tag">FastAPI</span>
-              <span class="project-tool-tag">Python</span>
-              <span class="project-tool-tag">LiteLLM</span>
-              <span class="project-tool-tag">Pinecone</span>
-              <span class="project-tool-tag">RAG</span>
-              <span class="project-tool-tag">Supabase</span>
-              <span class="project-tool-tag">Three.js</span>
-              <span class="project-tool-tag">PyMuPDF</span>
-              <span class="project-tool-tag">NumPy / SciPy</span>
-              <span class="project-tool-tag">Claude API</span>
-              <span class="project-tool-tag">GPT-4o</span>
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">GitHub</span>
-            <div class="project-sidebar-value">
-              <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer" style="color: var(--steel-light); text-decoration: underline;">HikmetBisen/FORGE →</a>
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Mountain</span>
-            <div class="project-sidebar-value">
-              <strong>Everest</strong>
-              8,849m — The world's highest peak demands the most complete preparation: logistics, weather, acclimatization, and team. FORGE AI is the same — every layer of the stack has to be right before you summit. No single tool gets you there. It's the full system working together.
-            </div>
-          </div>
-        </aside>
+    <span class="status-badge">In development — 2026</span>
+  </div>
 
-        <!-- Body -->
-        <div class="project-detail-body">
-          <h2>Building the <strong>AI Layer for Engineering</strong></h2>
+</section>
+</main>
 
-          <p>
-            Mechanical engineers today lose hours to fragmented toolchains — switching between CAD software, FEA tools that cost thousands per license, reference manuals, generic AI chatbots that don't understand engineering, and spreadsheets for manual calculations. FORGE AI collapses that entire workflow into one intelligent workspace.
-          </p>
+<nav class="prevnext" aria-label="Project navigation">
+  <div class="prevnext-inner">
+    <a href="project-banking-system.html" class="prevnext-item">
+      <span class="prevnext-label">&larr; Previous</span>
+      <span class="prevnext-name">Elite 102 — Python banking system</span>
+    </a>
+    <a href="projects.html" class="prevnext-center">All projects</a>
+    <a href="project-obsidian-graph.html" class="prevnext-item next">
+      <span class="prevnext-label">Next &rarr;</span>
+      <span class="prevnext-name">Obsidian — AI memory graph</span>
+    </a>
+  </div>
+</nav>
 
-          <p>
-            The platform is organized around a split-screen workspace: the engineer's file (sketch, CAD, or PDF drawing) lives permanently in the left panel, always visible. The AI chat interface, guided questions, and structured output live in the right panel. Annotations from the AI — highlighted stress concentrations, traced load paths, flagged weak points — appear directly overlaid on the file in the left panel. Engineers see exactly where issues are, not just a description of them.
-          </p>
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
 
-          <p>
-            The core intelligence is a proprietary RAG (Retrieval Augmented Generation) knowledge base built from FEA literature, material standards, and engineering handbooks. Every query is answered using retrieved engineering knowledge — not general AI training data. This is FORGE AI's primary competitive moat: a purpose-built engineering knowledge base that gets more accurate as more domain data is ingested.
-          </p>
-
-          <div class="project-contributions">
-            <h3>Three Product Layers</h3>
-            <ul>
-              <li><strong>Layer 1 — Build From Scratch:</strong> Describe an idea in plain language. The AI generates a full concept: design parameters, material suggestions, initial dimensions, and a bill of materials. Fast ideation with engineering intelligence baked in.</li>
-              <li><strong>Layer 2 — Upload and Collaborate:</strong> Upload an existing sketch, CAD file, PDF drawing, or image. The AI analyzes it, asks targeted guided questions about intent and constraints, then collaborates to refine and improve. Like having a senior engineer review your work in real time.</li>
-              <li><strong>Layer 3 — Structural Analysis:</strong> Once a design exists, run it through physics-based analysis — stress concentrations, load paths, weak points, failure prediction, safety factors. Outputs show all work so engineers and their managers can verify every calculation.</li>
-            </ul>
-          </div>
-
-          <div class="project-contributions">
-            <h3>Technical Architecture</h3>
-            <ul>
-              <li><strong>RAG Knowledge Base (Pinecone):</strong> Engineering PDFs are chunked, embedded as vectors, and stored in Pinecone. Queries are vectorized and matched to the most semantically relevant engineering knowledge before the AI responds.</li>
-              <li><strong>Multi-Model Routing (LiteLLM):</strong> Smart routing assigns tasks to the best model — Claude for multimodal sketch interpretation, GPT-4o for analytical reasoning, Gemini Flash for fast Q&amp;A. Engineers can override in settings.</li>
-              <li><strong>Multimodal Input Processing:</strong> Images and sketches are base64-encoded for vision models. PDFs are processed with PyMuPDF. CAD files are parsed with ifcopenshell. Text context is combined with file data for complete understanding.</li>
-              <li><strong>Structured Output Layer:</strong> Reports include summary, methodology, shown calculations, findings, and recommendations. CAD-ready parameters are exportable. Full iteration history is saved in Supabase so engineers can compare every version of their design.</li>
-              <li><strong>Guided Onboarding Per Upload:</strong> The moment a file is dropped, the AI analyzes it and generates targeted questions — load conditions, material, safety factor, operating environment. This ensures rich engineering context before any output is produced.</li>
-            </ul>
-          </div>
-
-          <p>
-            Building FORGE AI from scratch required me to think like both an engineer and a product architect. The domain knowledge I've accumulated — from restoring an E30 to designing a medical device at WPI — is embedded in every product decision. I'm not building a general chatbot and pointing it at engineering problems. I'm building a tool that thinks the way engineers think, because I am one.
-          </p>
-
-          <span class="project-status-badge">In Development — 2026</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Project Navigation ── -->
-  <nav class="project-nav-bar">
-    <div class="container">
-      <div class="project-nav-inner">
-        <a href="project-banking-system.html" class="project-nav-item">
-          <span class="project-nav-label">← Previous</span>
-          <span class="project-nav-name">Elite 102 — Python Banking System</span>
-        </a>
-        <a href="projects.html" class="project-nav-center">All Projects</a>
-        <a href="project-obsidian-graph.html" class="project-nav-item next">
-          <span class="project-nav-label">Next →</span>
-          <span class="project-nav-name">Obsidian — AI Memory Graph</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="projects.html">Projects</a>
-          <a href="../Resume/resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="../js/main.js"></script>
-  <script>window.MTN_PAGE = { mode: 'camp', focus: 'forge', base: '../' };</script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="../js/mountain.js"></script>
+<script src="../js/studio.js"></script>
 </body>
 </html>

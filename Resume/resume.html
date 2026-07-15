@@ -1,271 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070C14">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
   <title>Resume — Hikmet Bisen</title>
-  <meta name="description" content="Resume of Hikmet Bisen — Mechanical Engineer & AI Builder, Austin Texas. Education, experience, skills, and awards.">
+  <meta name="description" content="Resume of Hikmet Bisen — mechanical engineering, AI and software, medical devices. Education, experience, skills, and awards.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <!-- ── The mountain as a living backdrop (vista mode) ── -->
-  <div class="vista-bg" data-mtn-world aria-hidden="true">
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
-    <canvas id="mtn-canvas" class="mtn-canvas"></canvas>
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="../Project/projects.html">All work</a>
+  <a class="ul mag" href="resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
+
+<main>
+<section class="resume-page">
+
+  <div class="resume-head">
+    <h1 class="rise" style="--d:0">Resume</h1>
+    <a class="btn-download rise" style="--d:1" href="assets/Hikmet_Bisen_Resume.pdf" download>Download PDF</a>
+    <p class="resume-contact rise" style="--d:2">
+      Hikmet Bisen · Austin, TX · 737-351-8670<br>
+      <a class="ul" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a> ·
+      <a class="ul" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a> ·
+      <a class="ul" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a> ·
+      <a class="ul" href="https://hikmetbisen.github.io/Portfolio">hikmetbisen.github.io/Portfolio</a><br>
+      Mechanical engineering · AI &amp; software · Medical devices
+    </p>
   </div>
 
-  <!-- ── Navbar ── -->
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../Project/projects.html">Projects</a></li>
-        <li><a href="resume.html" class="active">Resume</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+  <div class="resume-section rise" style="--d:3">
+    <span class="resume-section-label">Education</span>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Harmony School of Endeavor</span>
+        <span class="resume-item-meta">Expected May 2027</span>
+      </div>
+      <p class="resume-item-sub">Austin, TX · GPA: 4.56 · Concurrent dual enrollment at Austin Community College</p>
+    </div>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Austin Community College — dual-credit college coursework</span>
+        <span class="resume-item-meta">2024 — 2027</span>
+      </div>
+      <p class="resume-item-sub">College-level coursework in mathematics, physics, and engineering completed during high school</p>
+    </div>
+  </div>
+
+  <div class="resume-section rise" style="--d:4">
+    <span class="resume-section-label">Technical skills</span>
+
+    <div class="resume-item">
+      <ul>
+        <li>Programming languages: Python, JavaScript, Java, C++, MATLAB, HTML/CSS</li>
+        <li>Frameworks &amp; tools: FastAPI, React, REST APIs, SQLite, Git &amp; GitHub, Supabase (pgvector)</li>
+        <li>AI / ML: retrieval-augmented generation (RAG), LLM integration (Claude, GPT-4o, LiteLLM), Voyage AI embeddings, prompt engineering</li>
+        <li>CAD &amp; hardware: Fusion 360, AutoCAD, TinkerCAD, Arduino</li>
+        <li>Spoken languages: Turkish (native), English (fluent)</li>
       </ul>
     </div>
-  </nav>
+  </div>
 
-  <!-- ── Page Hero ── -->
-  <section class="page-hero">
-    <div class="page-hero-bg"></div>
-    <div class="container">
-      <span class="section-label">Credentials</span>
-      <h1>My <strong>Resume</strong></h1>
-      <p>A record of my education, engineering experience, technical skills, and achievements.</p>
+  <div class="resume-section rise" style="--d:5">
+    <span class="resume-section-label">Professional &amp; technical experience</span>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">FORGE — AI engineering analysis platform</span>
+        <span class="resume-item-meta">2025 — Present</span>
+      </div>
+      <p class="resume-item-sub">Solo founder &amp; full-stack developer</p>
+      <ul>
+        <li>Designed and built a full-stack AI platform where engineers upload technical drawings and PDFs and receive structured, citation-backed engineering answers; Python/FastAPI backend with a React 18 frontend.</li>
+        <li>Engineered a retrieval-augmented generation (RAG) pipeline: PDF text extraction, Voyage AI embeddings (1,536-dimension vectors), and cosine similarity search over a Supabase pgvector document store.</li>
+        <li>Implemented multi-model LLM routing with LiteLLM, automatically directing queries between Claude and GPT-4o based on content (e.g., routing stress, FEA, and fatigue calculations to the stronger model); exposed 5 rate-limited REST API endpoints.</li>
+        <li>Shipped 6 of 8 planned phases (RAG, API, UI, AI-guided onboarding, structured PDF report export, multi-model routing); designed a tiered SaaS monetization roadmap. Code public on GitHub.</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- ── Resume Content ── -->
-  <section class="resume-page">
-    <div class="resume-container">
+  <div class="resume-section rise" style="--d:6">
+    <span class="resume-section-label">Engineering &amp; software projects</span>
 
-      <!-- Download Bar -->
-      <div class="resume-download-bar">
-        <p>Hikmet Bisen &nbsp;·&nbsp; Mechanical Engineer &amp; AI Builder &nbsp;·&nbsp; Austin, TX</p>
-        <a href="assets/Hikmet_Bisen_Resume.pdf" download class="btn-download">
-          ↓ &nbsp; Download PDF
-        </a>
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">1983 BMW E30 restoration</span>
+        <span class="resume-item-meta">June 2024 — Present</span>
       </div>
-
-      <!-- Header -->
-      <div class="resume-section" style="border-bottom: 2px solid rgba(201,168,76,0.25); padding-bottom: 40px; margin-bottom: 48px;">
-        <div class="resume-name">Hikmet Bisen</div>
-        <div class="resume-contact-line">
-          <span>Austin, TX</span>
-          <span>·</span>
-          <span>737-351-8670</span>
-          <span>·</span>
-          <a href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
-          <span>·</span>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">linkedin.com/in/hikmetbisen</a>
-          <span>·</span>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">github.com/HikmetBisen</a>
-          <span>·</span>
-          <a href="https://hikmetbisen.github.io/Portfolio" target="_blank" rel="noopener noreferrer">hikmetbisen.github.io/Portfolio</a>
-        </div>
-        <div style="text-align:center; margin-top:10px; font-family: var(--font-brand); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color: var(--text-light);">
-          Mechanical Engineering &nbsp;·&nbsp; AI &amp; Software &nbsp;·&nbsp; Medical Devices
-        </div>
-      </div>
-
-      <!-- Education -->
-      <div class="resume-section">
-        <div class="resume-section-title">Education</div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">Harmony School of Endeavor</span>
-            <span class="resume-entry-date">Expected May 2027</span>
-          </div>
-          <div class="resume-entry-org">Austin, TX &nbsp;·&nbsp; GPA: 4.56 &nbsp;·&nbsp; Concurrent dual enrollment at Austin Community College</div>
-        </div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">Austin Community College — Dual-Credit College Coursework</span>
-            <span class="resume-entry-date">2024 — 2027</span>
-          </div>
-          <div class="resume-entry-org">College-level coursework in mathematics, physics, and engineering completed during high school</div>
-        </div>
-      </div>
-
-      <!-- Technical Skills -->
-      <div class="resume-section">
-        <div class="resume-section-title">Technical Skills</div>
-        <div class="skills-two-col">
-          <div class="skill-item">
-            <span class="skill-item-label">Programming Languages</span>
-            <span class="skill-item-value">Python, JavaScript, Java, C++, MATLAB, HTML/CSS</span>
-          </div>
-          <div class="skill-item">
-            <span class="skill-item-label">Frameworks &amp; Tools</span>
-            <span class="skill-item-value">FastAPI, React, REST APIs, SQLite, Git &amp; GitHub, Supabase (pgvector)</span>
-          </div>
-          <div class="skill-item">
-            <span class="skill-item-label">AI / ML</span>
-            <span class="skill-item-value">Retrieval-Augmented Generation (RAG), LLM integration (Claude, GPT-4o, LiteLLM), Voyage AI embeddings, prompt engineering</span>
-          </div>
-          <div class="skill-item">
-            <span class="skill-item-label">CAD &amp; Hardware</span>
-            <span class="skill-item-value">Fusion 360, AutoCAD, TinkerCAD, Arduino</span>
-          </div>
-          <div class="skill-item">
-            <span class="skill-item-label">Spoken Languages</span>
-            <span class="skill-item-value">Turkish (native), English (fluent)</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Professional & Technical Experience -->
-      <div class="resume-section">
-        <div class="resume-section-title">Professional &amp; Technical Experience</div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">FORGE AI — AI Engineering Analysis Platform</span>
-            <span class="resume-entry-date">2025 — Present</span>
-          </div>
-          <div class="resume-entry-org">Solo Founder &amp; Full-Stack Developer</div>
-          <ul>
-            <li>Designed and built a full-stack AI platform where engineers upload technical drawings and PDFs and receive structured, citation-backed engineering answers; Python/FastAPI backend with a React 18 frontend.</li>
-            <li>Engineered a retrieval-augmented generation (RAG) pipeline: PDF text extraction, Voyage AI embeddings (1,536-dimension vectors), and cosine similarity search over a Supabase pgvector document store.</li>
-            <li>Implemented multi-model LLM routing with LiteLLM, automatically directing queries between Claude and GPT-4o based on content (e.g., routing stress, FEA, and fatigue calculations to the stronger model); exposed 5 rate-limited REST API endpoints.</li>
-            <li>Shipped 6 of 8 planned phases (RAG, API, UI, AI-guided onboarding, structured PDF report export, multi-model routing); designed a tiered SaaS monetization roadmap. Code public on GitHub.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Engineering & Software Projects -->
-      <div class="resume-section">
-        <div class="resume-section-title">Engineering &amp; Software Projects</div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">1983 BMW 3 Series (E30) Restoration</span>
-            <span class="resume-entry-date">June 2024 — Present</span>
-          </div>
-          <div class="resume-entry-org">Independent Automotive Engineering &amp; Restoration Project</div>
-          <ul>
-            <li>Built hands-on expertise in mechanical systems, troubleshooting, and precision-based reassembly.</li>
-            <li>Disassembled the vehicle to evaluate mechanical and structural condition, removed rust, reinforced compromised chassis areas, and systematically repaired and reassembled key components.</li>
-            <li>Launched and led a full ground-up restoration with my brother, conducting technical research, consulting automotive specialists, and sourcing tools and materials.</li>
-          </ul>
-        </div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">Software Development Essentials — Code2College</span>
-            <span class="resume-entry-date">2025 — Present</span>
-          </div>
-          <ul>
-            <li>Completed a 9-week web programming course covering foundational and intermediate Python concepts.</li>
-            <li>Built several technical projects in Python and attended professional development workshops on time management and technical portfolio development.</li>
-          </ul>
-        </div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">Medical Device R&amp;D Intern — Worcester Polytechnic Institute (WPI)</span>
-            <span class="resume-entry-date">June 2025 — Present</span>
-          </div>
-          <div class="resume-entry-org">Wearable Medical Earbud Research Project</div>
-          <ul>
-            <li>Led the design and development of a wearable earbud to track vital signs (blood pressure, heart rate, respiratory patterns, and vocal activity) by targeting a subaural site near the jaw shown in recent research to yield rich physiological data.</li>
-            <li>Collaborated directly with a WPI professor from concept to prototype, using AutoCAD for mechanical design and C++ for embedded programming, prioritizing a lightweight and comfortable form factor.</li>
-            <li>Working toward a patent filing for the final design and a co-authored paper for submission to the MIT Undergraduate Research Technology Conference (URTC).</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Leadership & Community -->
-      <div class="resume-section">
-        <div class="resume-section-title">Leadership &amp; Community Service</div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">Engineering Exploration &amp; Design Intern — Longhorn Engineering Summer Camp (LESC)</span>
-            <span class="resume-entry-date">June — July 2024</span>
-          </div>
-          <ul>
-            <li>Explored mechanical, civil, and electrical engineering through workshops, lectures, and real-world simulations.</li>
-            <li>Led and collaborated on multidisciplinary design challenges; applied civil and mechanical concepts to design and build functional model roller coasters with structural analysis and material selection.</li>
-          </ul>
-        </div>
-
-        <div class="resume-entry">
-          <div class="resume-entry-header">
-            <span class="resume-entry-title">Architecture &amp; Engineering Research Intern — DV3x2 (American Institute of Architects)</span>
-            <span class="resume-entry-date">June 24–29, 2024</span>
-          </div>
-          <ul>
-            <li>Conducted an independent research project analyzing UT Austin's financial structure — revenue sources, profitability, and budget allocation — strengthening financial analysis and data interpretation skills.</li>
-            <li>Gained hands-on exposure to architecture and engineering practice by working with startup firms in real-world design and construction settings.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Awards -->
-      <div class="resume-section">
-        <div class="resume-section-title">Awards &amp; Certifications</div>
-        <div class="awards-grid">
-          <div class="award-item">
-            <div class="award-name">Sensors and Sensor Circuit Design</div>
-            <div class="award-year">University of Colorado Boulder · 2025</div>
-          </div>
-          <div class="award-item">
-            <div class="award-name">Introduction to Engineering Mechanics</div>
-            <div class="award-year">Georgia Tech · 2024</div>
-          </div>
-          <div class="award-item">
-            <div class="award-name">Turkish Calligraphy</div>
-            <div class="award-year">Artistic Achievement · 2023</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom download -->
-      <div style="text-align:center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
-        <p style="font-family: var(--font-brand); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px;">
-          Want a copy?
-        </p>
-        <a href="assets/Hikmet_Bisen_Resume.pdf" download class="btn btn-primary">
-          ↓ &nbsp;Download Resume PDF
-        </a>
-      </div>
-
+      <p class="resume-item-sub">Independent automotive engineering &amp; restoration project</p>
+      <ul>
+        <li>Built hands-on expertise in mechanical systems, troubleshooting, and precision-based reassembly.</li>
+        <li>Disassembled the vehicle to evaluate mechanical and structural condition, removed rust, reinforced compromised chassis areas, and systematically repaired and reassembled key components.</li>
+        <li>Launched and led a full ground-up restoration with my brother, conducting technical research, consulting automotive specialists, and sourcing tools and materials.</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- ── Footer ── -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="../Project/projects.html">Projects</a>
-          <a href="resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Software development essentials — Code2College</span>
+        <span class="resume-item-meta">2025 — Present</span>
+      </div>
+      <ul>
+        <li>Completed a 9-week web programming course covering foundational and intermediate Python concepts.</li>
+        <li>Built several technical projects in Python and attended professional development workshops on time management and technical portfolio development.</li>
+      </ul>
+    </div>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">In-ear multimodal sensing device — Worcester Polytechnic Institute (WPI)</span>
+        <span class="resume-item-meta">June 2025 — Present</span>
+      </div>
+      <p class="resume-item-sub">Medical device R&amp;D intern</p>
+      <ul>
+        <li>Led the design and development of a wearable earbud to track vital signs (heart rate, respiratory patterns, vocal activity, and motion) by targeting a subaural site near the jaw shown in recent research to yield rich physiological data.</li>
+        <li>Collaborated directly with a WPI professor from concept to prototype, using AutoCAD for mechanical design and C++ for embedded programming, prioritizing a lightweight and comfortable form factor.</li>
+        <li>Patent filing in progress for the final design; co-authoring a paper for submission to the MIT Undergraduate Research Technology Conference (URTC).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="resume-section rise" style="--d:7">
+    <span class="resume-section-label">Leadership &amp; community service</span>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Engineering exploration &amp; design intern — LESC, UT Austin</span>
+        <span class="resume-item-meta">June — July 2024</span>
+      </div>
+      <ul>
+        <li>Explored mechanical, civil, and electrical engineering through workshops, lectures, and real-world simulations.</li>
+        <li>Led and collaborated on multidisciplinary design challenges; applied civil and mechanical concepts to design and build functional model roller coasters with structural analysis and material selection.</li>
+      </ul>
+    </div>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Architecture &amp; engineering research intern — DV3x2 (American Institute of Architects)</span>
+        <span class="resume-item-meta">June 24–29, 2024</span>
+      </div>
+      <ul>
+        <li>Conducted an independent research project analyzing UT Austin's financial structure — revenue sources, profitability, and budget allocation — strengthening financial analysis and data interpretation skills.</li>
+        <li>Gained hands-on exposure to architecture and engineering practice by working with startup firms in real-world design and construction settings.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="resume-section rise" style="--d:8">
+    <span class="resume-section-label">Awards &amp; certifications</span>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Sensors and sensor circuit design</span>
+        <span class="resume-item-meta">University of Colorado Boulder · 2025</span>
       </div>
     </div>
-  </footer>
 
-  <script src="../js/main.js"></script>
-  <script>window.MTN_PAGE = { mode: 'vista', base: '../' };</script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="../js/mountain.js"></script>
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Introduction to engineering mechanics</span>
+        <span class="resume-item-meta">Georgia Tech · 2024</span>
+      </div>
+    </div>
+
+    <div class="resume-item">
+      <div class="resume-item-head">
+        <span class="resume-item-title">Turkish calligraphy</span>
+        <span class="resume-item-meta">Artistic achievement · 2023</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="resume-section rise" style="--d:9">
+    <a class="btn-download" href="assets/Hikmet_Bisen_Resume.pdf" download>Download resume PDF</a>
+  </div>
+
+</section>
+</main>
+
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
+
+<script src="../js/studio.js"></script>
 </body>
 </html>

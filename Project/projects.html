@@ -1,258 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070C14">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <title>Projects — Hikmet Bisen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
+  <title>All work — Hikmet Bisen</title>
   <meta name="description" content="Engineering projects by Hikmet Bisen — automotive restoration, medical device R&D, software development, and more.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-  <style>
-    /* Make cards fully clickable links */
-    .project-card-full a.card-link {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-    }
-    .project-card-full {
-      position: relative;
-    }
-    /* Mountain photo backgrounds */
-    .project-card-full .project-bg img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
-    }
-    .project-card-full:hover .project-bg img {
-      transform: scale(1.05);
-    }
-  </style>
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <!-- ── Navbar ── -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="../Resume/resume.html">Resume</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="projects.html">All work</a>
+  <a class="ul mag" href="../Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
 
-  <!-- ── The Expedition: the full interactive mountain ── -->
-  <section class="hero" data-mtn-world>
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
+<main>
+<section class="project-hero">
+  <a class="project-back rise" style="--d:0" href="../index.html">&larr; Home</a>
+  <p class="project-eyebrow rise" style="--d:1">Portfolio</p>
+  <h1 class="project-title rise" style="--d:2">All work</h1>
+  <div class="namebar rise" style="--d:3"></div>
+  <p class="project-metaline mono rise" style="--d:4"><b>Index</b> · 09 projects · 2024 — Present</p>
+</section>
 
-    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
-    <div id="mtn-tooltip" class="mtn-tooltip" aria-hidden="true"></div>
-    <aside id="mtn-panel" class="mtn-panel" aria-live="polite"></aside>
-    <div class="mtn-hint">Each light is a build — hover to preview, click to enter its camp</div>
+<section class="work">
+  <h2 class="mono rise" style="--d:5">Index</h2>
+  <div class="rows">
 
-    <div class="hero-content">
-      <div class="hero-eyebrow">Portfolio &nbsp;·&nbsp; Nine Builds on the Mountain</div>
-      <h1 class="hero-name">The<br><em>Expedition</em></h1>
-      <p class="hero-title">Every project is a camp. The summit is FORGE.</p>
-      <p class="hero-tagline">Automotive · Medical Devices · AI &amp; Software · Structural</p>
-    </div>
-
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Or browse the list</span>
-    </div>
-  </section>
-
-  <!-- ── Projects Grid ── -->
-  <section class="projects-page-grid">
-    <div class="container">
-      <div class="projects-full-grid">
-
-        <!-- 01 BMW E30 — FEATURED -->
-        <div class="project-card-full featured">
-          <div class="project-bg">
-            <img src="../assets/images/mount-whitney.jpg" alt="Mount Whitney — 1983 BMW E30 Restoration">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Mechanical Engineering</div>
-          <div class="project-tooltip">
-            <span class="project-number">01 / 09 &nbsp;·&nbsp; June 2024 — Present</span>
-            <div class="project-name">1983 BMW 3 Series E30 Restoration</div>
-            <p class="project-desc">Full automotive restoration — chassis reinforcement, rust removal, mechanical systems teardown and reassembly. Led all research, resource acquisition, and hands-on precision fabrication alongside my brother.</p>
-          </div>
-          <a href="project-bmw-e30.html" class="card-link" aria-label="View BMW E30 Restoration project"></a>
-        </div>
-
-        <!-- 02 Medical Earbud -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/mount-sinai.jpg" alt="Mount Sinai — Medical Earbud @ WPI">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Medical R&amp;D</div>
-          <div class="project-tooltip">
-            <span class="project-number">02 / 09 &nbsp;·&nbsp; June 2025 — Present</span>
-            <div class="project-name">Medical Earbud @ WPI</div>
-            <p class="project-desc">Wearable medical device tracking vitals — heart rate, blood pressure, respiratory patterns &amp; vocal activity. Designed in AutoCAD, programmed in C++. Patent &amp; MIT URTC publication in progress.</p>
-          </div>
-          <a href="project-medical-earbud.html" class="card-link" aria-label="View Medical Earbud project"></a>
-        </div>
-
-        <!-- 03 Roller Coaster -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/matterhorn.jpg" alt="The Matterhorn — Roller Coaster Design LESC">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Civil / Structural</div>
-          <div class="project-tooltip">
-            <span class="project-number">03 / 09 &nbsp;·&nbsp; June — July 2024</span>
-            <div class="project-name">Roller Coaster Design — LESC</div>
-            <p class="project-desc">Longhorn Engineering Summer Camp — designed and built a functional model roller coaster applying structural analysis, material selection, and mechanical force calculations.</p>
-          </div>
-          <a href="project-roller-coaster.html" class="card-link" aria-label="View Roller Coaster Design project"></a>
-        </div>
-
-        <!-- 04 Code2College -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/kilimanjaro.jpg" alt="Mount Kilimanjaro — Code2College Python Development">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Software</div>
-          <div class="project-tooltip">
-            <span class="project-number">04 / 09 &nbsp;·&nbsp; 2025 — Present</span>
-            <div class="project-name">Code2College — Python Development</div>
-            <p class="project-desc">9-week intensive software development program. Built multiple Python projects using intermediate-to-advanced concepts. Professional development workshops covering time management and industry readiness.</p>
-          </div>
-          <a href="project-code2college.html" class="card-link" aria-label="View Code2College project"></a>
-        </div>
-
-        <!-- 05 DV3x2 AIA -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/mont-blanc.jpg" alt="Mont Blanc — DV3x2 AIA Architecture Research">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Architecture / Research</div>
-          <div class="project-tooltip">
-            <span class="project-number">05 / 09 &nbsp;·&nbsp; June 2024</span>
-            <div class="project-name">DV3x2 | AIA Architecture Research</div>
-            <p class="project-desc">American Institute of Architects research internship — independent financial analysis of UT Austin, exposure to startup architecture &amp; engineering firms, and applied mechanical engineering in real-world construction settings.</p>
-          </div>
-          <a href="project-dv3x2-aia.html" class="card-link" aria-label="View DV3x2 AIA project"></a>
-        </div>
-
-        <!-- 06 Banking System -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/annapurna.jpg" alt="Annapurna — Python Banking System">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Software Engineering</div>
-          <div class="project-tooltip">
-            <span class="project-number">06 / 09 &nbsp;·&nbsp; 2025</span>
-            <div class="project-name">Elite 102 — Python Banking System</div>
-            <p class="project-desc">Terminal-based banking application built with Python &amp; SQLite — account creation, deposits, withdrawals, wire transfers, overdraft protection, interest calculation, and a 40-test unittest suite. Zero external dependencies.</p>
-          </div>
-          <a href="project-banking-system.html" class="card-link" aria-label="View Python Banking System project"></a>
-        </div>
-
-        <!-- 07 FORGE AI -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/everest.jpg" alt="Mount Everest — FORGE AI Engineering Platform">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">AI / Software Engineering</div>
-          <div class="project-tooltip">
-            <span class="project-number">07 / 09 &nbsp;·&nbsp; 2026</span>
-            <div class="project-name">FORGE AI — Engineering Intelligence Platform</div>
-            <p class="project-desc">Multi-modal AI platform for mechanical engineers — split-screen workspace, guided onboarding, proprietary RAG knowledge base built from FEA literature, and structural analysis with shown calculations. Built with React, FastAPI, LiteLLM, and Pinecone.</p>
-          </div>
-          <a href="project-forge-ai.html" class="card-link" aria-label="View FORGE AI project"></a>
-        </div>
-
-        <!-- 08 Obsidian Memory Graph -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/lhotse.jpg" alt="Lhotse — Obsidian AI Memory Graph">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Tools / Personal Systems</div>
-          <div class="project-tooltip">
-            <span class="project-number">08 / 09 &nbsp;·&nbsp; 2026</span>
-            <div class="project-name">Obsidian — AI Memory Graph</div>
-            <p class="project-desc">Personal knowledge graph built in Obsidian that gives Claude persistent memory across every conversation — wiki-linked markdown notes, structured vault schema, and a visual graph of projects, tools, and references.</p>
-          </div>
-          <a href="project-obsidian-graph.html" class="card-link" aria-label="View Obsidian Memory Graph project"></a>
-        </div>
-
-        <!-- 09 Claude Usage Dashboard -->
-        <div class="project-card-full">
-          <div class="project-bg">
-            <img src="../assets/images/denali.jpg" alt="Denali — FORGE Claude Usage Dashboard">
-          </div>
-          <div class="project-overlay"></div>
-          <div class="project-tag">Tools / Observability</div>
-          <div class="project-tooltip">
-            <span class="project-number">09 / 09 &nbsp;·&nbsp; 2026</span>
-            <div class="project-name">FORGE / Claude Usage Dashboard</div>
-            <p class="project-desc">Local analytics dashboard that reads Claude Code's JSONL transcripts and visualizes token usage, cost estimates, and session history. Bug-fixed, retrofit to the Alpine Dawn theme, and extended with true-live auto-rescan that updates every 30s.</p>
-          </div>
-          <a href="project-claude-dashboard.html" class="card-link" aria-label="View Claude Usage Dashboard project"></a>
-        </div>
-
+    <a class="row rise" style="--d:5" href="project-medical-earbud.html">
+      <span class="idx mono" aria-hidden="true">01</span>
+      <div>
+        <h3 class="rowtitle"><span>In-ear multimodal sensing device</span></h3>
+        <p class="rowmeta">Wearable medical device tracking vitals — heart rate, respiratory patterns, vocal activity, and motion. Designed in AutoCAD, programmed in C++. Patent filing in progress; MIT URTC publication in preparation.</p>
+        <span class="rowfact mono">Medical device R&amp;D · June 2025 — Present</span>
       </div>
-    </div>
-  </section>
+    </a>
 
-  <!-- ── CTA ── -->
-  <section style="padding: 80px 0; background: linear-gradient(180deg, #0B1422 0%, #070C14 100%); border-top: 1px solid rgba(255,255,255,0.06); text-align: center;">
-    <div class="container">
-      <span class="section-label" style="text-align:center; display:block;">Ready to Connect?</span>
-      <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; margin-bottom: 32px; color: var(--white);">
-        Let's Build Something <strong style="font-weight:600; color: var(--gold-light);">Together</strong>
-      </h2>
-      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="../index.html#contact" class="btn btn-primary">Get In Touch →</a>
-        <a href="../Resume/resume.html" class="btn btn-outline">View Resume ↗</a>
+    <a class="row rise" style="--d:6" href="project-forge-ai.html">
+      <span class="idx mono" aria-hidden="true">02</span>
+      <div>
+        <h3 class="rowtitle"><span>FORGE — AI engineering analysis platform</span></h3>
+        <p class="rowmeta">Multi-modal AI platform for mechanical engineers — split-screen workspace, guided onboarding, proprietary RAG knowledge base built from FEA literature, and structural analysis with shown calculations. Built with React, FastAPI, LiteLLM, and Supabase pgvector.</p>
+        <span class="rowfact mono">AI / software engineering · 2026</span>
       </div>
-    </div>
-  </section>
+    </a>
 
-  <!-- ── Footer ── -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="projects.html">Projects</a>
-          <a href="../Resume/resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
+    <a class="row rise" style="--d:7" href="project-bmw-e30.html">
+      <span class="idx mono" aria-hidden="true">03</span>
+      <div>
+        <h3 class="rowtitle"><span>1983 BMW E30 restoration</span></h3>
+        <p class="rowmeta">Full automotive restoration — chassis reinforcement, rust removal, mechanical systems teardown and reassembly. Led all research, resource acquisition, and hands-on precision fabrication alongside my brother.</p>
+        <span class="rowfact mono">Mechanical engineering · June 2024 — Present</span>
       </div>
-    </div>
-  </footer>
+    </a>
 
-  <script src="../js/main.js"></script>
-  <script>window.MTN_PAGE = { mode: 'index', base: '../' };</script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="../js/mountain.js"></script>
+    <a class="row rise" style="--d:8" href="project-banking-system.html">
+      <span class="idx mono" aria-hidden="true">04</span>
+      <div>
+        <h3 class="rowtitle"><span>Python banking system (Elite 102)</span></h3>
+        <p class="rowmeta">Terminal-based banking application built with Python and SQLite — account creation, deposits, withdrawals, wire transfers, overdraft protection, interest calculation, and a 40-test unittest suite. Zero external dependencies.</p>
+        <span class="rowfact mono">Software engineering · 2025</span>
+      </div>
+    </a>
+
+    <a class="row rise" style="--d:9" href="project-claude-dashboard.html">
+      <span class="idx mono" aria-hidden="true">05</span>
+      <div>
+        <h3 class="rowtitle"><span>Claude usage dashboard</span></h3>
+        <p class="rowmeta">Local analytics dashboard that reads Claude Code's JSONL transcripts and visualizes token usage, cost estimates, and session history. Bug-fixed, re-themed, and extended with true-live auto-rescan that updates every 30s.</p>
+        <span class="rowfact mono">Tools / observability · 2026</span>
+      </div>
+    </a>
+
+    <a class="row rise" style="--d:9" href="project-obsidian-graph.html">
+      <span class="idx mono" aria-hidden="true">06</span>
+      <div>
+        <h3 class="rowtitle"><span>Obsidian AI memory graph</span></h3>
+        <p class="rowmeta">Personal knowledge graph built in Obsidian that gives Claude persistent memory across every conversation — wiki-linked markdown notes, structured vault schema, and a visual graph of projects, tools, and references.</p>
+        <span class="rowfact mono">Tools / personal systems · 2026</span>
+      </div>
+    </a>
+
+    <a class="row rise" style="--d:9" href="project-roller-coaster.html">
+      <span class="idx mono" aria-hidden="true">07</span>
+      <div>
+        <h3 class="rowtitle"><span>Roller coaster design (LESC)</span></h3>
+        <p class="rowmeta">Designed and built a functional model roller coaster at LESC, applying structural analysis, material selection, and mechanical force calculations.</p>
+        <span class="rowfact mono">Civil / structural · June — July 2024</span>
+      </div>
+    </a>
+
+    <a class="row rise" style="--d:9" href="project-code2college.html">
+      <span class="idx mono" aria-hidden="true">08</span>
+      <div>
+        <h3 class="rowtitle"><span>Code2College — Python development</span></h3>
+        <p class="rowmeta">9-week intensive software development program. Built multiple Python projects using intermediate-to-advanced concepts, alongside professional development workshops covering time management and industry readiness.</p>
+        <span class="rowfact mono">Software · 2025 — Present</span>
+      </div>
+    </a>
+
+    <a class="row rise" style="--d:9" href="project-dv3x2-aia.html">
+      <span class="idx mono" aria-hidden="true">09</span>
+      <div>
+        <h3 class="rowtitle"><span>Architecture research (DV3x2 / AIA)</span></h3>
+        <p class="rowmeta">American Institute of Architects research internship — independent financial analysis of UT Austin, exposure to startup architecture and engineering firms, and applied mechanical engineering in real-world construction settings.</p>
+        <span class="rowfact mono">Architecture / research · June 2024</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
+
+<script src="../js/studio.js"></script>
 </body>
 </html>

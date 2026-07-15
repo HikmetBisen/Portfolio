@@ -1,172 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070C14">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
   <title>Code2College — Hikmet Bisen</title>
+  <meta name="description" content="Code2College — Python development by Hikmet Bisen. A 9-week software development essentials program covering foundational through advanced Python.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="../Resume/resume.html">Resume</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="projects.html">All work</a>
+  <a class="ul mag" href="../Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
+
+<main>
+<section class="project-hero">
+  <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
+  <p class="project-eyebrow rise" style="--d:1">Software development essentials program</p>
+  <h1 class="project-title rise" style="--d:2">Code2College — Python development</h1>
+  <div class="namebar rise" style="--d:3"></div>
+  <p class="project-metaline mono rise" style="--d:4"><b>Software development</b> · 2025 — Present · In progress</p>
+</section>
+
+<section class="project-layout">
+
+  <aside class="project-sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Timeline</span>
+      <div class="sidebar-value">
+        <strong>2025 — Present</strong>
+        9-week intensive program
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Role</span>
+      <div class="sidebar-value">
+        <strong>Student developer</strong>
+        Code2College program
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Category</span>
+      <div class="sidebar-value">
+        <strong>Software development</strong>
+        Python &amp; web programming
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Tools &amp; skills</span>
+      <div class="tool-tags">
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">Web programming</span>
+        <span class="tool-tag">Data structures</span>
+        <span class="tool-tag">Algorithms</span>
+        <span class="tool-tag">VS Code</span>
+        <span class="tool-tag">Portfolio development</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Status</span>
+      <div class="sidebar-value">
+        <strong>In progress</strong>
+        Active program
+      </div>
+    </div>
+  </aside>
+
+  <div class="project-body">
+    <h2>Learning to think in code</h2>
+
+    <p>
+      Code2College is where my programming skills crossed from hobbyist to professional. Over nine weeks, I moved through foundational and advanced Python concepts, built multiple real projects, and gained the professional development skills to present technical work confidently.
+    </p>
+
+    <p>
+      As a mechanical engineer, I already understood systematic problem-solving — breaking a complex system into components, testing each one, and integrating back. Code2College showed me that software engineering follows the same logic. Python became another tool in my engineering toolkit, not a separate discipline.
+    </p>
+
+    <p>
+      Beyond the technical curriculum, the program's professional development workshops covered time management, workplace communication, and portfolio strategy — skills that directly translate to engineering internships and research environments.
+    </p>
+
+    <div class="contributions">
+      <h3>Key contributions</h3>
+      <ul>
+        <li>Completed a 9-week web programming course covering foundational through advanced Python concepts including data structures, functions, file I/O, and object-oriented programming.</li>
+        <li>Developed multiple technical projects in Python applying intermediate concepts — including data manipulation, automation scripts, and logic-based applications.</li>
+        <li>Attended professional development workshops focused on time management, technical communication, and portfolio development for industry readiness.</li>
+        <li>Applied programming skills to engineering contexts — bridging the gap between software development and mechanical systems design.</li>
       </ul>
     </div>
-  </nav>
 
-  <!-- ── Camp hero: arrive at this project's marker on the mountain ── -->
-  <section class="camp-hero" data-mtn-world>
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
-    <div class="camp-fallback" style="background-image:url('../assets/images/kilimanjaro.jpg')"></div>
-    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
+    <p>
+      This program reinforced something I already believed: the best engineers are multilingual. Fluency in C++, Python, and MATLAB makes me a more complete engineer — able to design a part in CAD, simulate it in MATLAB, and build the control system to run it in C++.
+    </p>
 
-    <div class="camp-content">
-      <a href="projects.html" class="camp-back">&larr; All Projects</a>
-      <p class="camp-eyebrow">Camp 04 / 09 <span class="dot">&middot;</span> Kilimanjaro <span class="dot">&middot;</span> 5,895 m</p>
-      <h1 class="camp-title">Code2College —<br>Python Development</h1>
-      <p class="camp-sub">Software Development Essentials Program</p>
-      <div class="camp-meta">
-        <span><b>Software Development</b></span>
-        <span>2025 — Present</span>
-        <span>In Progress</span>
-      </div>
-    </div>
-  </section>
+    <span class="status-badge">In progress — active program</span>
+  </div>
 
-  <!-- ── Content ── -->
-  <section class="project-detail-content">
-    <div class="container">
-      <div class="project-detail-grid">
+</section>
+</main>
 
-        <!-- Sidebar -->
-        <aside class="project-detail-sidebar">
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Timeline</span>
-            <div class="project-sidebar-value">
-              <strong>2025 — Present</strong>
-              9-week intensive program
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Role</span>
-            <div class="project-sidebar-value">
-              <strong>Student Developer</strong>
-              Code2College Program
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Category</span>
-            <div class="project-sidebar-value">
-              <strong>Software Development</strong>
-              Python &amp; web programming
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Tools &amp; Skills</span>
-            <div class="project-tools-list">
-              <span class="project-tool-tag">Python</span>
-              <span class="project-tool-tag">Web Programming</span>
-              <span class="project-tool-tag">Data Structures</span>
-              <span class="project-tool-tag">Algorithms</span>
-              <span class="project-tool-tag">VS Code</span>
-              <span class="project-tool-tag">Portfolio Dev</span>
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Mountain</span>
-            <div class="project-sidebar-value">
-              <strong>Mount Kilimanjaro</strong>
-              5,895m — Africa's highest peak, reached not by technical climbing but by sustained effort and acclimatization. Code2College is the same: a steady, disciplined climb up the mountain of software skills.
-            </div>
-          </div>
-        </aside>
+<nav class="prevnext" aria-label="Project navigation">
+  <div class="prevnext-inner">
+    <a href="project-roller-coaster.html" class="prevnext-item">
+      <span class="prevnext-label">&larr; Previous</span>
+      <span class="prevnext-name">Roller coaster design (LESC)</span>
+    </a>
+    <a href="projects.html" class="prevnext-center">All projects</a>
+    <a href="project-dv3x2-aia.html" class="prevnext-item next">
+      <span class="prevnext-label">Next &rarr;</span>
+      <span class="prevnext-name">DV3x2 | AIA architecture research</span>
+    </a>
+  </div>
+</nav>
 
-        <!-- Body -->
-        <div class="project-detail-body">
-          <h2>Learning to <strong>Think in Code</strong></h2>
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
 
-          <p>
-            Code2College is where my programming skills crossed from hobbyist to professional. Over nine weeks, I moved through foundational and advanced Python concepts, built multiple real projects, and gained the professional development skills to present technical work confidently.
-          </p>
-
-          <p>
-            As a mechanical engineer, I already understood systematic problem-solving — breaking a complex system into components, testing each one, and integrating back. Code2College showed me that software engineering follows the same logic. Python became another tool in my engineering toolkit, not a separate discipline.
-          </p>
-
-          <p>
-            Beyond the technical curriculum, the program's professional development workshops covered time management, workplace communication, and portfolio strategy — skills that directly translate to engineering internships and research environments.
-          </p>
-
-          <div class="project-contributions">
-            <h3>Key Contributions</h3>
-            <ul>
-              <li>Completed a 9-week web programming course covering foundational through advanced Python concepts including data structures, functions, file I/O, and object-oriented programming.</li>
-              <li>Developed multiple technical projects in Python applying intermediate concepts — including data manipulation, automation scripts, and logic-based applications.</li>
-              <li>Attended professional development workshops focused on time management, technical communication, and portfolio development for industry readiness.</li>
-              <li>Applied programming skills to engineering contexts — bridging the gap between software development and mechanical systems design.</li>
-            </ul>
-          </div>
-
-          <p>
-            This program reinforced something I already believed: the best engineers are multilingual. Fluency in C++, Python, and MATLAB makes me a more complete engineer — able to design a part in CAD, simulate it in MATLAB, and build the control system to run it in C++.
-          </p>
-
-          <span class="project-status-badge">In Progress — Active Program</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Project Navigation ── -->
-  <nav class="project-nav-bar">
-    <div class="container">
-      <div class="project-nav-inner">
-        <a href="project-roller-coaster.html" class="project-nav-item">
-          <span class="project-nav-label">← Previous</span>
-          <span class="project-nav-name">Roller Coaster Design — LESC</span>
-        </a>
-        <a href="projects.html" class="project-nav-center">All Projects</a>
-        <a href="project-dv3x2-aia.html" class="project-nav-item next">
-          <span class="project-nav-label">Next →</span>
-          <span class="project-nav-name">DV3x2 | AIA Architecture Research</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="projects.html">Projects</a>
-          <a href="../Resume/resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="../js/main.js"></script>
-  <script>window.MTN_PAGE = { mode: 'camp', focus: 'c2c', base: '../' };</script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="../js/mountain.js"></script>
+<script src="../js/studio.js"></script>
 </body>
 </html>

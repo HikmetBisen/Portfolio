@@ -1,182 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070C14">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
+  <title>Python banking system — Hikmet Bisen</title>
+  <meta name="description" content="Python banking system by Hikmet Bisen — a terminal banking app on stdlib SQLite with overdraft protection, transfers, an audit trail, and 40/40 unit tests across 9 test classes.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <title>Python Banking System — Hikmet Bisen</title>
-  <meta name="description" content="Elite 102 — Python Banking System. A terminal-based banking app with SQLite, overdraft protection, wire transfers, and 40 unit tests.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="night">
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
 
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        Hikmet Bisen
-        <span>Mechanical Engineer</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="../Resume/resume.html">Resume</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="projects.html">All work</a>
+  <a class="ul mag" href="../Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
+
+<main>
+<section class="project-hero">
+  <a class="project-back rise" style="--d:0" href="projects.html">&larr; All projects</a>
+  <p class="project-eyebrow rise" style="--d:1">Elite 102 — final project</p>
+  <h1 class="project-title rise" style="--d:2">Python banking system</h1>
+  <div class="namebar rise" style="--d:3"></div>
+  <p class="project-metaline mono rise" style="--d:4"><b>Software engineering</b> · 2025 · Completed — Elite 102 final project</p>
+</section>
+
+<section class="project-layout">
+
+  <aside class="project-sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Timeline</span>
+      <div class="sidebar-value">
+        <strong>2025</strong>
+        Elite 102 final project
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Role</span>
+      <div class="sidebar-value">
+        <strong>Solo developer</strong>
+        Full design, implementation &amp; testing
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Category</span>
+      <div class="sidebar-value">
+        <strong>Software engineering</strong>
+        Backend systems &amp; database design
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Tools &amp; skills</span>
+      <div class="tool-tags">
+        <span class="tool-tag">Python 3</span>
+        <span class="tool-tag">SQLite</span>
+        <span class="tool-tag">OOP</span>
+        <span class="tool-tag">unittest</span>
+        <span class="tool-tag">Database design</span>
+        <span class="tool-tag">ANSI terminal UI</span>
+        <span class="tool-tag">Error handling</span>
+        <span class="tool-tag">VS Code</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">GitHub</span>
+      <div class="sidebar-value">
+        <a class="ul" href="https://github.com/HikmetBisen/BankingApp" target="_blank" rel="noopener noreferrer">HikmetBisen/BankingApp &rarr;</a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="project-body">
+    <h2>Building a banking system from scratch</h2>
+
+    <p>
+      For the Elite 102 final project, I designed and built a fully functional terminal-based banking application in Python — no external libraries, no shortcuts. The entire system runs on Python's built-in <code>sqlite3</code> module, managing a live relational database of accounts and transactions through a color-coded terminal interface.
+    </p>
+
+    <p>
+      The architecture is split across four modules: <code>database.py</code> handles the SQLite connection and schema initialization, <code>accounts.py</code> contains all business logic (deposits, withdrawals, transfers, interest), <code>ui.py</code> drives the ANSI color menu interface, and <code>main.py</code> ties it all together as the entry point. This separation of concerns mirrors the modular thinking I apply to mechanical systems — each component has a single responsibility and a defined interface.
+    </p>
+
+    <p>
+      The most challenging part was building the wire transfer system with proper atomic transactions — ensuring that if a debit succeeds but a credit fails, the database rolls back to its previous state rather than losing funds. This taught me that in both software and engineering, failure modes matter as much as the happy path.
+    </p>
+
+    <div class="contributions">
+      <h3>Key features</h3>
+      <ul>
+        <li>Account creation and closure with persistent SQLite storage — accounts and full transaction history survive across sessions.</li>
+        <li>Deposits, withdrawals, and wire transfers with overdraft protection and atomic rollback on failure.</li>
+        <li>Interest calculation applied per account, with the transaction logged to history.</li>
+        <li>Color-coded terminal UI using ANSI escape codes — clear, readable, and professional without any external UI library.</li>
+        <li>40/40 passing <code>unittest</code> suite across 9 test classes, covering account creation, balance operations, transfers, edge cases, and error handling — all in under 0.5 seconds.</li>
+        <li>Relational database schema with a normalized <code>accounts</code> and <code>transactions</code> table, using foreign keys and typed transaction records — a full audit trail of every operation.</li>
       </ul>
     </div>
-  </nav>
 
-  <!-- ── Hero ── -->
-  <section class="camp-hero" data-mtn-world>
-    <div class="hero-bg"></div>
-    <div class="hero-stars"></div>
-    <div class="camp-fallback" style="background-image:url('../assets/images/annapurna.jpg')"></div>
-    <canvas id="mtn-canvas" class="mtn-canvas" aria-hidden="true"></canvas>
-    <div class="camp-content">
-      <a href="projects.html" class="camp-back">&larr; All Projects</a>
-      <p class="camp-eyebrow">Camp 06 / 09 <span class="dot">&middot;</span> Annapurna <span class="dot">&middot;</span> 8,091 m</p>
-      <h1 class="camp-title">Elite 102 —<br>Python Banking System</h1>
-      <p class="camp-sub">Terminal Banking Application · Python &amp; SQLite</p>
-      <div class="camp-meta">
-        <span><b>Software Engineering</b></span>
-        <span>2025</span>
-        <span>Completed — Elite 102 Final Project</span>
-      </div>
-    </div>
-  </section>
+    <p>
+      Writing 40 unit tests before shipping wasn't just a course requirement — it changed how I think. Every function I write now, I ask: how would I prove this works? That mindset carries directly into engineering: test your assumptions, document your results, and don't trust a system you haven't verified under stress.
+    </p>
 
-  <!-- ── Content ── -->
-  <section class="project-detail-content">
-    <div class="container">
-      <div class="project-detail-grid">
+    <span class="status-badge">Completed — Elite 102 final project</span>
+  </div>
 
-        <!-- Sidebar -->
-        <aside class="project-detail-sidebar">
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Timeline</span>
-            <div class="project-sidebar-value">
-              <strong>2025</strong>
-              Elite 102 Final Project
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Role</span>
-            <div class="project-sidebar-value">
-              <strong>Solo Developer</strong>
-              Full design, implementation &amp; testing
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Category</span>
-            <div class="project-sidebar-value">
-              <strong>Software Engineering</strong>
-              Backend systems &amp; database design
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Tools &amp; Skills</span>
-            <div class="project-tools-list">
-              <span class="project-tool-tag">Python 3</span>
-              <span class="project-tool-tag">SQLite</span>
-              <span class="project-tool-tag">OOP</span>
-              <span class="project-tool-tag">unittest</span>
-              <span class="project-tool-tag">Database Design</span>
-              <span class="project-tool-tag">ANSI Terminal UI</span>
-              <span class="project-tool-tag">Error Handling</span>
-              <span class="project-tool-tag">VS Code</span>
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">GitHub</span>
-            <div class="project-sidebar-value">
-              <a href="https://github.com/HikmetBisen/BankingApp" target="_blank" rel="noopener noreferrer" style="color: var(--steel-light); text-decoration: underline;">HikmetBisen/BankingApp →</a>
-            </div>
-          </div>
-          <div class="project-sidebar-section">
-            <span class="project-sidebar-label">Mountain</span>
-            <div class="project-sidebar-value">
-              <strong>Annapurna</strong>
-              8,091m — Among the most technically demanding 8,000m peaks. Like Annapurna, this project demanded precision at every step: one wrong transaction, one unhandled edge case, and the whole system fails. The golden sunrise on its ridgeline mirrors the satisfaction of 40 tests passing green.
-            </div>
-          </div>
-        </aside>
+</section>
+</main>
 
-        <!-- Body -->
-        <div class="project-detail-body">
-          <h2>Building a <strong>Banking System from Scratch</strong></h2>
+<nav class="prevnext" aria-label="Project navigation">
+  <div class="prevnext-inner">
+    <a href="project-dv3x2-aia.html" class="prevnext-item">
+      <span class="prevnext-label">&larr; Previous</span>
+      <span class="prevnext-name">DV3x2 — AIA architecture research</span>
+    </a>
+    <a href="projects.html" class="prevnext-center">All projects</a>
+    <a href="project-forge-ai.html" class="prevnext-item next">
+      <span class="prevnext-label">Next &rarr;</span>
+      <span class="prevnext-name">FORGE — AI engineering analysis platform</span>
+    </a>
+  </div>
+</nav>
 
-          <p>
-            For the Elite 102 final project, I designed and built a fully functional terminal-based banking application in Python — no external libraries, no shortcuts. The entire system runs on Python's built-in <code>sqlite3</code> module, managing a live relational database of accounts and transactions through a color-coded terminal interface.
-          </p>
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
 
-          <p>
-            The architecture is split across four modules: <code>database.py</code> handles the SQLite connection and schema initialization, <code>accounts.py</code> contains all business logic (deposits, withdrawals, transfers, interest), <code>ui.py</code> drives the ANSI color menu interface, and <code>main.py</code> ties it all together as the entry point. This separation of concerns mirrors the modular thinking I apply to mechanical systems — each component has a single responsibility and a defined interface.
-          </p>
-
-          <p>
-            The most challenging part was building the wire transfer system with proper atomic transactions — ensuring that if a debit succeeds but a credit fails, the database rolls back to its previous state rather than losing funds. This taught me that in both software and engineering, failure modes matter as much as the happy path.
-          </p>
-
-          <div class="project-contributions">
-            <h3>Key Features</h3>
-            <ul>
-              <li>Account creation and closure with persistent SQLite storage — accounts and full transaction history survive across sessions.</li>
-              <li>Deposits, withdrawals, and wire transfers with overdraft protection and atomic rollback on failure.</li>
-              <li>Interest calculation applied per account, with the transaction logged to history.</li>
-              <li>Color-coded terminal UI using ANSI escape codes — clear, readable, and professional without any external UI library.</li>
-              <li>40-test <code>unittest</code> suite covering account creation, balance operations, transfers, edge cases, and error handling — all passing in under 0.5 seconds.</li>
-              <li>Relational database schema with a normalized <code>accounts</code> and <code>transactions</code> table, using foreign keys and typed transaction records.</li>
-            </ul>
-          </div>
-
-          <p>
-            Writing 40 unit tests before shipping wasn't just a course requirement — it changed how I think. Every function I write now, I ask: how would I prove this works? That mindset carries directly into engineering: test your assumptions, document your results, and don't trust a system you haven't verified under stress.
-          </p>
-
-          <span class="project-status-badge">Completed — Elite 102 Final Project</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Project Navigation ── -->
-  <nav class="project-nav-bar">
-    <div class="container">
-      <div class="project-nav-inner">
-        <a href="project-dv3x2-aia.html" class="project-nav-item">
-          <span class="project-nav-label">← Previous</span>
-          <span class="project-nav-name">DV3x2 | AIA Architecture Research</span>
-        </a>
-        <a href="projects.html" class="project-nav-center">All Projects</a>
-        <a href="project-forge-ai.html" class="project-nav-item next">
-          <span class="project-nav-label">Next →</span>
-          <span class="project-nav-name">FORGE AI — Engineering Intelligence Platform</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Hikmet Bisen</div>
-        <div class="footer-peak">K2 — 8,611m</div>
-        <div class="footer-links">
-          <a href="projects.html">Projects</a>
-          <a href="../Resume/resume.html">Resume</a>
-          <a href="https://www.linkedin.com/in/hikmetbisen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/HikmetBisen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="../js/main.js"></script>
-  <script>window.MTN_PAGE = { mode: 'camp', focus: 'banking', base: '../' };</script>
-  <script type="importmap">
-  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
-  </script>
-  <script type="module" src="../js/mountain.js"></script>
+<script src="../js/studio.js"></script>
 </body>
 </html>
