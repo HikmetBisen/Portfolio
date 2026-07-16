@@ -453,3 +453,15 @@ html.mapready .summitlbl{opacity:1}
   linear-gradient(90deg,var(--bg) 0%,rgba(246,247,245,.82) 30%,rgba(246,247,245,.25) 70%),
   linear-gradient(0deg,var(--bg) 0%,rgba(246,247,245,0) 45%)}
 .resume-page .placardwrap{display:none}
+
+/* ── about section (one-scroll index) ── */
+.about{max-width:1040px;margin:0 auto;padding:96px var(--gx);scroll-margin-top:48px}
+.about h2{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sec);font-family:var(--mono);margin-bottom:40px}
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:start}
+.about-photo{width:100%;display:block;border:1px solid var(--hair);filter:saturate(.9) contrast(1.02)}
+.about-body p{max-width:56ch;margin-bottom:16px}
+.about-stats{display:flex;gap:40px;margin-top:32px}
+.about-stats .stat-num{display:block;font-size:30px;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.about-stats .stat-label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--sec);margin-top:4px}
+.resume-page{scroll-margin-top:48px}
+@media (max-width:700px){.about-grid{grid-template-columns:1fr;gap:32px}.about-photo{max-width:320px}}
