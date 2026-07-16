@@ -102,12 +102,49 @@
     </p>
 
     <p>
-      The design decision that matters: every score is measured against my own 14-day rolling baseline, not a population average. Recovery (0–100) maps the night's resting heart rate against that baseline as a logistic z-score. Strain (0–21) weights the day's heart-rate minutes across five effort zones. Sleep duration and quality are estimated from the overnight heart-rate dip. A number only means something compared to <em>you</em>.
+      The design decision that matters: every score is measured against my own 14-day rolling baseline, not a population average. Recovery (0–100) maps the night's resting heart rate — the 5th percentile of the overnight window — against that baseline as a logistic z-score. Strain (0–21) weights the day's heart-rate minutes across five effort zones; a day at 14 or above is classified hard. Sleep duration and quality are estimated from the overnight heart-rate dip. A number only means something compared to <em>you</em>.
     </p>
 
     <p>
       It runs like real infrastructure, not a script: two launchd services on a Mac hub — a WSGI server for the dashboard, and a 15-minute cycle that syncs the ring, recomputes scores, exports a daily report to my Obsidian vault, and rotates database backups. The dashboard reaches my phone over Tailscale; nothing is ever exposed to the public internet.
     </p>
+
+    <h3 style="margin:40px 0 12px">The dashboard</h3>
+    <p>
+      Each day gets an end-of-day report with a plain-language verdict — "well recovered, green light to push" or "run down — favour rest" — and a one-tap export to my Obsidian vault. Metrics the hardware can't measure yet don't show fake numbers; the card says what's missing and why.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0 0">
+      <figure style="margin:0">
+        <a href="../assets/images/linkring/dashboard.png">
+          <img src="../assets/images/linkring/dashboard.png"
+            alt="LinkRing dashboard — recovery ring at 32%, strain 13.5 of 21, resting heart rate 51 bpm, and a 30-day recovery versus resting-HR trend chart"
+            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy">
+        </a>
+        <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+          Recovery ring, strain, and the trend — HRV, SpO₂, and body temperature honestly say "needs real-time PPG capture"
+        </figcaption>
+      </figure>
+      <figure style="margin:0">
+        <a href="../assets/images/linkring/reports.png">
+          <img src="../assets/images/linkring/reports.png"
+            alt="LinkRing report view — per-day strain, steps, active minutes, and calories with expandable end-of-day verdicts and send-to-Obsidian buttons"
+            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy">
+        </a>
+        <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+          End-of-day reports — day classification, plain-language verdict, one-tap export to the Obsidian vault
+        </figcaption>
+      </figure>
+      <figure style="margin:0">
+        <a href="../assets/images/linkring/sleep.png">
+          <img src="../assets/images/linkring/sleep.png"
+            alt="LinkRing sleep view — last night 10 hours 55 minutes at quality 93 of 100, weekly averages, and a month of hours-slept and quality bars"
+            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy">
+        </a>
+        <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+          Sleep from the overnight HR dip — the UI's own caption admits the estimation method
+        </figcaption>
+      </figure>
+    </div>
 
     <div class="contributions">
       <h3>Key decisions</h3>
