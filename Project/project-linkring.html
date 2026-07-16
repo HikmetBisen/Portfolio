@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F7F5">
+  <title>LinkRing — self-hosted health tracker — Hikmet Bisen</title>
+  <meta name="description" content="LinkRing — a self-hosted WHOOP-style health tracker on a $30 smart ring. Recovery, strain, and sleep scored against a personal rolling baseline. Python, Flask, SQLite; runs as a production service on a home hub.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div id="dot" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true">
+  <div class="ruler-ticks"></div>
+  <div class="ruler-fill"></div>
+</div>
+
+<header class="topbar">
+  <a class="ul mag" href="../index.html#work">Work</a>
+  <a class="ul mag" href="../index.html#about">About</a>
+  <a class="ul mag" href="projects.html">All work</a>
+  <a class="ul mag" href="../Resume/resume.html">Resume</a>
+  <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
+  <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
+  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+</header>
+
+<main>
+<section class="project-hero">
+  <div class="survey" data-survey="../assets/topo/fuji.json" role="img"
+    aria-label="Topographic contour map of Mount Fuji, generated from ASTER GDEM elevation data. Contour interval 150 meters.">
+    <canvas aria-hidden="true"></canvas>
+    <span class="summitlbl mono" aria-hidden="true"></span>
+  </div>
+  <div class="placardwrap" aria-hidden="true">
+    <p class="placard mono" id="placard">Mount Fuji · 35.3606° N, 138.7274° E · contours 150 m · ASTER GDEM</p>
+  </div>
+  <a href="projects.html" class="project-back mono rise" style="--d:0">&larr; All projects</a>
+  <p class="project-eyebrow mono rise" style="--d:1">Self-hosted · solo build</p>
+  <h1 class="project-title rise" style="--d:2">LinkRing —<br>self-hosted health tracker</h1>
+  <div class="namebar rise" style="--d:3"></div>
+  <p class="project-metaline mono rise" style="--d:4"><b>Health technology</b> · June 2026 — Present · v1 in production</p>
+</section>
+
+<section class="project-layout">
+  <aside class="project-sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Timeline</span>
+      <div class="sidebar-value">
+        <strong>June 2026 — Present</strong>
+        Running as a service on a home hub
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Role</span>
+      <div class="sidebar-value">
+        <strong>Designer &amp; builder</strong>
+        Solo — hardware to dashboard
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Category</span>
+      <div class="sidebar-value">
+        <strong>Health technology</strong>
+        Self-hosted infrastructure
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Tools &amp; stack</span>
+      <div class="tool-tags">
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">Flask</span>
+        <span class="tool-tag">SQLite</span>
+        <span class="tool-tag">NumPy</span>
+        <span class="tool-tag">SciPy</span>
+        <span class="tool-tag">Chart.js</span>
+        <span class="tool-tag">launchd</span>
+        <span class="tool-tag">Tailscale</span>
+        <span class="tool-tag">Colmi R02 ring</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Status</span>
+      <div class="sidebar-value">
+        <strong>v1 in production</strong>
+        Live ring pairing is the current step
+      </div>
+    </div>
+  </aside>
+
+  <div class="project-body">
+    <h2>A WHOOP without the subscription</h2>
+
+    <p>
+      WHOOP charges a monthly subscription for recovery scores computed on someone else's servers. LinkRing computes them from a $30 smart ring, on hardware I control, and the data never leaves the house.
+    </p>
+
+    <p>
+      The design decision that matters: every score is measured against my own 14-day rolling baseline, not a population average. Recovery (0–100) maps the night's resting heart rate against that baseline as a logistic z-score. Strain (0–21) weights the day's heart-rate minutes across five effort zones. Sleep duration and quality are estimated from the overnight heart-rate dip. A number only means something compared to <em>you</em>.
+    </p>
+
+    <p>
+      It runs like real infrastructure, not a script: two launchd services on a Mac hub — a WSGI server for the dashboard, and a 15-minute cycle that syncs the ring, recomputes scores, exports a daily report to my Obsidian vault, and rotates database backups. The dashboard reaches my phone over Tailscale; nothing is ever exposed to the public internet.
+    </p>
+
+    <div class="contributions">
+      <h3>Key decisions</h3>
+      <ul>
+        <li>Personal rolling baseline over absolute thresholds — the scoring engine (~200 lines of NumPy/SciPy) ships with an assert-based self-check suite that runs before every deploy.</li>
+        <li>Production discipline on a hobby project: WSGI server, launchd auto-restart, rotating logs, daily database backups with 14-generation retention.</li>
+        <li>Reused the ring's existing open-source client instead of writing custom Bluetooth code — build the validation layer, not the plumbing.</li>
+        <li>Obsidian vault integration: daily scores sync into my knowledge base every 15 minutes as readable notes.</li>
+        <li>No faked metrics. HRV and SpO₂ math is written and self-tested but gated off until real-time pulse capture exists to feed it. No smart ring measures blood pressure, so LinkRing will never display one. v1 runs end-to-end today; first live ring pairing is the current step.</li>
+      </ul>
+    </div>
+
+    <p>
+      The whole system is about 625 lines of Python across five files, two SQLite databases, and zero cloud dependencies. It replaces a $360-a-year subscription with a $30 ring and code I can read.
+    </p>
+
+    <span class="status-badge">v1 in production — ring pairing next</span>
+  </div>
+</section>
+
+<nav class="prevnext" aria-label="Project navigation">
+  <div class="prevnext-inner">
+    <a href="project-forge-ai.html" class="prevnext-item">
+      <span class="prevnext-label">&larr; Previous</span>
+      <span class="prevnext-name">FORGE — AI engineering analysis platform</span>
+    </a>
+    <a href="projects.html" class="prevnext-center">All projects</a>
+    <a href="project-obsidian-graph.html" class="prevnext-item next">
+      <span class="prevnext-label">Next &rarr;</span>
+      <span class="prevnext-name">Obsidian — AI memory graph</span>
+    </a>
+  </div>
+</nav>
+</main>
+
+<footer>
+  <div class="footin">
+    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+  </div>
+</footer>
+
+<script src="../js/studio.js"></script>
+<script src="../js/survey.js"></script>
+</body>
+</html>

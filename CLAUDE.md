@@ -21,7 +21,7 @@ Signature: top measurement-ruler strip whose gold fill grows with scroll; chrome
 ## Structure
 - `index.html` — hero (3D) + selected work (3 flagships + 6-row ledger) + footer
 - `Project/projects.html` — All work index (09 rows)
-- `Project/project-*.html` — 9 case studies; shared skeleton: ruler, topbar, project-hero, sidebar (timeline/role/category/tools/status), body + contributions, prevnext, footer
+- `Project/project-*.html` — 10 case studies (LinkRing/Fuji added 2026-07-16; flagships: earbud, LinkRing, E30 — FORGE leads the ledger); shared skeleton: ruler, topbar, project-hero, sidebar (timeline/role/category/tools/status), body + contributions, prevnext, footer
 - `Resume/resume.html` + `Resume/assets/Hikmet_Bisen_Resume.pdf`
 - `css/style.css` (whole system) · `js/studio.js` (ruler, cursor, magnetic, reveal — classic script, every page)
 
