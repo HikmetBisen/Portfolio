@@ -9,7 +9,7 @@
 - **Phone:** 737-351-8670
 
 ## Project Overview
-Personal portfolio website for Hikmet Bisen, a Mechanical Engineer in training (graduating 2027).
+Personal portfolio website for Hikmet Bisen, a machine learning + mechanical engineering student (graduating 2027).
 
 ## Tech Stack
 - Pure HTML / CSS / JavaScript (no frameworks)
