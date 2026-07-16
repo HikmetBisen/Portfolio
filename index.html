@@ -46,7 +46,7 @@
   <a class="ul mag" href="Project/projects.html">All work</a>
   <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
   <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
-  <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
+  <a class="ul mag" href="#contact">Contact</a>
 </header>
 
 <main>
@@ -294,12 +294,34 @@
 
 <footer id="contact">
   <div class="footin">
-    <a class="ul mag" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
-    <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
-    <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
-    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework.</p>
+    <h2 class="contact-head">Contact</h2>
+    <p class="contact-line">Austin, TX — open to engineering internships, research, and build conversations. Email gets answered.</p>
+    <p>
+      <a class="contact-mail" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
+      <button class="contact-copy mono" id="copymail" type="button" aria-label="Copy email address">copy</button>
+    </p>
+    <div class="contact-row">
+      <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
+      <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">linkedin.com/in/hikmetbisen</a>
+      <a class="ul mag" href="Resume/assets/Hikmet_Bisen_Resume.pdf">resume.pdf</a>
+    </div>
+    <p class="footnote">Designed and built by hand — vanilla HTML/CSS/JS, no framework. Terrain: ASTER GDEM.</p>
   </div>
 </footer>
+
+<script>
+/* ponytail: clipboard copy with visible confirmation, nothing else */
+(function(){
+  var b=document.getElementById('copymail');
+  if(!b||!navigator.clipboard)return;
+  b.addEventListener('click',function(){
+    navigator.clipboard.writeText('hikmetbisen@gmail.com').then(function(){
+      b.textContent='copied';
+      setTimeout(function(){b.textContent='copy';},1600);
+    }).catch(function(){});
+  });
+})();
+</script>
 
 <script src="js/studio.js"></script>
 <script src="js/survey.js"></script>

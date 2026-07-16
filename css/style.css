@@ -465,3 +465,19 @@ html.mapready .summitlbl{opacity:1}
 .about-stats .stat-label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--sec);margin-top:4px}
 .resume-page{scroll-margin-top:48px}
 @media (max-width:700px){.about-grid{grid-template-columns:1fr;gap:32px}.about-photo{max-width:320px}}
+
+/* ── contact section (index footer, expanded) ── */
+footer#contact{padding:112px var(--gx) 64px;scroll-margin-top:48px}
+.contact-head{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sec);font-family:var(--mono);margin-bottom:28px}
+.contact-line{max-width:44ch;margin-bottom:36px;color:var(--sec)}
+.contact-mail{display:inline-block;font-size:clamp(24px,4.2vw,52px);font-weight:600;letter-spacing:-.02em;color:var(--ink);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .25s cubic-bezier(0.16,1,0.3,1)}
+.contact-mail:hover{border-bottom-color:var(--gold)}
+.contact-copy{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--sec);background:none;border:1px solid var(--hair);padding:6px 12px;margin-left:16px;cursor:pointer;vertical-align:super;transition:color .2s,border-color .2s}
+.contact-copy:hover{color:var(--gold);border-color:var(--gold)}
+.contact-row{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap}
+
+/* index contact footer: stacked layout overrides the link-row base */
+footer#contact .footin{display:block}
+footer#contact .contact-mail{font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:clamp(24px,4.2vw,52px)}
+footer#contact .contact-row a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px}
+footer#contact .footnote{margin-top:48px}
