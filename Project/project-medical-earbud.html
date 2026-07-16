@@ -108,6 +108,43 @@
       The mechanical design, developed in AutoCAD, prioritizes ergonomics and comfort: the housing must be lightweight, anatomically contoured, and robust enough for continuous wear. The embedded firmware, written in C++, processes sensor data in real time and manages power efficiency for extended battery life.
     </p>
 
+    <h3 style="margin:40px 0 12px">Inside the platform</h3>
+    <p>
+      LYNX pairs an in-ear and an out-ear microphone with a 9-DOF IMU in a 3D-printed shell — all off-the-shelf parts, open-source firmware, sub-millisecond synchronization between the audio and motion streams. The out-ear microphone exists to be thrown away: it captures the same ambient noise as the in-ear channel, and an adaptive NLMS filter subtracts it, leaving the physiological signal — breathing, speech, chewing — clean enough for downstream analysis.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0 0">
+      <figure style="margin:0">
+        <a href="../assets/images/earbud/system-design.png">
+          <img src="../assets/images/earbud/system-design.png"
+            alt="LYNX system design — circuit diagram of the dual microphones and IMU wired to a Raspberry Pi, and an exploded view of the 3D-printed earbud shell showing mic and IMU placement"
+            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy">
+        </a>
+        <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+          System design — dual mics + 9-DOF IMU in a 3D-printed shell, no custom PCB required
+        </figcaption>
+      </figure>
+      <figure style="margin:0">
+        <a href="../assets/images/earbud/nlms-filter.png">
+          <img src="../assets/images/earbud/nlms-filter.png"
+            alt="Diagram of signal enhancement via reference microphone — outer mic noise and raw in-ear signal combined through an adaptive NLMS filter into a clean filtered signal"
+            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy">
+        </a>
+        <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+          The signal path — the outer mic is a reference channel; NLMS subtracts the shared noise
+        </figcaption>
+      </figure>
+      <figure style="margin:0">
+        <a href="../assets/images/earbud/test-results.png">
+          <img src="../assets/images/earbud/test-results.png"
+            alt="Recording and motion test results — stereo microphone RMS aligned with accelerometer, gyroscope, and magnetometer traces during head tilts, plus raw versus NLMS-filtered signal plots"
+            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy">
+        </a>
+        <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
+          Test results — IMU head-tilt events align with in-ear audio peaks across a 10-minute session
+        </figcaption>
+      </figure>
+    </div>
+
     <div class="contributions">
       <h3>Key contributions</h3>
       <ul>
