@@ -25,6 +25,10 @@ Signature: top measurement-ruler strip whose gold fill grows with scroll; chrome
 - `Resume/resume.html` + `Resume/assets/Hikmet_Bisen_Resume.pdf`
 - `css/style.css` (whole system) · `js/studio.js` (ruler, cursor, magnetic, reveal — classic script, every page)
 
+## Maintenance traps
+- Resume content lives in TWO places: index.html `#resume` and Resume/resume.html — edit both.
+- Topo heroes: `js/survey.js` + `assets/topo/*.json` (regenerate via the DEM pipeline, do not hand-edit).
+
 ## Content rules (enforced — do not regress)
 - Deliverable-first titles. NO mountain/peak/K2/camp references anywhere.
 - Sensing device: heart rate, respiration, voice, motion. NEVER "blood pressure".
