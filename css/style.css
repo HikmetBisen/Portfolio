@@ -16,6 +16,7 @@
   --sec:#6B7076;
   --hair:rgba(16,18,20,.10);
   --gold:#B8905F;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
   --gx:clamp(24px,6vw,88px);
   --ease:cubic-bezier(.16,1,.3,1);
 }
@@ -35,8 +36,23 @@ body{
 .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+/* Focus ring: ink carries the contrast (gold on porcelain is only 2.7:1,
+   below the 3:1 WCAG 2.4.11 floor); the gold halo keeps it on-brand. */
+:focus-visible{
+  outline:2px solid var(--ink);outline-offset:3px;border-radius:2px;
+  box-shadow:0 0 0 5px rgba(184,144,95,.34);
+}
 ::selection{background:rgba(184,144,95,.28)}
+
+/* skip link — first tab stop on every page */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--ink);color:var(--bg);
+  font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  padding:13px 18px;border-radius:2px;
+}
+.skip:focus{left:12px;top:12px}
+main:focus{outline:none}
 
 /* ---------- grain — paper tooth ---------- */
 .grain{
@@ -65,7 +81,10 @@ img{max-width:100%;height:auto;display:block}
   transform:scaleX(0);transform-origin:0 0;
 }
 
-/* ---------- cursor dot (fine pointers only) ---------- */
+/* ---------- cursor dot (fine pointers only) ----------
+   The dot is ADDITIVE — the native cursor stays visible. Hiding it would
+   override OS pointer accessibility settings (large / high-contrast cursor)
+   and leaves no pointer at all if the script fails. */
 #dot{
   position:fixed;left:0;top:0;width:6px;height:6px;border-radius:50%;
   background:var(--ink);z-index:100;pointer-events:none;
@@ -75,7 +94,7 @@ img{max-width:100%;height:auto;display:block}
 }
 html.fine #dot{display:block}
 #dot.au{background:var(--gold)}
-html.fine body,html.fine a,html.fine button{cursor:none}
+@media (prefers-reduced-motion:reduce){#dot{display:none !important}}
 
 /* ---------- load-in reveal (hidden states exist ONLY under .js) ---------- */
 .js .rise{opacity:0;transform:translateY(12px)}
@@ -88,18 +107,33 @@ html.fine body,html.fine a,html.fine button{cursor:none}
   .js.ready .rise{transition:none}
 }
 
-/* ---------- topbar nav ---------- */
+/* ---------- topbar nav ----------
+   Fixed, not absolute: the index is one scroll, so the section anchors have
+   to stay reachable past the hero. Transparent at rest, porcelain wash once
+   the page moves so type never runs underneath it. */
 .topbar{
-  position:absolute;top:0;left:0;right:0;z-index:3;
+  position:fixed;top:0;left:0;right:0;z-index:40;
   display:flex;justify-content:flex-end;flex-wrap:wrap;gap:16px 32px;
   padding:32px var(--gx);
+  transition:padding .3s var(--ease),background-color .3s var(--ease),
+             box-shadow .3s var(--ease);
+}
+html.scrolled .topbar{
+  padding-top:15px;padding-bottom:15px;
+  background:rgba(246,247,245,.88);
+  -webkit-backdrop-filter:saturate(1.5) blur(10px);
+  backdrop-filter:saturate(1.5) blur(10px);
+  box-shadow:0 1px 0 var(--hair);
 }
 .topbar a{
-  font:500 11px/1 "JetBrains Mono",ui-monospace,monospace;
+  font:500 11px/1 var(--mono);
   letter-spacing:.14em;text-transform:uppercase;
   display:inline-block;
   transition:transform .22s var(--ease);
 }
+/* scroll-spy: the section you're in keeps its gold underline drawn */
+.topbar a[aria-current]{background-size:100% 1px}
+@media (prefers-reduced-motion:reduce){.topbar{transition:none}}
 
 /* animated gold underline-draw */
 .ul{
@@ -112,18 +146,6 @@ html.fine body,html.fine a,html.fine button{cursor:none}
 
 /* ---------- index hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh}
-#stage{position:absolute;inset:0;z-index:0;overflow:hidden}
-#stage canvas{position:absolute;inset:0;display:block}
-#objshadow{
-  display:none;position:absolute;left:50%;top:73%;
-  width:min(50vw,400px);height:72px;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(16,18,20,.16),rgba(16,18,20,0));
-  transform:translateX(-50%);filter:blur(4px);
-}
-html.webgl #objshadow{display:block}
-.fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-html.webgl .fallback{display:none}
-.fallback svg{width:min(52vw,300px);height:auto}
 
 .intro{position:relative;z-index:2;padding:calc(14vh + 24px) var(--gx) 0;pointer-events:none}
 .intro h1{
@@ -142,6 +164,22 @@ html.webgl .fallback{display:none}
   font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
   color:var(--sec);margin-bottom:40px;
 }
+/* ---------- discipline filters ----------
+   Rendered hidden without JS so nobody meets a button that does nothing. */
+.filters{display:none;flex-wrap:wrap;gap:8px;align-items:center;margin:-18px 0 40px}
+.js .filters{display:flex}
+.filter-btn{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--sec);background:none;border:1px solid var(--hair);border-radius:2px;
+  padding:8px 12px;cursor:pointer;
+  transition:color .2s var(--ease),border-color .2s var(--ease),background-color .2s var(--ease);
+}
+.filter-btn:hover{color:var(--ink);border-color:var(--ink)}
+.filter-btn[aria-pressed="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.filter-count{font-family:var(--mono);font-size:11px;color:var(--sec);margin-left:8px}
+[hidden]{display:none !important}
+@media (prefers-reduced-motion:reduce){.filter-btn{transition:none}}
+
 .rows{border-bottom:1px solid var(--hair)}
 .row{
   display:grid;grid-template-columns:72px 1fr;
@@ -266,7 +304,8 @@ footer{border-top:1px solid var(--hair)}
   padding-bottom:2px;font-weight:500;
   transition:background-size .24s var(--ease),color .2s ease;
 }
-.project-body a:hover,.project-body a:focus-visible{background-size:100% 1px;color:var(--gold)}
+/* underline draws; text stays ink — gold text is 2.7:1 and fails AA */
+.project-body a:hover,.project-body a:focus-visible{background-size:100% 1px}
 
 /* key contributions */
 .contributions{
@@ -335,9 +374,10 @@ footer{border-top:1px solid var(--hair)}
   gap:24px;flex-wrap:wrap;
   padding-bottom:32px;border-bottom:1px solid var(--hair);
 }
-.resume-head h1{
+.resume-head h1,.resume-head h2{
   font-size:clamp(32px,5vw,52px);font-weight:600;
   letter-spacing:-.02em;line-height:1.05;
+  text-transform:none;color:var(--ink);font-family:inherit;
 }
 .resume-contact{
   flex-basis:100%;
@@ -385,12 +425,27 @@ footer{border-top:1px solid var(--hair)}
   .project-layout{grid-template-columns:1fr;gap:48px}
 }
 @media (max-width:560px){
-  .topbar{gap:12px 20px;padding:24px var(--gx)}
+  /* one swipeable row instead of three wrapped ones eating the viewport */
+  .topbar{
+    flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;
+    justify-content:flex-start;gap:22px;padding:18px var(--gx);
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .topbar::-webkit-scrollbar{display:none}
+  .topbar a{flex:0 0 auto}
+  /* soft right edge so it reads as "swipe for more" rather than a clipped row
+     — Contact is the last item and would otherwise sit off-screen unhinted */
+  .topbar{
+    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);
+  }
+  html.scrolled .topbar{padding-top:14px;padding-bottom:14px}
   .intro{padding-top:calc(12vh + 24px)}
   .work{padding-top:96px}
   .row{grid-template-columns:44px 1fr;padding:24px 0}
-  .placard{font-size:10px}
-  #objshadow{top:70%;height:56px}
+  /* nowrap on a 488px readout overflows a 390px phone — let it wrap instead */
+  .placard{font-size:10px;white-space:normal;text-align:center;
+           max-width:88vw;line-height:1.6}
   .project-hero{padding-top:112px}
   .project-metaline{font-size:11px}
   .prevnext-inner{flex-wrap:wrap;gap:20px}
@@ -409,7 +464,7 @@ footer{border-top:1px solid var(--hair)}
    Print
    ============================================================ */
 @media print{
-  .grain,#dot,.ruler,.topbar,#stage,#objshadow,.placardwrap,
+  .grain,#dot,.ruler,.topbar,.skip,.placardwrap,
   .prevnext,.btn-download{display:none !important}
   body{background:#fff;color:#000;font-size:11pt}
   .js .rise{opacity:1 !important;transform:none !important;transition:none !important}
@@ -422,8 +477,15 @@ footer{border-top:1px solid var(--hair)}
   footer{display:none}
 }
 
+/* screen-reader-only (the survey's live elevation readout) */
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+    clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
 /* ── survey: full-bleed topographic hero (real DEM contours) ── */
 .survey{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+/* focusable so the probe is reachable by keyboard; the ring sits inside
+   because the map is full-bleed and an outset ring would clip off-screen */
+.survey:focus-visible{outline:2px solid var(--ink);outline-offset:-4px;box-shadow:none}
 .survey canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .survey::after{content:"";position:absolute;inset:0;background:
   linear-gradient(90deg,var(--bg) 0%,rgba(246,247,245,.86) 22%,rgba(246,247,245,0) 56%),
@@ -434,7 +496,6 @@ footer{border-top:1px solid var(--hair)}
 .summitlbl::before{content:"";position:absolute;left:-7px;top:50%;width:5px;height:5px;
   border-radius:50%;background:var(--gold);transform:translateY(-50%)}
 html.mapready .summitlbl{opacity:1}
-.hero{cursor:none}
 .hero .intro,.hero .placardwrap{z-index:2}
 .hero .placardwrap{left:0;right:0;transform:none;display:flex;justify-content:center}
 .project-hero{position:relative;overflow:hidden}
@@ -473,7 +534,7 @@ footer#contact{padding:112px var(--gx) 64px;scroll-margin-top:48px}
 .contact-mail{display:inline-block;font-size:clamp(24px,4.2vw,52px);font-weight:600;letter-spacing:-.02em;color:var(--ink);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .25s cubic-bezier(0.16,1,0.3,1)}
 .contact-mail:hover{border-bottom-color:var(--gold)}
 .contact-copy{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--sec);background:none;border:1px solid var(--hair);padding:6px 12px;margin-left:16px;cursor:pointer;vertical-align:super;transition:color .2s,border-color .2s}
-.contact-copy:hover{color:var(--gold);border-color:var(--gold)}
+.contact-copy:hover{color:var(--ink);border-color:var(--ink)}
 .contact-row{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap}
 
 /* index contact footer: stacked layout overrides the link-row base */

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 <div id="dot" aria-hidden="true"></div>
 <div class="ruler" aria-hidden="true">
@@ -21,7 +22,7 @@
   <div class="ruler-fill"></div>
 </div>
 
-<header class="topbar">
+<nav class="topbar" aria-label="Primary">
   <a class="ul mag" href="../index.html#work">Work</a>
   <a class="ul mag" href="../index.html#about">About</a>
   <a class="ul mag" href="projects.html">All work</a>
@@ -29,12 +30,12 @@
   <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
   <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
   <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
-</header>
+</nav>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="project-hero">
-  <div class="survey" data-survey="../assets/topo/fuji.json" role="img"
-    aria-label="Topographic contour map of Mount Fuji, generated from ASTER GDEM elevation data. Contour interval 150 meters.">
+  <div class="survey" tabindex="0" data-survey="../assets/topo/fuji.json" role="img"
+    aria-label="Topographic contour map of Mount Fuji, generated from ASTER GDEM elevation data. Contour interval 150 meters. Use the arrow keys, or tap, to probe elevation.">
     <canvas aria-hidden="true"></canvas>
     <span class="summitlbl mono" aria-hidden="true"></span>
   </div>
@@ -118,7 +119,7 @@
         <a href="../assets/images/linkring/dashboard.png">
           <img src="../assets/images/linkring/dashboard.png"
             alt="LinkRing dashboard — recovery ring at 32%, strain 13.5 of 21, resting heart rate 51 bpm, and a 30-day recovery versus resting-HR trend chart"
-            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy">
+            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy" width="758" height="1296" decoding="async">
         </a>
         <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
           Recovery ring, strain, and the trend — HRV, SpO₂, and body temperature honestly say "needs real-time PPG capture"
@@ -128,7 +129,7 @@
         <a href="../assets/images/linkring/reports.png">
           <img src="../assets/images/linkring/reports.png"
             alt="LinkRing report view — per-day strain, steps, active minutes, and calories with expandable end-of-day verdicts and send-to-Obsidian buttons"
-            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy">
+            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy" width="727" height="1449" decoding="async">
         </a>
         <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
           End-of-day reports — day classification, plain-language verdict, one-tap export to the Obsidian vault
@@ -138,7 +139,7 @@
         <a href="../assets/images/linkring/sleep.png">
           <img src="../assets/images/linkring/sleep.png"
             alt="LinkRing sleep view — last night 10 hours 55 minutes at quality 93 of 100, weekly averages, and a month of hours-slept and quality bars"
-            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy">
+            style="display:block;width:100%;border:1px solid var(--hair)" loading="lazy" width="727" height="657" decoding="async">
         </a>
         <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
           Sleep from the overnight HR dip — the UI's own caption admits the estimation method

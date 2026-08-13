@@ -15,11 +15,19 @@ Light minimal gallery + cursor-reactive 3D. Chosen 2026-07-15 over two competing
 | hairline | rgba(16,18,20,0.10) |
 | accent (gold) | #B8905F — links hover, indexes, ruler fill ONLY |
 | display/body | Schibsted Grotesk 400/500/600 |
-| mono | JetBrains Mono 400/500, tabular-nums |
-Signature: top measurement-ruler strip whose gold fill grows with scroll; chrome 3D object on index leans toward cursor (Three.js 0.165 via CDN importmap, index.html ONLY); ink cursor dot; magnetic links; 2–3% grain. Motion: expo-out, ≤630ms, prefers-reduced-motion honored. Vanilla HTML/CSS/JS, no frameworks, no build step.
+| mono | JetBrains Mono 400/500, tabular-nums (`--mono`) |
+Signature: top measurement-ruler strip whose gold fill grows with scroll; full-bleed interactive topo hero from real ASTER GDEM contours; ink cursor dot *alongside* the native cursor; magnetic links; 2–3% grain. Motion: expo-out, ≤630ms, prefers-reduced-motion honored. Vanilla HTML/CSS/JS, no frameworks, no build step. (The Three.js chrome object was replaced by the survey system on 2026-07-15 — no WebGL anywhere now.)
+
+## Accessibility invariants (2026-08-13 — do not regress)
+- **Never `cursor:none`.** It overrides OS pointer accessibility settings. The `#dot` is additive.
+- **Gold is decorative only** — 2.7:1 on porcelain. Never a text colour, never the sole focus indicator. Focus ring is ink + a gold halo (17.5:1).
+- **`.topbar` is `position:fixed`**, not absolute — the index is one scroll and its anchors have to stay reachable. `html.scrolled` adds the wash.
+- Every page: skip link first in `<body>`, `<nav class="topbar" aria-label="Primary">`, `<main id="main" tabindex="-1">`, exactly one `<h1>`.
+- Every `<img>` carries real `width`/`height` (layout shift) — **re-sync them whenever a file is replaced**.
+- Verify with `PortfolioV2/.tooling/a11y.mjs` (13 pages + mobile) against `python3 -m http.server 8099`.
 
 ## Structure
-- `index.html` — hero (3D) + selected work (3 flagships + 6-row ledger) + footer
+- `index.html` — hero (topo) + selected work (3 flagships + 7-row ledger) + about + resume + contact, one scroll
 - `Project/projects.html` — All work index (09 rows)
 - `Project/project-*.html` — 10 case studies (LinkRing/Fuji added 2026-07-16; flagships: earbud, LinkRing, E30 — FORGE leads the ledger); shared skeleton: ruler, topbar, project-hero, sidebar (timeline/role/category/tools/status), body + contributions, prevnext, footer
 - `Resume/resume.html` + `Resume/assets/Hikmet_Bisen_Resume.pdf`
@@ -37,7 +45,10 @@ Signature: top measurement-ruler strip whose gold fill grows with scroll; chrome
 - Keep URLs stable (GitHub Pages can't redirect).
 
 ## TODO
-- [ ] Real artifact photos (E30, climbing, PCB render) — the evidence gap; stock/none currently
-- [ ] New OG card (assets/og-card.jpg is still K2-themed)
+- [x] ~~Real artifact photos~~ — E30 (4), earbud (3), LinkRing (3) shipped 2026-07-16
+- [x] ~~New OG card~~ — regenerated 2026-08-13 from the site's own CSS + K2 contours; rebuild with `PortfolioV2/.tooling/og.mjs`
+- [ ] Climbing photo for the About section (the one evidence gap left)
+- [ ] Resume PDF is stale — still the old mechanical-first identity line, no LinkRing
+- [ ] Make the topo probe keyboard/touch operable (currently fine-pointer only)
 - [ ] WPI sign-off on what earbud material is publishable
 - [ ] hikmetbisen.com domain

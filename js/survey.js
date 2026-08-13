@@ -14,12 +14,11 @@
   var host = wrap.parentElement; // the hero section: pointer events live here
 
   var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var coarse = matchMedia('(pointer: coarse)').matches;
 
   var INK = '16,18,20', GOLD = '#B8905F';
   var D = null, bands = [], BANDN = 5;
   var cw = 0, ch = 0, dpr = 1, sc = 1, ox = 0, oy = 0;
-  var px = -1, py = -1, over = false, lastMove = 0;
+  var px = -1, py = -1, over = false, lastMove = 0, kbd = false, pinned = false;
   var hl = -1, hlF = 0;
   var t0 = performance.now(), bootT = 0, running = false, visible = true;
 
@@ -108,7 +107,7 @@
       e = elevAt(mx, my);
       lastMove = t;
     }
-    var idle = (t - lastMove > 3) || coarse || !over;
+    var idle = (t - lastMove > 3) || !over;
     if (idle && !rm){
       hlF += 0.012;
       hl = Math.floor(hlF) % D.levels.length;
@@ -138,11 +137,17 @@
       ctx.globalAlpha = 1;
     }
 
-    if (over && px >= 0 && !coarse){
+    if (over && px >= 0){
       ctx.strokeStyle = 'rgba(' + INK + ',0.35)'; ctx.lineWidth = 0.75;
       ctx.beginPath(); ctx.moveTo(px,0); ctx.lineTo(px,ch); ctx.moveTo(0,py); ctx.lineTo(cw,py); ctx.stroke();
       ctx.strokeStyle = GOLD; ctx.lineWidth = 1.2;
       ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI*2); ctx.stroke();
+      /* keyboard probe gets a bigger target so it's findable without a cursor */
+      if (kbd){
+        ctx.globalAlpha = .5;
+        ctx.beginPath(); ctx.arc(px, py, 15, 0, Math.PI*2); ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
     }
 
     if (pl){
@@ -157,12 +162,72 @@
     }
   }
 
-  host.addEventListener('pointermove', function(ev){
+  function probeAt(clientX, clientY){
     var r = wrap.getBoundingClientRect();
-    px = ev.clientX - r.left; py = ev.clientY - r.top;
+    px = clientX - r.left; py = clientY - r.top;
     over = px >= 0 && py >= 0 && px <= r.width && py <= r.height;
+  }
+
+  /* Mouse: probe follows the cursor and clears when it leaves. */
+  host.addEventListener('pointermove', function(ev){
+    if (ev.pointerType === 'touch') return;   // touch is tap-to-probe, below
+    kbd = false; pinned = false;
+    probeAt(ev.clientX, ev.clientY);
   }, {passive: true});
-  host.addEventListener('pointerleave', function(){ over = false; px = py = -1; }, {passive: true});
+  host.addEventListener('pointerleave', function(){
+    if (pinned) return;      // a touch/keyboard probe outlives the pointer
+    over = false; px = py = -1;
+  }, {passive: true});
+
+  /* Touch: TAP to drop the probe, and it stays put. Deliberately not drag —
+     following the finger would fight the page scroll, and the hero is the
+     first thing you swipe past. The probe is pinned because lifting the finger
+     fires pointerleave, which would otherwise wipe it the same frame. */
+  host.addEventListener('pointerdown', function(ev){
+    if (ev.pointerType === 'mouse') return;
+    kbd = false; pinned = true;
+    probeAt(ev.clientX, ev.clientY);
+  }, {passive: true});
+
+  /* Keyboard: the map is a tab stop and the arrows walk the probe. */
+  wrap.addEventListener('keydown', function(ev){
+    var step = ev.shiftKey ? 40 : 12, moved = true;
+    if (px < 0 || !over){ px = cw / 2; py = ch / 2; }   // first press centres it
+    switch (ev.key){
+      case 'ArrowLeft':  px -= step; break;
+      case 'ArrowRight': px += step; break;
+      case 'ArrowUp':    py -= step; break;
+      case 'ArrowDown':  py += step; break;
+      default: moved = false;
+    }
+    if (!moved) return;
+    ev.preventDefault();                    // don't scroll the page while probing
+    kbd = true; pinned = true; over = true;
+    px = Math.max(0, Math.min(cw, px));
+    py = Math.max(0, Math.min(ch, py));
+    announce();
+  });
+  wrap.addEventListener('blur', function(){
+    if (!kbd) return;
+    kbd = false; pinned = false; over = false; px = py = -1;
+  });
+
+  /* One polite live region, updated only on keyboard probing — a screen reader
+     shouldn't narrate every pixel of a mouse sweep. */
+  var live = null;
+  function announce(){
+    if (!D) return;
+    var mx = (px - ox) / sc, my = (py - oy) / sc, e = elevAt(mx, my);
+    if (e === null) return;
+    if (!live){
+      live = document.createElement('span');
+      live.className = 'vh';
+      live.setAttribute('aria-live', 'polite');
+      wrap.appendChild(live);
+    }
+    live.textContent = Math.round(e).toLocaleString('en-US') + ' metres at '
+      + fmtLat(latOf(my / D.h)) + ', ' + fmtLon(lonOf(mx / D.w));
+  }
 
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }).observe(wrap);

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 <div id="dot" aria-hidden="true"></div>
 <div class="ruler" aria-hidden="true">
@@ -21,7 +22,7 @@
   <div class="ruler-fill"></div>
 </div>
 
-<header class="topbar">
+<nav class="topbar" aria-label="Primary">
   <a class="ul mag" href="../index.html#work">Work</a>
   <a class="ul mag" href="../index.html#about">About</a>
   <a class="ul mag" href="projects.html">All work</a>
@@ -29,12 +30,12 @@
   <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
   <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
   <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
-</header>
+</nav>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="project-hero">
-  <div class="survey" data-survey="../assets/topo/lhotse.json" role="img"
-    aria-label="Topographic contour map of Lhotse, generated from ASTER GDEM elevation data. Contour interval 150 meters.">
+  <div class="survey" tabindex="0" data-survey="../assets/topo/lhotse.json" role="img"
+    aria-label="Topographic contour map of Lhotse, generated from ASTER GDEM elevation data. Contour interval 150 meters. Use the arrow keys, or tap, to probe elevation.">
     <canvas aria-hidden="true"></canvas>
     <span class="summitlbl mono" aria-hidden="true"></span>
   </div>
@@ -134,8 +135,7 @@
       <img
         src="../assets/images/obsidian/graph-full.png"
         alt="Full Obsidian knowledge graph — all nodes and cross-links visible"
-        style="display:block;width:100%;max-width:100%;border:1px solid var(--hair)"
-      >
+        style="display:block;width:100%;max-width:100%;border:1px solid var(--hair)" width="833" height="676" loading="lazy" decoding="async">
       <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
         Full graph — every note and wiki-link rendered as nodes and edges
       </figcaption>
@@ -145,8 +145,7 @@
       <img
         src="../assets/images/obsidian/graph-sparse.png"
         alt="Early Obsidian graph — core hub with spoke clusters"
-        style="display:block;width:100%;max-width:100%;border:1px solid var(--hair)"
-      >
+        style="display:block;width:100%;max-width:100%;border:1px solid var(--hair)" width="927" height="698" loading="lazy" decoding="async">
       <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
         Core 0 — main hub with its five core spokes (the radial architecture of the vault)
       </figcaption>

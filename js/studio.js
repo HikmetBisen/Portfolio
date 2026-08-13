@@ -4,6 +4,7 @@
    reduced motion, and coarse pointers are all handled.
    - ruler tick build + gold scroll-progress fill
    - load-in reveal (.rise)
+   - sticky-nav wash + scroll-spy (same-page anchors only)
    - cursor dot (fine pointers only)
    - magnetic links (.mag, fine pointers, not reduced-motion)
    ============================================================ */
@@ -72,9 +73,93 @@
     });
   }
 
+  /* ---------- discipline filters (index only) ---------- */
+  var filters = document.querySelector('.filters');
+  if (filters) {
+    var items = document.querySelectorAll('[data-tags]');
+    var count = filters.querySelector('.filter-count');
+    var btns = filters.querySelectorAll('.filter-btn');
+
+    filters.addEventListener('click', function (ev) {
+      var btn = ev.target.closest('.filter-btn');
+      if (!btn) return;
+      var tag = btn.getAttribute('data-filter');
+      var shown = 0;
+
+      for (var i = 0; i < items.length; i++) {
+        var tags = ' ' + (items[i].getAttribute('data-tags') || '') + ' ';
+        var hit = tag === 'all' || tags.indexOf(' ' + tag + ' ') > -1;
+        items[i].hidden = !hit;
+        if (hit) shown++;
+      }
+      /* collapse a group whose rows all filtered out — an empty bordered box
+         reads as a rendering bug, not as "no matches here" */
+      var boxes = [document.querySelector('.rows'), document.querySelector('.minor')];
+      for (var k = 0; k < boxes.length; k++) {
+        if (!boxes[k]) continue;
+        var kids = boxes[k].querySelectorAll('[data-tags]'), any = false;
+        for (var q = 0; q < kids.length; q++) if (!kids[q].hidden) any = true;
+        boxes[k].hidden = !any;
+      }
+
+      for (var j = 0; j < btns.length; j++) {
+        btns[j].setAttribute('aria-pressed', btns[j] === btn ? 'true' : 'false');
+      }
+      /* role="status" on the count announces the result — otherwise a screen
+         reader gets no feedback that the list under it just changed */
+      if (count) count.textContent = shown + ' of ' + items.length;
+    });
+  }
+
+  /* ---------- sticky-nav wash + scroll-spy ----------
+     The bar is fixed, so it needs a background once content scrolls under it.
+     Scroll-spy only binds same-page anchors, which means it is a no-op on the
+     project pages (their nav points back at ../index.html#…). */
+  var bar = document.querySelector('.topbar');
+  if (bar) {
+    var washPending = false;
+    var setWash = function () {
+      d.classList.toggle('scrolled', (window.scrollY || d.scrollTop || 0) > 24);
+    };
+    setWash();
+    addEventListener('scroll', function () {
+      if (washPending) return;
+      washPending = true;
+      requestAnimationFrame(function () { washPending = false; setWash(); });
+    }, { passive: true });
+
+    var spy = [];
+    var links = bar.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < links.length; i++) {
+      var target = document.getElementById(links[i].getAttribute('href').slice(1));
+      if (target) spy.push({ a: links[i], el: target, on: false });
+    }
+
+    if (spy.length && 'IntersectionObserver' in window) {
+      var current = null;
+      var io = new IntersectionObserver(function (entries) {
+        for (var k = 0; k < entries.length; k++) {
+          for (var m = 0; m < spy.length; m++) {
+            if (spy[m].el === entries[k].target) spy[m].on = entries[k].isIntersecting;
+          }
+        }
+        /* last match in document order wins when two sections overlap the band */
+        var active = null;
+        for (var n = 0; n < spy.length; n++) if (spy[n].on) active = spy[n];
+        if (active === current) return;
+        current = active;
+        for (var q = 0; q < spy.length; q++) {
+          if (spy[q] === active) spy[q].a.setAttribute('aria-current', 'location');
+          else spy[q].a.removeAttribute('aria-current');
+        }
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      for (var p = 0; p < spy.length; p++) io.observe(spy[p].el);
+    }
+  }
+
   /* ---------- cursor dot (fine pointers only) ---------- */
   var dot = document.getElementById('dot');
-  if (dot && fine) {
+  if (dot && fine && !rm) {
     d.classList.add('fine');
 
     var mx = -100, my = -100, dx = 0, dy = 0, ds = 1, dst = 1;

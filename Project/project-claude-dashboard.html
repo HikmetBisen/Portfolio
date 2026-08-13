@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 <div id="dot" aria-hidden="true"></div>
 <div class="ruler" aria-hidden="true">
@@ -21,7 +22,7 @@
   <div class="ruler-fill"></div>
 </div>
 
-<header class="topbar">
+<nav class="topbar" aria-label="Primary">
   <a class="ul mag" href="../index.html#work">Work</a>
   <a class="ul mag" href="../index.html#about">About</a>
   <a class="ul mag" href="projects.html">All work</a>
@@ -29,12 +30,12 @@
   <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
   <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
   <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
-</header>
+</nav>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="project-hero">
-  <div class="survey" data-survey="../assets/topo/denali.json" role="img"
-    aria-label="Topographic contour map of Denali, generated from ASTER GDEM elevation data. Contour interval 150 meters.">
+  <div class="survey" tabindex="0" data-survey="../assets/topo/denali.json" role="img"
+    aria-label="Topographic contour map of Denali, generated from ASTER GDEM elevation data. Contour interval 150 meters. Use the arrow keys, or tap, to probe elevation.">
     <canvas aria-hidden="true"></canvas>
     <span class="summitlbl mono" aria-hidden="true"></span>
   </div>
@@ -143,33 +144,33 @@
     <p class="footnote" style="margin-top:0">Real screenshots from the dashboard running on localhost:8080 — dark theme retrofit, true-live auto-rescan every 30 seconds, reading directly from ~/.claude/projects/*.jsonl.</p>
 
     <figure style="margin:32px 0 0">
-      <img src="../assets/images/dashboard/dashboard-overview.png" alt="FORGE / Claude Usage dashboard — full overview with stats, daily tokens, and hourly distribution" style="border:1px solid rgba(16,18,20,.10);border-radius:2px">
+      <img src="../assets/images/dashboard/dashboard-overview.png" alt="FORGE / Claude Usage dashboard — full overview with stats, daily tokens, and hourly distribution" style="border:1px solid rgba(16,18,20,.10);border-radius:2px" width="3796" height="2061" loading="lazy" decoding="async">
       <figcaption class="footnote"><strong>Full dashboard view</strong> — 1,216 turns · 30 sessions · 5 projects · 3 models · $72.06 est. cost (30d)</figcaption>
     </figure>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px 24px;margin-top:32px">
       <figure style="margin:0">
-        <img src="../assets/images/dashboard/daily-tokens.png" alt="Daily token usage chart — last 7 days, stacked bars for input, output, cache read, and cache creation" style="border:1px solid rgba(16,18,20,.10);border-radius:2px">
+        <img src="../assets/images/dashboard/daily-tokens.png" alt="Daily token usage chart — last 7 days, stacked bars for input, output, cache read, and cache creation" style="border:1px solid rgba(16,18,20,.10);border-radius:2px" width="2757" height="1361" loading="lazy" decoding="async">
         <figcaption class="footnote"><strong>Daily token usage · last 7 days</strong> — cache reads dominate output tokens: RAG context retrieval at scale</figcaption>
       </figure>
 
       <figure style="margin:0">
-        <img src="../assets/images/dashboard/hourly-distribution.png" alt="Average hourly distribution chart — turns and output tokens by hour of day, with peak hours highlighted" style="border:1px solid rgba(16,18,20,.10);border-radius:2px">
+        <img src="../assets/images/dashboard/hourly-distribution.png" alt="Average hourly distribution chart — turns and output tokens by hour of day, with peak hours highlighted" style="border:1px solid rgba(16,18,20,.10);border-radius:2px" width="2750" height="664" loading="lazy" decoding="async">
         <figcaption class="footnote"><strong>Hourly distribution · peak hours detection</strong> — 13:00 and 22:00 CT spikes: most productive coding windows</figcaption>
       </figure>
 
       <figure style="margin:0">
-        <img src="../assets/images/dashboard/cost-by-model.png" alt="Cost by model table — Opus, Sonnet, and Haiku with turns, tokens, and estimated API cost" style="border:1px solid rgba(16,18,20,.10);border-radius:2px">
+        <img src="../assets/images/dashboard/cost-by-model.png" alt="Cost by model table — Opus, Sonnet, and Haiku with turns, tokens, and estimated API cost" style="border:1px solid rgba(16,18,20,.10);border-radius:2px" width="2619" height="433" loading="lazy" decoding="async">
         <figcaption class="footnote"><strong>Cost by model · 7-day breakdown</strong> — Opus for complex tasks, Sonnet workhorse, Haiku for fast turns</figcaption>
       </figure>
 
       <figure style="margin:0">
-        <img src="../assets/images/dashboard/recent-sessions.png" alt="Recent sessions table — session ID, project, last active timestamp, duration, model, turns, tokens, and cost" style="border:1px solid rgba(16,18,20,.10);border-radius:2px">
+        <img src="../assets/images/dashboard/recent-sessions.png" alt="Recent sessions table — session ID, project, last active timestamp, duration, model, turns, tokens, and cost" style="border:1px solid rgba(16,18,20,.10);border-radius:2px" width="2711" height="1244" loading="lazy" decoding="async">
         <figcaption class="footnote"><strong>Recent sessions · last 30 days</strong> — per-session drill-down with model used and API-equivalent cost</figcaption>
       </figure>
 
       <figure style="margin:0;grid-column:1/-1">
-        <img src="../assets/images/dashboard/cost-by-project.png" alt="Cost by project and cost by project and branch tables — Claude_Coding leads spend, with HEAD vs main branch breakdown" style="border:1px solid rgba(16,18,20,.10);border-radius:2px">
+        <img src="../assets/images/dashboard/cost-by-project.png" alt="Cost by project and cost by project and branch tables — Claude_Coding leads spend, with HEAD vs main branch breakdown" style="border:1px solid rgba(16,18,20,.10);border-radius:2px" width="2761" height="782" loading="lazy" decoding="async">
         <figcaption class="footnote"><strong>Cost by project &amp; branch · where the time goes</strong> — Claude_Coding ($74.94, 22 sessions, 1.06M output tokens) is the heaviest lift; Portfolio-main and Personal_Dashboard fill the rest. The branch view splits HEAD from main so I can see which branch I'm actually burning tokens on.</figcaption>
       </figure>
     </div>

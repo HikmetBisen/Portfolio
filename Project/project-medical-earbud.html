@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 <div id="dot" aria-hidden="true"></div>
 <div class="ruler" aria-hidden="true">
@@ -21,7 +22,7 @@
   <div class="ruler-fill"></div>
 </div>
 
-<header class="topbar">
+<nav class="topbar" aria-label="Primary">
   <a class="ul mag" href="../index.html#work">Work</a>
   <a class="ul mag" href="../index.html#about">About</a>
   <a class="ul mag" href="projects.html">All work</a>
@@ -29,12 +30,12 @@
   <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
   <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
   <a class="ul mag" href="mailto:hikmetbisen@gmail.com">Email</a>
-</header>
+</nav>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="project-hero">
-  <div class="survey" data-survey="../assets/topo/sinai.json" role="img"
-    aria-label="Topographic contour map of Mount Sinai, generated from ASTER GDEM elevation data. Contour interval 75 meters.">
+  <div class="survey" tabindex="0" data-survey="../assets/topo/sinai.json" role="img"
+    aria-label="Topographic contour map of Mount Sinai, generated from ASTER GDEM elevation data. Contour interval 75 meters. Use the arrow keys, or tap, to probe elevation.">
     <canvas aria-hidden="true"></canvas>
     <span class="summitlbl mono" aria-hidden="true"></span>
   </div>
@@ -117,7 +118,7 @@
         <a href="../assets/images/earbud/system-design.png">
           <img src="../assets/images/earbud/system-design.png"
             alt="LYNX system design — circuit diagram of the dual microphones and IMU wired to a Raspberry Pi, and an exploded view of the 3D-printed earbud shell showing mic and IMU placement"
-            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy">
+            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy" width="720" height="642" decoding="async">
         </a>
         <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
           System design — dual mics + 9-DOF IMU in a 3D-printed shell, no custom PCB required
@@ -127,7 +128,7 @@
         <a href="../assets/images/earbud/nlms-filter.png">
           <img src="../assets/images/earbud/nlms-filter.png"
             alt="Diagram of signal enhancement via reference microphone — outer mic noise and raw in-ear signal combined through an adaptive NLMS filter into a clean filtered signal"
-            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy">
+            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy" width="744" height="538" decoding="async">
         </a>
         <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
           The signal path — the outer mic is a reference channel; NLMS subtracts the shared noise
@@ -137,7 +138,7 @@
         <a href="../assets/images/earbud/test-results.png">
           <img src="../assets/images/earbud/test-results.png"
             alt="Recording and motion test results — stereo microphone RMS aligned with accelerometer, gyroscope, and magnetometer traces during head tilts, plus raw versus NLMS-filtered signal plots"
-            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy">
+            style="display:block;width:100%;border:1px solid var(--hair);background:#fff" loading="lazy" width="712" height="952" decoding="async">
         </a>
         <figcaption class="mono" style="font-size:12px;color:var(--sec);margin-top:8px">
           Test results — IMU head-tilt events align with in-ear audio peaks across a 10-minute session

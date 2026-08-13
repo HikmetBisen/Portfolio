@@ -32,6 +32,7 @@
   </script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 <div id="dot" aria-hidden="true"></div>
 <div class="ruler" aria-hidden="true">
@@ -39,7 +40,7 @@
   <div class="ruler-fill"></div>
 </div>
 
-<header class="topbar">
+<nav class="topbar" aria-label="Primary">
   <a class="ul mag" href="#work">Work</a>
   <a class="ul mag" href="#about">About</a>
   <a class="ul mag" href="#resume">Resume</a>
@@ -47,12 +48,12 @@
   <a class="ul mag" href="https://github.com/HikmetBisen">GitHub</a>
   <a class="ul mag" href="https://www.linkedin.com/in/hikmetbisen/">LinkedIn</a>
   <a class="ul mag" href="#contact">Contact</a>
-</header>
+</nav>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="hero">
-  <div class="survey" data-survey="assets/topo/k2.json" role="img"
-    aria-label="Interactive topographic contour map of K2, generated from ASTER GDEM elevation data. Contour interval 150 meters.">
+  <div class="survey" tabindex="0" data-survey="assets/topo/k2.json" role="img"
+    aria-label="Interactive topographic contour map of K2, generated from ASTER GDEM elevation data. Contour interval 150 meters. Use the arrow keys, or tap, to probe elevation.">
     <canvas aria-hidden="true"></canvas>
     <span class="summitlbl mono" aria-hidden="true"></span>
   </div>
@@ -70,8 +71,18 @@
 
 <section class="work" id="work">
   <h2 class="mono">Selected work</h2>
+
+  <div class="filters" role="group" aria-label="Filter projects by discipline">
+    <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" type="button" data-filter="ml" aria-pressed="false">Machine learning</button>
+    <button class="filter-btn" type="button" data-filter="hardware" aria-pressed="false">Hardware</button>
+    <button class="filter-btn" type="button" data-filter="software" aria-pressed="false">Software</button>
+    <button class="filter-btn" type="button" data-filter="research" aria-pressed="false">Research</button>
+    <p class="filter-count mono" role="status">10 of 10</p>
+  </div>
+
   <div class="rows">
-    <a class="row" href="Project/project-medical-earbud.html">
+    <a class="row" data-tags="hardware research" href="Project/project-medical-earbud.html">
       <span class="idx mono" aria-hidden="true">01</span>
       <div>
         <h3 class="rowtitle"><span>In-ear multimodal sensing device</span></h3>
@@ -79,7 +90,7 @@
         <span class="rowfact mono">heart rate · respiration · voice · motion</span>
       </div>
     </a>
-    <a class="row" href="Project/project-linkring.html">
+    <a class="row" data-tags="software hardware" href="Project/project-linkring.html">
       <span class="idx mono" aria-hidden="true">02</span>
       <div>
         <h3 class="rowtitle"><span>LinkRing — self-hosted health tracker</span></h3>
@@ -87,7 +98,7 @@
         <span class="rowfact mono">your data · your baseline · no subscription</span>
       </div>
     </a>
-    <a class="row" href="Project/project-bmw-e30.html">
+    <a class="row" data-tags="hardware" href="Project/project-bmw-e30.html">
       <span class="idx mono" aria-hidden="true">03</span>
       <div>
         <h3 class="rowtitle"><span>1983 BMW E30 restoration</span></h3>
@@ -98,13 +109,13 @@
   </div>
 
   <ul class="minor">
-    <li><a class="ul" href="Project/project-forge-ai.html">FORGE — AI engineering analysis platform</a> — RAG + multi-model routing, built solo</li>
-    <li><a class="ul" href="Project/project-banking-system.html">Python banking system</a> — 40/40 unit tests</li>
-    <li><a class="ul" href="Project/project-claude-dashboard.html">Claude usage dashboard</a> — single-file Python, SSE live metrics</li>
-    <li><a class="ul" href="Project/project-obsidian-graph.html">Obsidian AI memory graph</a> — personal knowledge architecture</li>
-    <li><a class="ul" href="Project/project-roller-coaster.html">Roller coaster design (LESC)</a></li>
-    <li><a class="ul" href="Project/project-code2college.html">Code2College</a></li>
-    <li><a class="ul" href="Project/project-dv3x2-aia.html">Architecture research (AIA)</a></li>
+    <li data-tags="ml software"><a class="ul" href="Project/project-forge-ai.html">FORGE — AI engineering analysis platform</a> — RAG + multi-model routing, built solo</li>
+    <li data-tags="software"><a class="ul" href="Project/project-banking-system.html">Python banking system</a> — 40/40 unit tests</li>
+    <li data-tags="software"><a class="ul" href="Project/project-claude-dashboard.html">Claude usage dashboard</a> — single-file Python, SSE live metrics</li>
+    <li data-tags="ml software"><a class="ul" href="Project/project-obsidian-graph.html">Obsidian AI memory graph</a> — personal knowledge architecture</li>
+    <li data-tags="hardware"><a class="ul" href="Project/project-roller-coaster.html">Roller coaster design (LESC)</a></li>
+    <li data-tags="software"><a class="ul" href="Project/project-code2college.html">Code2College</a></li>
+    <li data-tags="research"><a class="ul" href="Project/project-dv3x2-aia.html">Architecture research (AIA)</a></li>
   </ul>
 
   <p class="climb mono"><span class="climbk">Climbing</span>lead 5.10d · top rope 5.11c · boulder V7 — lead-certified one month after first touching a wall (2026)</p>
@@ -113,7 +124,7 @@
 <section class="about" id="about">
   <h2>About</h2>
   <div class="about-grid">
-    <img class="about-photo" src="assets/images/hikmet-bisen.jpg" alt="Hikmet Bisen">
+    <img class="about-photo" src="assets/images/hikmet-bisen.jpg" alt="Hikmet Bisen" width="1194" height="1600" loading="lazy" decoding="async">
     <div class="about-body">
       <p>Machine learning + mechanical engineering, Austin, TX. Dual enrollment at Harmony School of Endeavor and Austin Community College — 4.56 GPA, class of 2027.</p>
       <p>The work runs hardware to software: chassis welding on a 1983 BMW E30, in-ear biosensing research at WPI with a patent filing in progress, and FORGE — an AI engineering-analysis platform built solo. Fusion 360, AutoCAD, C++, Python, JavaScript.</p>
@@ -130,7 +141,7 @@
 
 <section class="resume-page" id="resume">
 <div class="resume-head">
-    <h1 class="rise" style="--d:0">Resume</h1>
+    <h2 class="rise" style="--d:0">Resume</h2>
     <a class="btn-download rise" style="--d:1" href="Resume/assets/Hikmet_Bisen_Resume.pdf" download>Download PDF</a>
     <p class="resume-contact rise" style="--d:2">
       Hikmet Bisen · Austin, TX · 737-351-8670<br>
@@ -299,7 +310,7 @@
     <p class="contact-line">Austin, TX — open to ML and engineering internships, research, and build conversations. Email gets answered.</p>
     <p>
       <a class="contact-mail" href="mailto:hikmetbisen@gmail.com">hikmetbisen@gmail.com</a>
-      <button class="contact-copy mono" id="copymail" type="button" aria-label="Copy email address">copy</button>
+      <button class="contact-copy mono" id="copymail" type="button" aria-live="polite">copy</button>
     </p>
     <div class="contact-row">
       <a class="ul mag" href="https://github.com/HikmetBisen">github.com/HikmetBisen</a>
