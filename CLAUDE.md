@@ -4,7 +4,7 @@
 - **Name:** Hikmet Bisen · Austin, TX
 - **Email:** hikmetbisen@gmail.com · **Phone:** 737-351-8670
 - **GitHub:** https://github.com/HikmetBisen · **LinkedIn:** https://www.linkedin.com/in/hikmetbisen/
-- Live: https://hikmetbisen.github.io/Portfolio/ (GitHub Pages, deploys on push to main)
+- Live: https://hikmetbisen.com/ (GitHub Pages, deploys on push to main)
 
 ## Design system — "Porcelain Studio"
 Light minimal gallery + cursor-reactive 3D. Chosen 2026-07-15 over two competing mocks; replaces the Mountain World theme.
@@ -48,7 +48,7 @@ Signature: top measurement-ruler strip whose gold fill grows with scroll; full-b
 - [x] ~~Real artifact photos~~ — E30 (4), earbud (3), LinkRing (3) shipped 2026-07-16
 - [x] ~~New OG card~~ — regenerated 2026-08-13 from the site's own CSS + K2 contours; rebuild with `PortfolioV2/.tooling/og.mjs`
 - [ ] Climbing photo for the About section (the one evidence gap left)
-- [ ] Resume PDF is stale — still the old mechanical-first identity line, no LinkRing
+- [ ] Resume PDF is stale — old mechanical-first identity line, no LinkRing, and prints the DEAD `hikmetbisen.github.io/Portfolio` URL. Master is a Google Doc (Producer: Google Docs Renderer) — must be edited there and re-exported to `Resume/assets/Hikmet_Bisen_Resume.pdf`.
 - [ ] Make the topo probe keyboard/touch operable (currently fine-pointer only)
 - [ ] WPI sign-off on what earbud material is publishable
-- [ ] hikmetbisen.com domain
+- [x] ~~hikmetbisen.com domain~~ — live 2026-08-31 (Cloudflare DNS). `hikmetbisen.github.io/Portfolio` now 404s; all references migrated.
